@@ -16,12 +16,4 @@ This is a Jekyll website for Zhijian Qiao's academic homepage.
 
 **Note:** `preview.sh` clears conflicting Jekyll processes, uses port 4000, and runs with `--no-watch` to avoid symlink watch issues.
 
-```
-# Navigation
-_data/navigation.yml
-_pages/about.md
-_pages/publications.html
-
-# Tutorials
-_pages/markdown.md
-```
+Useful paths: `_data/navigation.yml`, `_pages/about.md`, `_pages/publications.html`.

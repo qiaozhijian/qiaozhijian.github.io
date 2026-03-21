@@ -17,9 +17,12 @@ Optional: `JEKYLL_SKIP_SYSTEM_RUBY_INSTALL=1 ./scripts/install.sh` if Ruby alrea
 
 ## Project layout
 
-- `content/` — pages, posts, portfolio
-- `theme/` — theme templates
-- `media/` — images
+- `_pages/` — main pages (about, publications, CV, …)
+- `_portfolio/` — portfolio entries
+- `_posts/` — blog posts (if any)
+- `_layouts/`, `_includes/`, `_sass/` — theme templates and styles
+- `media/` — images and media
 - `static/` — CSS, JS, fonts
-- `tools/` — `Gemfile` for Jekyll
+- `tools/` — `Gemfile` / Bundler
 - `scripts/` — `install.sh`, `preview.sh`, `run-jekyll.sh`
+- `docs/` — extra documentation
