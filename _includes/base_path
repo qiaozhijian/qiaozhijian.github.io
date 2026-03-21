@@ -1,5 +1,2 @@
-{% if site.url %}
-  {% assign base_path = site.url | append: site.baseurl %}
-{% else %}
-  {% assign base_path = site.github.url %}
-{% endif %}
+{% comment %}Root-relative paths: same host for localhost and GitHub Pages (full site.url breaks local CSS).{% endcomment %}
+{% assign base_path = site.baseurl | default: "" %}

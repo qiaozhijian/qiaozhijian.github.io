@@ -1,5 +1,7 @@
 _site/
 .sass-cache/
+tools/vendor/bundle/
+.jekyll.pid
 .idea
 .idea/*
 resume

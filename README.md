@@ -1,25 +1,25 @@
 # Zhijian's Website
 
-This is a Jekyll website for Zhijian Qiao's academic homepage.
+Jekyll site for Zhijian Qiao's academic homepage.
 
-📖 **[Full Documentation](./docs/README.md)**
+📖 More detail: [docs/README.md](./docs/README.md)
 
-## Quick Start
+## Local setup
+
+From the repo root, as a normal user (do **not** use `sudo` for these):
 
 ```bash
-# Start development server
-./scripts/jekyll-server.sh
+./scripts/install.sh    # install Ruby / Bundler / gems (first time; may prompt for sudo inside apt)
+./scripts/preview.sh    # local site — open http://localhost:4000
 ```
 
-## Project Structure
+Optional: `JEKYLL_SKIP_SYSTEM_RUBY_INSTALL=1 ./scripts/install.sh` if Ruby already comes from rbenv/asdf.
 
-- `content/` - Personal content (pages, posts, portfolio, etc.)
-- `theme/` - Jekyll theme configuration and templates
-- `media/` - Images and other media files
-- `static/` - Static assets (CSS, JS, fonts)
-- `build/` - Build artifacts and generated files
-- `docs/` - Documentation
-- `tools/` - Development tools and configuration
-- `scripts/` - Utility scripts
+## Project layout
 
-See [docs/README.md](./docs/README.md) for detailed instructions.
+- `content/` — pages, posts, portfolio
+- `theme/` — theme templates
+- `media/` — images
+- `static/` — CSS, JS, fonts
+- `tools/` — `Gemfile` for Jekyll
+- `scripts/` — `install.sh`, `preview.sh`, `run-jekyll.sh`

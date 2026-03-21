@@ -18,7 +18,7 @@ description: &description "Ph.D. student in HKUST Aerial Robotics Group"
 url: https://qiaozhijian.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl: "" # the subpath of your site, e.g. "/blog"
 repository: "qiaozhijian/qiaozhijian.github.io"
-teaser:  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
+teaser:  # optional teaser image filename under /media/images/
 breadcrumbs: false # true, false (default)
 words_per_minute: 160
 future: true
@@ -75,6 +75,7 @@ social:
   type: # Person or Organization (defaults to Person)
   name: # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
+    - https://www.zhihu.com/people/qiao-zi-jing-6
 
 
 # Analytics
@@ -118,6 +119,7 @@ author:
   twitter:
   vine:
   weibo:
+  zhihu: "https://www.zhihu.com/people/qiao-zi-jing-6"
   xing:
   youtube:
   wikipedia:
@@ -152,6 +154,7 @@ exclude:
   - package.json
   - tmp
   - vendor
+  - tools/vendor
 keep_files:
   - .git
   - .svn

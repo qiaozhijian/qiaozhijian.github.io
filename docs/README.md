@@ -4,24 +4,17 @@ This is a Jekyll website for Zhijian Qiao's academic homepage.
 
 ## To run locally (not on GitHub Pages, to serve on your own computer)
 
-1. Clone the repository and made updates as detailed above
-1. Make sure you have ruby-dev, bundler, and nodejs installed: `sudo apt install ruby-dev ruby-bundler nodejs`
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Use the Jekyll server management script:
+1. Clone the repository and make updates as needed.
+1. From the repo root: `./scripts/install.sh` then `./scripts/preview.sh` (see root [README.md](../README.md)).
 
 ```bash
-# Start server (recommended - default action)
-./scripts/jekyll-server.sh        # 默认启动服务器
-./scripts/jekyll-server.sh start  # 明确启动服务器
-
-# Other commands
-./scripts/jekyll-server.sh stop     # 停止服务器
-./scripts/jekyll-server.sh restart  # 重启服务器
-./scripts/jekyll-server.sh status   # 查看服务器状态
-./scripts/jekyll-server.sh help     # 显示帮助信息
+./scripts/install.sh
+./scripts/preview.sh          # default: start
+./scripts/preview.sh stop     # stop
+./scripts/preview.sh status   # status
 ```
 
-**Note:** The script automatically handles port conflicts and prevents the "directory already being watched" error. When run without parameters, it defaults to starting the server.
+**Note:** `preview.sh` clears conflicting Jekyll processes, uses port 4000, and runs with `--no-watch` to avoid symlink watch issues.
 
 ```
 # Navigation
