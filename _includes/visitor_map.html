@@ -5,6 +5,13 @@
 {% assign _cms = site.clustrmaps_script_src | default: "" | strip %}
 {% if _cms != "" %}
   <script type="text/javascript" id="clustrmaps" src="{{ _cms }}"></script>
+  {% assign _dash = site.clustrmaps_dashboard_url | default: "" | strip %}
+  {% assign _img = site.clustrmaps_noscript_img_src | default: "" | strip %}
+  {% if _dash != "" and _img != "" %}
+  <noscript>
+    <a href="{{ _dash }}" title="ClustrMaps"><img src="{{ _img }}" alt="ClustrMaps visitor map" loading="lazy" style="max-width:100%;height:auto;"></a>
+  </noscript>
+  {% endif %}
 {% else %}
   <p class="barron-visitor-map-hint">
     访客地图一般用

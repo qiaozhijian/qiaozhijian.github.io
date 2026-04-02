@@ -20,9 +20,11 @@ baseurl: "" # the subpath of your site, e.g. "/blog"
 repository: "qiaozhijian/qiaozhijian.github.io"
 # Shown in Barron layout footer; update when you refresh the site content.
 last_updated: "April 2026"
-# Visitor world map (NOT Google Maps). See https://clustrmaps.com — paste embed script src only, e.g.
-# "//cdn.clustrmaps.com/map_v2.js?d=xxxxxxxx&cl=ffffff&w=a"
-clustrmaps_script_src: ""
+# Visitor map (ClustrMaps). Script src must stay in <body>; see visitor_map.html include.
+clustrmaps_script_src: "//clustrmaps.com/map_v2.js?d=X-Xx9rwKGHnb21BhXhdxEe7J0HqnrpxdBM2F2HtuxNc&cl=ffffff&w=a"
+# Optional: static fallback when JS is disabled (same ClustrMaps dashboard / png params).
+clustrmaps_dashboard_url: "https://clustrmaps.com/site/1c9ly"
+clustrmaps_noscript_img_src: "//www.clustrmaps.com/map_v2.png?d=X-Xx9rwKGHnb21BhXhdxEe7J0HqnrpxdBM2F2HtuxNc&cl=ffffff"
 teaser:  # optional teaser image filename under /media/images/
 breadcrumbs: false # true, false (default)
 words_per_minute: 160
