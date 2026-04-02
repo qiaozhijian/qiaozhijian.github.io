@@ -6,18 +6,19 @@
  */
 
 html {
-  background-color: whitesmoke;
-  color: black;
+  background-color: #ffffff;
+  color: #333333;
 }
 
 a {
-  color: #1772d0;
+  color: #0056b3;
   text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:focus,
 a:hover {
-  color: #f09228;
+  color: #d9230f;
   text-decoration: none;
 }
 
@@ -28,8 +29,8 @@ tr,
 p,
 li {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 1.45;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 body {
@@ -50,18 +51,20 @@ h1 {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   margin: 0 0 0.65rem;
+  color: #111111;
 }
 
 h2 {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
-  margin: 1.35em 0 0.45em;
-  padding: 0;
-  border: 0;
+  margin: 1.5em 0 0.5em;
+  padding: 0 0 0.2em 0;
+  border-bottom: 1px solid #f0f0f0;
+  color: #111111;
 }
 
 h2:first-of-type {
@@ -70,25 +73,29 @@ h2:first-of-type {
 
 h3 {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
-  margin: 1em 0 0.35em;
+  margin: 1.2em 0 0.35em;
+  color: #111111;
 }
 
 papertitle {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
+  color: #111111;
   display: block;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
 }
 
 name {
   font-family: "Lato", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 1.2;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.25;
   letter-spacing: 0.02em;
+  color: #111111;
 }
 
 span.highlight {
@@ -99,30 +106,36 @@ span.highlight {
 
 .barron-wrap {
   width: 100%;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 12px 2.5% 24px;
+  padding: 36px 4% 48px;
   box-sizing: border-box;
 }
 
 .barron-nav {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
-  font-size: 13px;
-  margin: 0 0 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  margin: 0 0 32px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #eaeaea;
 }
 
 .barron-nav a {
-  margin-right: 14px;
+  margin-right: 18px;
   white-space: nowrap;
+  color: #555555;
+}
+
+.barron-nav a:hover {
+  color: #111111;
 }
 
 .barron-nav .barron-nav-name {
-  color: inherit;
+  color: #111111;
   font-family: "Lato", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  font-size: 16px;
   font-weight: 700;
-  margin-right: 18px;
+  margin-right: 24px;
   letter-spacing: 0.02em;
 }
 
@@ -135,12 +148,12 @@ span.highlight {
 }
 
 .barron-footer {
-  margin-top: 2.25rem;
-  padding-top: 14px;
-  border-top: 1px solid #ddd;
+  margin-top: 3rem;
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
   font-family: "Lato", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
-  font-size: 12px;
-  color: #555;
+  font-size: 13px;
+  color: #777;
 }
 
 .barron-footer-line {
@@ -150,15 +163,16 @@ span.highlight {
 .barron-footer-updated {
   margin-top: 8px;
   font-size: 12px;
-  color: #666;
+  color: #999;
 }
 
 .barron-footer a {
   color: #555;
+  transition: color 0.2s ease;
 }
 
 .barron-footer a:hover {
-  color: #f09228;
+  color: #111;
 }
 
 /* --- Intro row: text left (~63%), photo right (~40%), Fei spacing --- */
@@ -188,17 +202,18 @@ span.highlight {
 }
 
 .barron-intro .fei-intro-name {
-  text-align: center;
-  margin: 0 0 0.4rem;
+  text-align: left;
+  margin: 0 0 0.6rem;
 }
 
 .barron-intro .fei-intro-text > p {
-  margin: 0 0 0.85rem;
+  margin: 0 0 1rem;
 }
 
 .barron-intro .fei-intro-links {
-  text-align: center;
+  text-align: left;
   margin-bottom: 0;
+  font-size: 14px;
 }
 
 .barron-link-sep {
@@ -254,13 +269,13 @@ span.highlight {
   border: 0;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .barron-intro .fei-intro-photo a:hover {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
-  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02) translateY(-2px);
 }
 
 .barron-intro .fei-intro-photo img {
@@ -293,11 +308,18 @@ main li {
   border: 0;
   border-spacing: 0;
   border-collapse: separate;
-  margin: 0 auto 2px;
+  margin: 0 auto 12px;
+  border-radius: 12px;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.barron-pubs table:hover {
+  background-color: #fcfcfc;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
 .barron-pubs td {
-  padding: 20px !important;
+  padding: 24px !important;
   vertical-align: middle !important;
   border: 0 !important;
 }
@@ -316,6 +338,14 @@ main li {
   height: auto;
   border: 0;
   display: block;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.barron-pubs table:hover img {
+  transform: scale(1.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
 iframe {
@@ -325,16 +355,24 @@ iframe {
 /* Projects list */
 .barron-project-title {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.5rem;
   border: 0;
   padding: 0;
 }
 
 @media (max-width: 640px) {
   name {
-    font-size: 26px;
+    font-size: 28px;
+  }
+
+  .barron-intro .fei-intro-name {
+    text-align: center;
+  }
+
+  .barron-intro .fei-intro-links {
+    text-align: center;
   }
 
   .barron-intro > tbody > tr,
