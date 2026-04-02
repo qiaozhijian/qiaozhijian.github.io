@@ -8,6 +8,9 @@
     {% if page.title and page.title != "" %}{{ page.title }} | {% endif %}{{ site.author.name | default: site.title }}
   </title>
   <meta name="description" content="{{ site.author.bio | default: site.description | strip_html }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/static/css/barron.css' | relative_url }}">
   <script>
     var _hmt = _hmt || [];
@@ -22,7 +25,7 @@
 <body>
   <div class="barron-wrap">
     <nav class="barron-nav" aria-label="Primary">
-      <a href="{{ '/' | relative_url }}" style="color:inherit;font-weight:600;text-decoration:none;">{{ site.author.name | default: site.name }}</a>
+      <a class="barron-nav-name" href="{{ '/' | relative_url }}">{{ site.author.name | default: site.name }}</a>
       <a href="{{ '/' | relative_url }}">Home</a>
       <a href="{{ '/publications/' | relative_url }}">Publications</a>
       <a href="{{ '/projects/' | relative_url }}">Projects</a>

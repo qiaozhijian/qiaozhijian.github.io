@@ -1,212 +1,281 @@
-/* Barron-style minimal academic homepage */
-:root {
-  --text: #333;
-  --link: #1772d0;
-  --link-hover: #f09228;
-  --rule: #e8e8e8;
-  --maxw: 880px;
-}
-
-* {
-  box-sizing: border-box;
-}
+/*
+ * Typography & colors aligned with Fei Xue / Jon Barron-style academic pages
+ * Reference: https://github.com/feixue94/feixue94.github.io — stylesheet.css + index.html
+ * Lato is loaded in _layouts/barron.html (preconnect + stylesheet).
+ */
 
 html {
-  font-size: 16px;
+  background-color: whitesmoke;
+  color: black;
+}
+
+a {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  color: #f09228;
+  text-decoration: none;
+}
+
+body,
+td,
+th,
+tr,
+p,
+li {
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
 }
 
 body {
   margin: 0;
-  padding: 0 1.25rem 2.5rem;
-  color: var(--text);
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  line-height: 1.45;
+  padding: 0 0 2.5rem;
   -webkit-font-smoothing: antialiased;
 }
 
-.barron-wrap {
-  max-width: var(--maxw);
-  margin: 0 auto;
-  padding-top: 1.25rem;
+strong {
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 14px;
 }
 
-.barron-nav {
-  font-size: 0.95rem;
-  margin-bottom: 1.75rem;
-  padding-bottom: 0.65rem;
-  border-bottom: 1px solid var(--rule);
+/* Fei uses custom <heading> for section titles; we style h2 the same role */
+heading,
+h1 {
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
 }
 
-.barron-nav a {
-  color: var(--link);
-  text-decoration: none;
-  margin-right: 1.25rem;
-}
-
-.barron-nav a:hover {
-  color: var(--link-hover);
-}
-
-.barron-nav strong {
-  font-weight: 600;
-  margin-right: 0.75rem;
-}
-
-.barron-title {
-  font-size: 1.75rem;
-  font-weight: 600;
-  margin: 0 0 0.25rem;
-  letter-spacing: -0.02em;
-}
-
-.barron-sub {
-  margin: 0 0 1.25rem;
-  font-size: 0.95rem;
-  color: #555;
-}
-
-a {
-  color: var(--link);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--link-hover);
-}
-
-.barron-intro {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 0 0 1.75rem;
-}
-
-.barron-intro td {
-  vertical-align: top;
-  padding: 0 1.5rem 0 0;
-}
-
-.barron-intro td:last-child {
-  padding-right: 0;
-}
-
-.barron-intro img {
-  width: 180px;
-  max-width: 36vw;
-  height: auto;
-  border: 0;
-  display: block;
-}
-
-.barron-intro p {
-  margin: 0 0 0.75rem;
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 0.65rem;
 }
 
 h2 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin: 1.75rem 0 0.65rem;
-  padding-top: 0.35rem;
-  border-top: 1px solid var(--rule);
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 1.35em 0 0.45em;
+  padding: 0;
+  border: 0;
 }
 
 h2:first-of-type {
-  border-top: 0;
-  padding-top: 0;
-  margin-top: 0.5rem;
+  margin-top: 0.85em;
 }
 
-ul {
-  margin: 0.35rem 0 0.75rem;
-  padding-left: 1.35rem;
-}
-
-li {
-  margin: 0.2rem 0;
+h3 {
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 1em 0 0.35em;
 }
 
 papertitle {
-  display: block;
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 15px;
   font-weight: 700;
-  font-size: 1.02rem;
-  margin-bottom: 0.15rem;
+  display: block;
+  margin-bottom: 0.1rem;
 }
 
-/* Publication tables (legacy inline styles preserved; this tightens layout) */
-.barron-pubs table {
+name {
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+span.highlight {
+  background-color: #ffffd0;
+}
+
+/* --- Shell (Fei: outer table max-width 900px centered) --- */
+
+.barron-wrap {
   width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 12px 2.5% 24px;
+  box-sizing: border-box;
+}
+
+.barron-nav {
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 13px;
+  margin: 0 0 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.barron-nav a {
+  margin-right: 14px;
+  white-space: nowrap;
+}
+
+.barron-nav .barron-nav-name {
+  color: inherit;
+  font-weight: 700;
+  margin-right: 18px;
+}
+
+.barron-page-header {
+  margin-bottom: 14px;
+}
+
+.barron-page-header h1 {
+  font-size: 22px;
+}
+
+.barron-footer {
+  margin-top: 2.25rem;
+  padding-top: 14px;
+  border-top: 1px solid #ddd;
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #555;
+}
+
+.barron-footer a {
+  color: #555;
+}
+
+.barron-footer a:hover {
+  color: #f09228;
+}
+
+/* --- Intro row: text left (~63%), photo right (~40%), Fei spacing --- */
+
+.barron-intro {
+  width: 100%;
+  border: 0;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 0 0 0.5rem;
+  margin: 0 0 8px;
 }
 
-.barron-pubs td {
-  padding: 0.85rem 0.85rem 0.85rem 0;
+.barron-intro > tbody > tr > td {
+  padding: 2.5%;
   vertical-align: middle;
   border: 0;
 }
 
+.barron-intro .fei-intro-text {
+  width: 63%;
+}
+
+.barron-intro .fei-intro-photo {
+  width: 40%;
+  max-width: 40%;
+  text-align: center;
+}
+
+.barron-intro .fei-intro-name {
+  text-align: center;
+  margin: 0 0 0.4rem;
+}
+
+.barron-intro .fei-intro-text > p {
+  margin: 0 0 0.85rem;
+}
+
+.barron-intro .fei-intro-links {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.barron-intro .fei-intro-photo a {
+  display: inline-block;
+  border: 0;
+}
+
+.barron-intro .fei-intro-photo img {
+  width: 60%;
+  max-width: 60%;
+  height: auto;
+  border: 0;
+  vertical-align: middle;
+}
+
+/* --- Lists (Education, News-style blocks) --- */
+
+main ul {
+  margin: 0.25rem 0 0.85rem;
+  padding-left: 1.5rem;
+}
+
+main li {
+  margin: 0.2rem 0;
+}
+
+/* --- Publication tables (match Fei / original inline 25% / 75%, padding 20px) --- */
+
+.barron-pubs table {
+  width: 100%;
+  border: 0;
+  border-spacing: 0;
+  border-collapse: separate;
+  margin: 0 auto 2px;
+}
+
+.barron-pubs td {
+  padding: 20px !important;
+  vertical-align: middle !important;
+  border: 0 !important;
+}
+
 .barron-pubs td:first-child {
-  width: 26%;
-  min-width: 120px;
+  width: 25% !important;
+}
+
+.barron-pubs td:last-child {
+  width: 75% !important;
 }
 
 .barron-pubs img {
   width: 100%;
-  max-width: 200px;
+  max-width: 100%;
   height: auto;
   border: 0;
   display: block;
-}
-
-.barron-page-header {
-  margin-bottom: 1rem;
-}
-
-.barron-page-header h1 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin: 0 0 0.25rem;
-}
-
-.barron-footer {
-  margin-top: 2.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--rule);
-  font-size: 0.8rem;
-  color: #777;
-}
-
-.barron-footer a {
-  color: #777;
-}
-
-.barron-footer a:hover {
-  color: var(--link-hover);
 }
 
 iframe {
   max-width: 100%;
 }
 
-@media (max-width: 600px) {
-  .barron-intro tr,
-  .barron-intro tbody,
-  .barron-intro td {
+/* Projects list */
+.barron-project-title {
+  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  border: 0;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  name {
+    font-size: 26px;
+  }
+
+  .barron-intro > tbody > tr,
+  .barron-intro > tbody > tr > td {
     display: block;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
-  .barron-intro td {
-    padding: 0 0 1rem;
+  .barron-intro .fei-intro-photo {
+    padding-top: 12px;
   }
 
-  .barron-intro img {
-    width: 140px;
-    max-width: 55vw;
-  }
-
-  .barron-pubs td:first-child {
-    width: auto;
+  .barron-intro .fei-intro-photo img {
+    width: 50%;
+    max-width: 220px;
   }
 
   .barron-pubs tr,
@@ -215,18 +284,18 @@ iframe {
   }
 
   .barron-pubs tr {
-    margin-bottom: 1rem;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 0.75rem;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
   }
 
   .barron-pubs td {
     display: block;
     width: 100% !important;
-    padding: 0.35rem 0;
+    padding: 10px 0 !important;
   }
 
   .barron-pubs img {
-    max-width: 160px;
+    max-width: 200px;
   }
 }

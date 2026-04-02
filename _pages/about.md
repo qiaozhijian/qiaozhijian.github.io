@@ -11,10 +11,10 @@ redirect_from:
 <table class="barron-intro">
   <tbody>
     <tr>
-      <td>
-        <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}">
-      </td>
-      <td>
+      <td class="fei-intro-text">
+        <p class="fei-intro-name">
+          <name>{{ site.author.name }}</name>
+        </p>
         <p>
           I am a Ph.D. candidate at the <a href="https://uav.hkust.edu.hk/">Aerial Robotics Group</a> at HKUST, advised by Prof. <a href="https://scholar.google.com.hk/citations?user=u8Q0_xsAAAAJ&amp;hl=zh-CN&amp;oi=ao">Shaojie Shen</a>.
           Before that, I received my Master's degree from the <a href="http://irmv.sjtu.edu.cn/">IRMV Lab</a> at Shanghai Jiao Tong University, supervised by Prof. <a href="http://irmv.sjtu.edu.cn/wanghesheng">Hesheng Wang</a>.
@@ -22,7 +22,7 @@ redirect_from:
         <p>
           My research interests lie in robotics and autonomous driving, with a focus on generative learning, robust estimation, global localization, and long-term mapping.
         </p>
-        <p>
+        <p class="fei-intro-links">
           <a href="mailto:{{ site.author.email }}">Email</a>
           &nbsp;/&nbsp;
           <a href="{{ site.author.googlescholar }}">Google Scholar</a>
@@ -30,6 +30,9 @@ redirect_from:
           <a href="https://github.com/{{ site.author.github }}">GitHub</a>
           {% if site.author.zhihu %}&nbsp;/&nbsp;<a href="{{ site.author.zhihu }}">Zhihu</a>{% endif %}
         </p>
+      </td>
+      <td class="fei-intro-photo">
+        <a href="{{ site.author.avatar | relative_url }}"><img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" loading="lazy"></a>
       </td>
     </tr>
   </tbody>
