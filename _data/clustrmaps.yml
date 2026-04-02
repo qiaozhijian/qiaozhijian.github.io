@@ -1,0 +1,4 @@
+# ClustrMaps embed (also mirrored in _config.yml as clustrmaps_*). This file is loaded as site.data.clustrmaps.
+script_src: "https://clustrmaps.com/map_v2.js?d=X-Xx9rwKGHnb21BhXhdxEe7J0HqnrpxdBM2F2HtuxNc&cl=ffffff&w=a"
+dashboard_url: "https://clustrmaps.com/site/1c9ly"
+noscript_img_src: "https://www.clustrmaps.com/map_v2.png?d=X-Xx9rwKGHnb21BhXhdxEe7J0HqnrpxdBM2F2HtuxNc&cl=ffffff"

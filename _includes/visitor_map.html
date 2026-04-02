@@ -1,12 +1,32 @@
 {% comment %}
-  Visitor location map widget (not Google Maps). ClustrMaps: https://clustrmaps.com
-  After signup, copy the full value of the embed script's src="" into site.clustrmaps_script_src in _config.yml.
+  ClustrMaps: prefer _data/clustrmaps.yml (site.data.clustrmaps), then _config.yml (site.clustrmaps_*).
+  After changing config or data, restart `jekyll serve`. View source and search for "clustrmaps" to verify the script tag.
 {% endcomment %}
-{% assign _cms = site.clustrmaps_script_src | default: "" | strip %}
+{% assign _cm = site.data.clustrmaps %}
+{% assign _cms = "" %}
+{% if _cm and _cm.script_src %}
+  {% assign _cms = _cm.script_src | strip %}
+{% endif %}
+{% if _cms == "" %}
+  {% assign _cms = site.clustrmaps_script_src | default: "" | strip %}
+{% endif %}
+
 {% if _cms != "" %}
   <script type="text/javascript" id="clustrmaps" src="{{ _cms }}"></script>
-  {% assign _dash = site.clustrmaps_dashboard_url | default: "" | strip %}
-  {% assign _img = site.clustrmaps_noscript_img_src | default: "" | strip %}
+  {% assign _dash = "" %}
+  {% assign _img = "" %}
+  {% if _cm and _cm.dashboard_url %}
+    {% assign _dash = _cm.dashboard_url | strip %}
+  {% endif %}
+  {% if _dash == "" %}
+    {% assign _dash = site.clustrmaps_dashboard_url | default: "" | strip %}
+  {% endif %}
+  {% if _cm and _cm.noscript_img_src %}
+    {% assign _img = _cm.noscript_img_src | strip %}
+  {% endif %}
+  {% if _img == "" %}
+    {% assign _img = site.clustrmaps_noscript_img_src | default: "" | strip %}
+  {% endif %}
   {% if _dash != "" and _img != "" %}
   <noscript>
     <a href="{{ _dash }}" title="ClustrMaps"><img src="{{ _img }}" alt="ClustrMaps visitor map" loading="lazy" style="max-width:100%;height:auto;"></a>
@@ -17,6 +37,6 @@
     访客地图一般用
     <a href="https://clustrmaps.com">ClustrMaps</a>
     这类服务（在世界地图上标大致访问来源），不是 Google 地图。
-    注册并添加本站地址后，把嵌入代码里 <code>script</code> 标签的 <code>src="..."</code> 整段填入 <code>_config.yml</code> 的 <code>clustrmaps_script_src</code> 即可显示。
+    请在 <code>_data/clustrmaps.yml</code> 中填写 <code>script_src</code>，或在 <code>_config.yml</code> 中填写 <code>clustrmaps_script_src</code>；修改后务必<strong>重启</strong> <code>jekyll serve</code>。
   </p>
 {% endif %}
