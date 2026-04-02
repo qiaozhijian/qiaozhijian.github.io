@@ -1,0 +1,232 @@
+/* Barron-style minimal academic homepage */
+:root {
+  --text: #333;
+  --link: #1772d0;
+  --link-hover: #f09228;
+  --rule: #e8e8e8;
+  --maxw: 880px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0 1.25rem 2.5rem;
+  color: var(--text);
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+.barron-wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding-top: 1.25rem;
+}
+
+.barron-nav {
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.barron-nav a {
+  color: var(--link);
+  text-decoration: none;
+  margin-right: 1.25rem;
+}
+
+.barron-nav a:hover {
+  color: var(--link-hover);
+}
+
+.barron-nav strong {
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+
+.barron-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.barron-sub {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+.barron-intro {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 0 1.75rem;
+}
+
+.barron-intro td {
+  vertical-align: top;
+  padding: 0 1.5rem 0 0;
+}
+
+.barron-intro td:last-child {
+  padding-right: 0;
+}
+
+.barron-intro img {
+  width: 180px;
+  max-width: 36vw;
+  height: auto;
+  border: 0;
+  display: block;
+}
+
+.barron-intro p {
+  margin: 0 0 0.75rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 1.75rem 0 0.65rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid var(--rule);
+}
+
+h2:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 0.5rem;
+}
+
+ul {
+  margin: 0.35rem 0 0.75rem;
+  padding-left: 1.35rem;
+}
+
+li {
+  margin: 0.2rem 0;
+}
+
+papertitle {
+  display: block;
+  font-weight: 700;
+  font-size: 1.02rem;
+  margin-bottom: 0.15rem;
+}
+
+/* Publication tables (legacy inline styles preserved; this tightens layout) */
+.barron-pubs table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0 0 0.5rem;
+}
+
+.barron-pubs td {
+  padding: 0.85rem 0.85rem 0.85rem 0;
+  vertical-align: middle;
+  border: 0;
+}
+
+.barron-pubs td:first-child {
+  width: 26%;
+  min-width: 120px;
+}
+
+.barron-pubs img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border: 0;
+  display: block;
+}
+
+.barron-page-header {
+  margin-bottom: 1rem;
+}
+
+.barron-page-header h1 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.barron-footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.barron-footer a {
+  color: #777;
+}
+
+.barron-footer a:hover {
+  color: var(--link-hover);
+}
+
+iframe {
+  max-width: 100%;
+}
+
+@media (max-width: 600px) {
+  .barron-intro tr,
+  .barron-intro tbody,
+  .barron-intro td {
+    display: block;
+  }
+
+  .barron-intro td {
+    padding: 0 0 1rem;
+  }
+
+  .barron-intro img {
+    width: 140px;
+    max-width: 55vw;
+  }
+
+  .barron-pubs td:first-child {
+    width: auto;
+  }
+
+  .barron-pubs tr,
+  .barron-pubs tbody {
+    display: block;
+  }
+
+  .barron-pubs tr {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.75rem;
+  }
+
+  .barron-pubs td {
+    display: block;
+    width: 100% !important;
+    padding: 0.35rem 0;
+  }
+
+  .barron-pubs img {
+    max-width: 160px;
+  }
+}

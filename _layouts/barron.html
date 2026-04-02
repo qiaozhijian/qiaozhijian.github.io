@@ -1,0 +1,50 @@
+{% include base_path %}
+<!doctype html>
+<html lang="{{ site.locale | default: 'en-US' | slice: 0, 2 }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    {% if page.title and page.title != "" %}{{ page.title }} | {% endif %}{{ site.author.name | default: site.title }}
+  </title>
+  <meta name="description" content="{{ site.author.bio | default: site.description | strip_html }}">
+  <link rel="stylesheet" href="{{ '/static/css/barron.css' | relative_url }}">
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?1d76ff13275c7ac13b87b2a1debdd6d5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+<body>
+  <div class="barron-wrap">
+    <nav class="barron-nav" aria-label="Primary">
+      <a href="{{ '/' | relative_url }}" style="color:inherit;font-weight:600;text-decoration:none;">{{ site.author.name | default: site.name }}</a>
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/publications/' | relative_url }}">Publications</a>
+      <a href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a href="{{ '/highlight/' | relative_url }}">Highlight</a>
+    </nav>
+
+    {% if page.url != "/" %}
+      <header class="barron-page-header">
+        <h1>{{ page.title }}</h1>
+      </header>
+    {% endif %}
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="barron-footer">
+      <span>© {{ 'now' | date: '%Y' }} {{ site.author.name | default: site.name }}</span>
+      {% if site.repository %}
+        · <a href="https://github.com/{{ site.repository }}">Source</a>
+      {% endif %}
+    </footer>
+  </div>
+</body>
+</html>
