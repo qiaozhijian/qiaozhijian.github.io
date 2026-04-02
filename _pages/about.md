@@ -15,6 +15,7 @@ redirect_from:
       <td class="fei-intro-text">
         <p class="fei-intro-name">
           <name>{{ site.author.name }}</name>
+          {% if site.author.name_ipa %}<span class="fei-intro-ipa" title="Pronunciation (IPA)">{{ site.author.name_ipa }}</span>{% endif %}
         </p>
         <p>
           I am a Ph.D. candidate at the <a href="https://uav.hkust.edu.hk/">Aerial Robotics Group</a> at HKUST, advised by Prof. <a href="https://scholar.google.com.hk/citations?user=u8Q0_xsAAAAJ&amp;hl=zh-CN&amp;oi=ao">Shaojie Shen</a>.
@@ -26,10 +27,10 @@ redirect_from:
         <p class="fei-intro-links">
           <a href="mailto:{{ site.author.email }}">Email</a>
           <span class="barron-link-sep">|</span>
-          <a href="{{ site.author.googlescholar }}">Google Scholar</a>
+          <a href="{{ site.author.googlescholar }}"><i class="fa-brands fa-google-scholar fei-intro-link-icon" aria-hidden="true"></i>Google Scholar</a>
           <span class="barron-link-sep">|</span>
-          <a href="https://github.com/{{ site.author.github }}">GitHub</a>
-          {% if site.author.zhihu %}<span class="barron-link-sep">|</span><a href="{{ site.author.zhihu }}">Zhihu</a>{% endif %}
+          <a href="https://github.com/{{ site.author.github }}"><i class="fa-brands fa-github fei-intro-link-icon" aria-hidden="true"></i>GitHub</a>
+          {% if site.author.zhihu %}<span class="barron-link-sep">|</span><a href="{{ site.author.zhihu }}"><i class="fa-brands fa-zhihu fei-intro-link-icon" aria-hidden="true"></i>知乎</a>{% endif %}
         </p>
       </td>
       <td class="fei-intro-photo">

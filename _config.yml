@@ -95,6 +95,8 @@ analytics:
 # Site Author
 author:
   name: "Zhijian Qiao (乔志健)"
+  # IPA for English page (given name + surname). Adjust if you prefer narrower Mandarin transcription.
+  name_ipa: "/ˈdʒiːdʒɛn ˈtʃaʊ/"
   avatar: "/media/images/opt1.jpg"
   bio: "Ph.D. student in HKUST Aerial Robotics Group"
   location: "Clear Water Bay, Hong Kong, China"

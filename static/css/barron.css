@@ -206,6 +206,16 @@ span.highlight {
   margin: 0 0 0.6rem;
 }
 
+.barron-intro .fei-intro-ipa {
+  display: block;
+  margin: 0.25rem 0 0;
+  font-family: "Lato", "Noto Sans", "DejaVu Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: #666;
+}
+
 .barron-intro .fei-intro-text > p {
   margin: 0 0 1rem;
 }
@@ -214,6 +224,13 @@ span.highlight {
   text-align: left;
   margin-bottom: 0;
   font-size: 14px;
+}
+
+.barron-intro .fei-intro-links .fei-intro-link-icon {
+  margin-right: 0.35em;
+  width: 1.15em;
+  text-align: center;
+  display: inline-block;
 }
 
 .barron-link-sep {
