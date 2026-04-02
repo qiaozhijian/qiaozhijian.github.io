@@ -2,8 +2,6 @@
 
 Jekyll site for Zhijian Qiao's academic homepage.
 
-📖 More detail: [docs/README.md](./docs/README.md)
-
 ## Local setup
 
 From the repo root, as a normal user (do **not** use `sudo` for these):
@@ -17,12 +15,10 @@ Optional: `JEKYLL_SKIP_SYSTEM_RUBY_INSTALL=1 ./scripts/install.sh` if Ruby alrea
 
 ## Project layout
 
-- `_pages/` — main pages (about, publications, CV, …)
-- `_portfolio/` — portfolio entries
-- `_posts/` — blog posts (if any)
-- `_layouts/`, `_includes/`, `_sass/` — theme templates and styles
-- `media/` — images and media
-- `static/` — CSS, JS, fonts
+- `_pages/` — main pages (home, publications, projects, highlight, 404)
+- `_portfolio/` — project entries (rendered on `/projects/` only)
+- `_layouts/` — `barron` layout; `_includes/` — publications list + visitor map
+- `media/` — images
+- `static/css/` — `barron.css`
 - `tools/` — `Gemfile` / Bundler
 - `scripts/` — `install.sh`, `preview.sh`, `run-jekyll.sh`
-- `docs/` — extra documentation

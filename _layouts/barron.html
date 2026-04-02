@@ -1,16 +1,16 @@
-{% include base_path %}
 <!doctype html>
 <html lang="{{ site.locale | default: 'en-US' | slice: 0, 2 }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="{{ '/media/images/favicon-16x16.png' | relative_url }}">
   <title>
     {% if page.title and page.title != "" %}{{ page.title }} | {% endif %}{{ site.author.name | default: site.title }}
   </title>
   <meta name="description" content="{{ site.author.bio | default: site.description | strip_html }}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/static/css/barron.css' | relative_url }}">
   <script>
     var _hmt = _hmt || [];

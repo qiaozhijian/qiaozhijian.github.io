@@ -1,2 +1,0 @@
-{% comment %}Root-relative paths: same host for localhost and GitHub Pages (full site.url breaks local CSS).{% endcomment %}
-{% assign base_path = site.baseurl | default: "" %}

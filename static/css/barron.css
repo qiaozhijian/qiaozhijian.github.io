@@ -1,7 +1,8 @@
 /*
  * Typography & colors aligned with Fei Xue / Jon Barron-style academic pages
  * Reference: https://github.com/feixue94/feixue94.github.io — stylesheet.css + index.html
- * Lato is loaded in _layouts/barron.html (preconnect + stylesheet).
+ * Lato + Noto Serif SC are loaded in _layouts/barron.html.
+ * Latin uses Lato; CJK (e.g. name) falls through to Noto Serif SC.
  */
 
 html {
@@ -83,10 +84,11 @@ papertitle {
 }
 
 name {
-  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-family: "Lato", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
   font-size: 32px;
   font-weight: 400;
   line-height: 1.2;
+  letter-spacing: 0.02em;
 }
 
 span.highlight {
@@ -118,8 +120,10 @@ span.highlight {
 
 .barron-nav .barron-nav-name {
   color: inherit;
+  font-family: "Lato", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
   font-weight: 700;
   margin-right: 18px;
+  letter-spacing: 0.02em;
 }
 
 .barron-page-header {
@@ -134,7 +138,7 @@ span.highlight {
   margin-top: 2.25rem;
   padding-top: 14px;
   border-top: 1px solid #ddd;
-  font-family: "Lato", Verdana, Helvetica, sans-serif;
+  font-family: "Lato", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
   font-size: 12px;
   color: #555;
 }
@@ -206,9 +210,19 @@ span.highlight {
 
 .barron-visitor-map {
   margin-top: 0.25rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  /* 比默认 widget 略窄，不用 scale（易把 iframe 压成一条线） */
+  width: 100%;
+  max-width: 252px;
+}
+
+.barron-visitor-map iframe {
+  display: block;
+  width: 100% !important;
   max-width: 100%;
-  overflow-x: auto;
+  /* 约 3:2，与常见 ClustrMaps 比例接近 */
+  height: 168px !important;
+  border: 0;
 }
 
 .barron-visitor-map-hint {
