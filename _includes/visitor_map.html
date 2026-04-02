@@ -1,0 +1,15 @@
+{% comment %}
+  Visitor location map widget (not Google Maps). ClustrMaps: https://clustrmaps.com
+  After signup, copy the full value of the embed script's src="" into site.clustrmaps_script_src in _config.yml.
+{% endcomment %}
+{% assign _cms = site.clustrmaps_script_src | default: "" | strip %}
+{% if _cms != "" %}
+  <script type="text/javascript" id="clustrmaps" src="{{ _cms }}"></script>
+{% else %}
+  <p class="barron-visitor-map-hint">
+    访客地图一般用
+    <a href="https://clustrmaps.com">ClustrMaps</a>
+    这类服务（在世界地图上标大致访问来源），不是 Google 地图。
+    注册并添加本站地址后，把嵌入代码里 <code>script</code> 标签的 <code>src="..."</code> 整段填入 <code>_config.yml</code> 的 <code>clustrmaps_script_src</code> 即可显示。
+  </p>
+{% endif %}

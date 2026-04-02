@@ -69,3 +69,9 @@ redirect_from:
 - Teaching assistant:
   - ELEC 1100: Introduction to Electro-Robot Design, HKUST, 2023 Spring
   - ELEC 3210: Machine Learning and Information Processing for Robotics, HKUST, 2023 Fall
+
+## Visitors
+
+<div class="barron-visitor-map" markdown="0">
+{% include visitor_map.html %}
+</div>

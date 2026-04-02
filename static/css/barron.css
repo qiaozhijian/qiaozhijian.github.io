@@ -204,6 +204,28 @@ span.highlight {
   user-select: none;
 }
 
+.barron-visitor-map {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.barron-visitor-map-hint {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #666;
+  margin: 0;
+  max-width: 42em;
+}
+
+.barron-visitor-map-hint code {
+  font-size: 11px;
+  background: #eee;
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
 /*
  * Profile photo: Jiawei Ren–style circular headshot, fills right column
  * Ref: https://jiawei-ren.github.io/ — img width 100% + myphoto-circle.png
