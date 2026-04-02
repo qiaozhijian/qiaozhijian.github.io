@@ -18,6 +18,8 @@ description: &description "Ph.D. student in HKUST Aerial Robotics Group"
 url: https://qiaozhijian.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl: "" # the subpath of your site, e.g. "/blog"
 repository: "qiaozhijian/qiaozhijian.github.io"
+# Shown in Barron layout footer; update when you refresh the site content.
+last_updated: "April 2026"
 teaser:  # optional teaser image filename under /media/images/
 breadcrumbs: false # true, false (default)
 words_per_minute: 160

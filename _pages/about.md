@@ -24,11 +24,11 @@ redirect_from:
         </p>
         <p class="fei-intro-links">
           <a href="mailto:{{ site.author.email }}">Email</a>
-          &nbsp;/&nbsp;
+          <span class="barron-link-sep">|</span>
           <a href="{{ site.author.googlescholar }}">Google Scholar</a>
-          &nbsp;/&nbsp;
+          <span class="barron-link-sep">|</span>
           <a href="https://github.com/{{ site.author.github }}">GitHub</a>
-          {% if site.author.zhihu %}&nbsp;/&nbsp;<a href="{{ site.author.zhihu }}">Zhihu</a>{% endif %}
+          {% if site.author.zhihu %}<span class="barron-link-sep">|</span><a href="{{ site.author.zhihu }}">Zhihu</a>{% endif %}
         </p>
       </td>
       <td class="fei-intro-photo">

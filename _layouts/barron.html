@@ -43,9 +43,14 @@
     </main>
 
     <footer class="barron-footer">
-      <span>© {{ 'now' | date: '%Y' }} {{ site.author.name | default: site.name }}</span>
-      {% if site.repository %}
-        · <a href="https://github.com/{{ site.repository }}">Source</a>
+      <div class="barron-footer-line">
+        <span>© {{ 'now' | date: '%Y' }} {{ site.author.name | default: site.name }}</span>
+        {% if site.repository %}
+          · <a href="https://github.com/{{ site.repository }}">Source</a>
+        {% endif %}
+      </div>
+      {% if site.last_updated %}
+        <div class="barron-footer-updated">Last updated: {{ site.last_updated }}</div>
       {% endif %}
     </footer>
   </div>
