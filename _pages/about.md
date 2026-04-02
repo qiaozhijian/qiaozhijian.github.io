@@ -38,6 +38,12 @@ redirect_from:
   </tbody>
 </table>
 
+## Publications
+
+<div class="barron-pubs" markdown="0">
+{% include barron_publications.html %}
+</div>
+
 ## Education
 
 - Ph.D., Hong Kong University of Science and Technology, 2022 – Present  
@@ -63,9 +69,3 @@ redirect_from:
 - Teaching assistant:
   - ELEC 1100: Introduction to Electro-Robot Design, HKUST, 2023 Spring
   - ELEC 3210: Machine Learning and Information Processing for Robotics, HKUST, 2023 Fall
-
-## Publications
-
-<div class="barron-pubs" markdown="0">
-{% include barron_publications.html %}
-</div>
