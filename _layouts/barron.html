@@ -40,6 +40,12 @@
 
     <main>
       {{ content }}
+      {% if page.show_visitor_map %}
+        <h2>Visitors</h2>
+        <div class="barron-visitor-map">
+          {% include visitor_map.html %}
+        </div>
+      {% endif %}
     </main>
 
     <footer class="barron-footer">
