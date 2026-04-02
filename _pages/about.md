@@ -20,7 +20,7 @@ redirect_from:
           Before that, I received my Master's degree from the <a href="http://irmv.sjtu.edu.cn/">IRMV Lab</a> at Shanghai Jiao Tong University, supervised by Prof. <a href="http://irmv.sjtu.edu.cn/wanghesheng">Hesheng Wang</a>.
         </p>
         <p>
-          My research interests lie in robotics and autonomous driving, with a focus on generative learning, robust estimation, global localization, and long-term mapping.
+          My research interests lie in robotics and autonomous driving, with a focus on generative learning, robust estimation, global localization, long-term mapping, and world models for autonomous driving.
         </p>
         <p class="fei-intro-links">
           <a href="mailto:{{ site.author.email }}">Email</a>
