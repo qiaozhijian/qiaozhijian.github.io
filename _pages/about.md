@@ -32,7 +32,7 @@ redirect_from:
         </p>
       </td>
       <td class="fei-intro-photo">
-        <a href="{{ site.author.avatar | relative_url }}"><img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" loading="lazy"></a>
+        <a href="{{ site.author.avatar | relative_url }}"><img class="hoverZoomLink" src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" loading="lazy"></a>
       </td>
     </tr>
   </tbody>
