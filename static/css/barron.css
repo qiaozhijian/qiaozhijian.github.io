@@ -211,8 +211,8 @@ span.highlight {
  */
 .barron-intro .fei-intro-photo a {
   display: block;
-  width: 100%;
-  max-width: 100%;
+  width: 75%;
+  max-width: 200px;
   margin: 0 auto;
   line-height: 0;
   border: 0;
@@ -313,7 +313,8 @@ iframe {
   }
 
   .barron-intro .fei-intro-photo a {
-    max-width: min(240px, 72vw);
+    width: 65%;
+    max-width: min(200px, 58vw);
   }
 
   .barron-pubs tr,
