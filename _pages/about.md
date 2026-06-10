@@ -67,7 +67,7 @@ redirect_from:
 ## Community services
 
 - Conference reviewer: ICRA, IROS, CVPR, ICCV, ECCV
-- Journal reviewer: T-RO, T-ASE, RAL
+- Journal reviewer: IJRR, T-RO, T-ASE, RAL
 - Teaching assistant:
   - ELEC 1100: Introduction to Electro-Robot Design, HKUST, 2023 Spring
   - ELEC 3210: Machine Learning and Information Processing for Robotics, HKUST, 2023 Fall
