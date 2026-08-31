@@ -7,12 +7,37 @@
   <title>
     {% if page.title and page.title != "" %}{{ page.title }} | {% endif %}{{ site.author.name | default: site.title }}
   </title>
-  <meta name="description" content="{{ site.author.bio | default: site.description | strip_html }}">
+  <meta name="description" content="{{ page.description | default: site.author.bio | default: site.description | strip_html | escape }}">
+  <meta property="og:title" content="{{ page.title | default: site.title | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | strip_html | escape }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {% if page.og_image %}
+    <meta property="og:image" content="{{ page.og_image | absolute_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="{{ page.og_image | absolute_url }}">
+  {% endif %}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="{{ '/static/css/barron.css' | relative_url }}">
+  {% if page.stylesheet %}
+    <link rel="stylesheet" href="{{ page.stylesheet | relative_url }}">
+  {% endif %}
+  {% if page.mathjax %}
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+          processEscapes: true
+        },
+        chtml: { scale: 0.96 }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js"></script>
+  {% endif %}
   <script>
     var _hmt = _hmt || [];
     (function() {
@@ -23,17 +48,19 @@
     })();
   </script>
 </head>
-<body>
-  <div class="barron-wrap">
-    <nav class="barron-nav" aria-label="Primary">
-      <a class="barron-nav-name" href="{{ '/' | relative_url }}">{{ site.author.name | default: site.name }}</a>
-      <a href="{{ '/' | relative_url }}">Home</a>
-      <a href="{{ '/publications/' | relative_url }}">Publications</a>
-      <a href="{{ '/projects/' | relative_url }}">Projects</a>
-      <a href="{{ '/highlight/' | relative_url }}">Highlight</a>
-    </nav>
+<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+  <div class="barron-wrap{% if page.wrap_class %} {{ page.wrap_class }}{% endif %}">
+    {% unless page.hide_nav %}
+      <nav class="barron-nav" aria-label="Primary">
+        <a class="barron-nav-name" href="{{ '/' | relative_url }}">{{ site.author.name | default: site.name }}</a>
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/publications/' | relative_url }}">Publications</a>
+        <a href="{{ '/projects/' | relative_url }}">Projects</a>
+        <a href="{{ '/highlight/' | relative_url }}">Highlight</a>
+      </nav>
+    {% endunless %}
 
-    {% if page.url != "/" %}
+    {% if page.url != "/" and page.hide_page_header != true %}
       <header class="barron-page-header">
         <h1>{{ page.title }}</h1>
       </header>
@@ -49,17 +76,22 @@
       {% endif %}
     </main>
 
-    <footer class="barron-footer">
-      <div class="barron-footer-line">
-        <span>© {{ 'now' | date: '%Y' }} {{ site.author.name | default: site.name }}</span>
-        {% if site.repository %}
-          · <a href="https://github.com/{{ site.repository }}">Source</a>
+    {% unless page.hide_footer %}
+      <footer class="barron-footer">
+        <div class="barron-footer-line">
+          <span>© {{ 'now' | date: '%Y' }} {{ site.author.name | default: site.name }}</span>
+          {% if site.repository %}
+            · <a href="https://github.com/{{ site.repository }}">Source</a>
+          {% endif %}
+        </div>
+        {% if site.last_updated %}
+          <div class="barron-footer-updated">Last updated: {{ site.last_updated }}</div>
         {% endif %}
-      </div>
-      {% if site.last_updated %}
-        <div class="barron-footer-updated">Last updated: {{ site.last_updated }}</div>
-      {% endif %}
-    </footer>
+      </footer>
+    {% endunless %}
   </div>
+  {% if page.script %}
+    <script src="{{ page.script | relative_url }}" defer></script>
+  {% endif %}
 </body>
 </html>
