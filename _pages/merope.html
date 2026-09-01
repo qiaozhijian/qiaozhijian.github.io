@@ -252,9 +252,7 @@ panshot_more:
     <figure class="center-figure narrow-figure">
       <img src="{{ '/media/merope/figures/disparity-anchors.webp' | relative_url }}" alt="Disparity anchors sampled on the spherical epipolar arc between a transformed key ray and the epipole" loading="lazy">
       <figcaption>
-        The figure uses \(i\) for the query and \(j\) for the key. Their ray origins are \(\mathbf{o}_i\) and \(\mathbf{o}_j\), and \(\Delta\mathbf{o}_{j\mid i}\) is the metric baseline in the query camera. The vectors \(\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z\) are the query-camera basis axes.
-        MinRot constructs the ray-local frames \(A_{i,q}\) and \(A_{j,k}\) by rotating each camera's canonical \(\mathbf{e}_z\) axis onto the query or key ray. The transformed key ray at infinite depth is \(\mathbf{u}_\infty\), and \(\mathbf{e}\) points toward the epipole. Their local frames are \(A_{i,\mathbf{u}_\infty}\) and \(A_{i,\mathbf{e}}\).
-        The purple arc contains the possible correspondence directions as depth varies. The purple dots are sampled anchors. Exact alignment with an anchor gives the identity rotation, while the responses across anchors locate intermediate directions.
+        MeRoPE's disparity component in the query-camera frame. Blue marks the query and key ray frames, green the metric baseline, and purple the depth-dependent epipolar arc. The purple dots are sampled anchors whose rotations form \(\mathcal{U}^{\mathrm{disp}}\).
       </figcaption>
     </figure>
     <p>The rotations induced by all sampled anchors form the disparity component \(\mathcal{U}^{\mathrm{disp}}\).</p>
