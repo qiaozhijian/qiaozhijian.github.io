@@ -109,8 +109,9 @@ panshot_more:
     <p class="figure-caption">The <code>x/y/z</code> axes define 3D space, <code>t</code> indexes time, and <code>H</code> is the prediction horizon. Each token carries its time together with the origin and direction of its camera ray.</p>
 
     <p>
-      The model needs only calibrated camera rays and learns from data how tokens relate across cameras and time.
+      The model receives only each token's time and calibrated camera ray. From these geometric tags, it learns how observed tokens relate to the tokens it predicts across cameras and time.
       It does not need a separate 3D reconstruction model such as VGGT <a class="citation" href="https://arxiv.org/abs/2503.11651">[1]</a> or Depth Anything 3 <a class="citation" href="https://arxiv.org/abs/2511.10647">[2]</a> to produce point clouds or depth maps before generation.
+      This keeps the hand-designed interface small: we provide the ray geometry, while correspondence and scene evolution are learned from data.
     </p>
   </section>
 
