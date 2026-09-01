@@ -90,6 +90,28 @@
   cursor: default;
 }
 
+.merope-toc {
+  display: flex;
+  max-width: 760px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px 20px;
+  margin: 27px auto 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.merope-toc a {
+  border-bottom: 1px solid #d5d5d5;
+  color: #5b5b5b;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.merope-toc a:hover {
+  border-bottom-color: #276cda;
+}
+
 .merope-section {
   padding: 0 0 48px;
 }
@@ -590,6 +612,22 @@ figcaption {
 .paper-references li,
 .paper-references a {
   font-size: 14px;
+}
+
+@media (min-width: 1320px) {
+  .merope-toc {
+    position: fixed;
+    z-index: 10;
+    top: 110px;
+    left: max(20px, calc(50% - 640px));
+    width: 160px;
+    max-width: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 0;
+    text-align: left;
+  }
 }
 
 @media (min-width: 769px) {
