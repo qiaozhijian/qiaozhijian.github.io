@@ -43,9 +43,9 @@ panshot_more:
     </p>
     <p class="merope-affiliations"><sup>1</sup>HKUST &nbsp;&nbsp; <sup>2</sup>Zhuoyu Technology</p>
     <div class="merope-actions">
-      <span class="merope-button is-disabled" aria-disabled="true">
-        <i class="fas fa-file-pdf" aria-hidden="true"></i><span>arXiv pending moderation</span>
-      </span>
+      <a class="merope-button" href="https://hkustconnect-my.sharepoint.com/:b:/g/personal/zqiaoac_connect_ust_hk/IQDnVjRi5laVQais63xdi-89AYa-0Wkxvy-MnyyybsS7Zq0?e=Ew4Eni">
+        <i class="fas fa-file-pdf" aria-hidden="true"></i><span>Paper</span>
+      </a>
       <span class="merope-button is-disabled" aria-disabled="true">
         <i class="fab fa-github" aria-hidden="true"></i><span>Code coming soon</span>
       </span>
@@ -55,8 +55,8 @@ panshot_more:
   <section class="merope-section" id="rays">
     <h2>Every video token has a ray</h2>
     <p class="merope-summary">
-      A language model uses positional encoding to tell words where they sit in a sequence.
-      <b>MeRoPE gives video tokens their geometric positions instead: where each camera ray starts and where it points.</b>
+      Language models use positional encoding to tell words where they occur in a sequence.
+      <b>MeRoPE gives each video token a geometric position: when it occurs, where its camera ray starts, and where the ray points.</b>
     </p>
 
     <div class="spacetime-diagram" role="img" aria-label="Cameras placed along a four-dimensional space-time coordinate system. Each camera has a ray origin and emits a viewing ray. A central boundary separates observed past frames from predicted future frames.">
@@ -106,22 +106,22 @@ panshot_more:
         <div class="camera-vector" aria-hidden="true"><span class="camera-body"></span><span class="camera-origin"></span><span class="viewing-ray"></span></div>
       </div>
     </div>
-    <p class="figure-caption">The small <code>x/y/z</code> axes describe 3D space, <code>t</code> indexes time, and <code>H</code> is the prediction horizon. Together they form a 4D space-time coordinate. Every token is tagged by its time and by the origin and direction of its camera ray.</p>
+    <p class="figure-caption">The <code>x/y/z</code> axes define 3D space, <code>t</code> indexes time, and <code>H</code> is the prediction horizon. Each token carries its time together with the origin and direction of its camera ray.</p>
 
     <p>
-      Given only calibrated camera rays, attention can learn from data how to relate tokens across cameras and time.
-      No external 3D reconstruction model—such as VGGT <a class="citation" href="https://arxiv.org/abs/2503.11651">[1]</a> or Depth Anything 3 <a class="citation" href="https://arxiv.org/abs/2511.10647">[2]</a>—is needed to first produce point clouds or depth maps as guidance for generation.
+      The model needs only calibrated camera rays and learns from data how tokens relate across cameras and time.
+      It does not need a separate 3D reconstruction model such as VGGT <a class="citation" href="https://arxiv.org/abs/2503.11651">[1]</a> or Depth Anything 3 <a class="citation" href="https://arxiv.org/abs/2511.10647">[2]</a> to produce point clouds or depth maps before generation.
     </p>
   </section>
 
   <section class="merope-section" id="geometry-attention">
     <h2>How geometry enters attention</h2>
     <p>
-      UCPE <a class="citation" href="https://arxiv.org/abs/2512.07237">[3]</a> turns every calibrated camera ray into a <em>ray-local frame</em>: its origin is where the ray starts, and one axis follows the ray direction.
-      MeRoPE keeps this useful abstraction but refines how the frame orientation is chosen using a minimum rotation (MinRot). The exact construction and singularity analysis are given in the paper.
+      UCPE <a class="citation" href="https://arxiv.org/abs/2512.07237">[3]</a> assigns a <em>ray-local frame</em> to every calibrated camera ray. The frame begins at the ray origin, and one axis follows the ray direction.
+      MeRoPE uses the same ray-local representation and chooses the remaining frame orientation with a minimum rotation (MinRot). The paper gives the full construction and singularity analysis.
     </p>
     <p>
-      Once every token has a local frame, the relative geometry between a query token \(a\) and a key token \(b\) can be inserted directly into their attention comparison:
+      For a query token \(a\) and a key token \(b\), an operator \(\mathcal{U}_{ab}\) inserts their relative geometry into the attention score:
     </p>
     <div class="math-display" role="math" aria-label="standard query-key dot product compared with a geometry-aware dot product">
       \[
@@ -131,11 +131,11 @@ panshot_more:
       \]
     </div>
     <p>
-      Here \(\mathbf{q}_a\) and \(\mathbf{k}_b\) are the query and key feature vectors, \(d\) is their dimension, and \(\mathcal{U}_{ab}\) describes the geometric relation between the two tokens.
-      Standard attention uses the left dot product; geometric PE adds only the relative operator shown on the right.
+      Here \(\mathbf{q}_a\) and \(\mathbf{k}_b\) are the query and key feature vectors, \(d\) is their dimension, and \(\mathcal{U}_{ab}\) encodes the geometric relation between the tokens.
+      The geometric version differs from standard attention only by this operator.
     </p>
     <p>
-      Homogeneous geometric PEs such as GTA <a class="citation" href="https://arxiv.org/abs/2310.10375">[4]</a>, PRoPE <a class="citation" href="https://arxiv.org/abs/2507.10496">[5]</a>, and UCPE <a class="citation" href="https://arxiv.org/abs/2512.07237">[3]</a> place the relative transform between two frames directly inside this operator:
+      GTA <a class="citation" href="https://arxiv.org/abs/2310.10375">[4]</a>, PRoPE <a class="citation" href="https://arxiv.org/abs/2507.10496">[5]</a>, and UCPE <a class="citation" href="https://arxiv.org/abs/2512.07237">[3]</a> use the homogeneous relative transform between the two frames as this operator:
     </p>
     <div class="math-display" role="math" aria-label="homogeneous relative ray-frame transform inserted into geometric positional encoding">
       \[
@@ -148,8 +148,8 @@ panshot_more:
       \]
     </div>
     <p>
-      The matrix \(R_{ab}\) and vector \(\mathbf{t}_{ab}\) are the rotation and translation from the key ray-local frame to the query ray-local frame, and \(\mathbf{0}\) is a three-dimensional zero vector.
-      Splitting the corresponding query and key channels into 3D vectors \(\mathbf{u}^{q},\mathbf{u}^{k}\) and scalars \(h_q,h_k\) exposes what reaches the attention score:
+      The matrix \(R_{ab}\) and vector \(\mathbf{t}_{ab}\) rotate and translate from the key ray-local frame to the query ray-local frame. The vector \(\mathbf{0}\) is zero in three dimensions.
+      Write the corresponding query and key channels as 3D vectors \(\mathbf{u}^{q},\mathbf{u}^{k}\) and scalars \(h_q,h_k\). Their contribution to attention is
     </p>
     <div class="math-display" role="math" aria-label="rotation and translation terms produced by homogeneous geometric positional encoding">
       \[
@@ -162,13 +162,13 @@ panshot_more:
       +h_qh_k.
       \]
     </div>
-    <p>The middle term shows the central issue: metric translation changes the attention score directly.</p>
+    <p>The middle term depends directly on metric translation.</p>
   </section>
 
   <section class="merope-section" id="metric-world">
     <h2>Why metric translation can dominate</h2>
     <p>
-      Ray origins are measured in meters. If the same motion is scaled by a factor \(\lambda>0\), then \(\mathbf{t}_{ab}\) becomes \(\lambda\mathbf{t}_{ab}\), and the translation term above becomes
+      Ray origins are measured in meters. Scaling the same motion by \(\lambda>0\) changes \(\mathbf{t}_{ab}\) to \(\lambda\mathbf{t}_{ab}\), so the translation term becomes
     </p>
     <div class="math-display" role="math" aria-label="linear scaling of the translation contribution to attention">
       \[
@@ -178,28 +178,28 @@ panshot_more:
       \]
     </div>
     <p>
-      Its magnitude can therefore grow with camera baseline even when visual similarity does not.
-      After the softmax, this unbounded geometric term can pull attention toward a distant frame simply because it is far away.
+      The term can grow with camera baseline even when visual similarity stays the same.
+      After softmax, attention may favor a distant frame because of its distance rather than its visual content.
     </p>
 
     <figure class="center-figure motivation-figure">
       <img src="{{ '/media/merope/figures/motivation-attention.webp' | relative_url }}" alt="UCPE assigns excessive attention to the most distant early frame, while MeRoPE preserves a local temporal profile" loading="lazy">
       <figcaption>
         Temporal attention from the center token of the final frame. Frame 0 is the farthest key frame and frame 12 is the query frame.
-        In trained UCPE <a class="citation" href="https://arxiv.org/abs/2512.07237">[3]</a>, the baseline-dependent term creates a distant-frame attention surge; MeRoPE removes it.
+        Trained UCPE <a class="citation" href="https://arxiv.org/abs/2512.07237">[3]</a> has an attention spike at the farthest frame, while MeRoPE keeps a local temporal profile.
       </figcaption>
     </figure>
 
     <p>
-      MeRoPE keeps the same metric relative-pose information, but represents it with rotations whose output norm cannot grow with distance.
+      MeRoPE retains the metric relative pose but represents it with rotations, whose output norm does not grow with distance.
     </p>
   </section>
 
   <section class="merope-section" id="method">
     <h2>Replace metric translation with rotations</h2>
     <p>
-      The relative rotation \(R_{ab}\) between ray-local frames is already norm preserving, so MeRoPE keeps this rotation PE and changes only the translation part.
-      Let \(C_a\) map the query camera coordinates into the world frame, and let \(\mathbf{o}_a\) and \(\mathbf{o}_b\) be the two ray origins. MeRoPE first expresses their displacement in the query camera:
+      The relative rotation \(R_{ab}\) between ray-local frames already preserves norms. MeRoPE leaves this part unchanged and replaces the translation block.
+      Let \(C_a\) map query-camera coordinates into the world frame, and let \(\mathbf{o}_a\) and \(\mathbf{o}_b\) be the two ray origins. Their displacement in the query camera is
     </p>
     <div class="math-display" role="math" aria-label="relative translation expressed in the query camera frame">
       \[
@@ -207,8 +207,8 @@ panshot_more:
       \]
     </div>
     <p>
-      The factor \(C_a^\top\) depends on the query, so subtracting two independent world-frame phases cannot recover this relative translation.
-      MeRoPE computes it first, then encodes each coordinate with multi-frequency 2D RoPE rotations <a class="citation" href="https://arxiv.org/abs/2104.09864">[6]</a>:
+      Because \(C_a^\top\) depends on the query, subtracting two independent world-frame phases cannot recover this quantity.
+      MeRoPE computes the relative translation first and then encodes each coordinate with multi-frequency 2D RoPE rotations <a class="citation" href="https://arxiv.org/abs/2104.09864">[6]</a>:
     </p>
     <div class="math-display" role="math" aria-label="multi-frequency rotary encoding of query-frame relative translation">
       \[
@@ -224,30 +224,28 @@ panshot_more:
       \]
     </div>
     <p>
-      The index \(c\) selects one of the three translation coordinates, \(K\) is the number of frequencies, \(k\) indexes them, and \(\omega_k\) is the corresponding angular frequency.
-      The direct-sum symbol \(\oplus\) places these independent 2D rotations on the diagonal.
-      Distance now changes rotation angle \(\theta\), not feature magnitude.
+      The index \(c\) selects a translation coordinate. The value \(K\) is the number of frequencies, \(k\) indexes them, and \(\omega_k\) is the corresponding angular frequency.
+      The direct sum \(\oplus\) places the independent 2D rotations on the diagonal. Distance changes their angle \(\theta\), not the feature magnitude.
     </p>
   </section>
 
   <section class="merope-section" id="disparity">
     <h2>Geometry suggests where a match may lie</h2>
     <p>
-      In principle, the pose PE above already achieves our primary goal: every token is represented by a calibrated ray.
-      In practice, multi-view geometry in static scenes provides an additional cue that can further improve camera-pose controllability.
+      The pose PE above represents every token with a calibrated ray.
+      In static scenes, multi-view geometry restricts where a correspondence can appear. MeRoPE uses this constraint as an additional cue for camera-pose control.
     </p>
     <p>
-      Consider the key ray in the figure below. As the unknown scene depth varies, its possible matching direction in the query camera moves along the <span class="disparity-cue">purple spherical arc</span>, from \(\mathbf{u}_\infty\) at infinite depth toward the epipole \(\mathbf{e}\).
-      MeRoPE samples a few bounded angular anchors—the <span class="disparity-cue">purple dots</span>—along this arc.
-      These anchors act like interpolation knots rather than mutually exclusive guesses: their joint responses give the network a coarse coordinate system along the continuous arc, from which it can infer intermediate disparities.
-      Each anchor direction is turned into a local frame in the same way as a token ray, and the rotation from the query ray frame to that anchor frame becomes one positional block.
+      For the key ray below, changing the unknown scene depth moves its possible match along the <span class="disparity-cue">purple spherical arc</span>. The arc runs from \(\mathbf{u}_\infty\) at infinite depth to the epipole \(\mathbf{e}\).
+      MeRoPE samples the <span class="disparity-cue">purple dots</span> at bounded angular positions along this arc. The network reads their joint response as a coarse coordinate and can interpolate between them instead of selecting a single depth guess.
+      Each anchor becomes a ray-local frame. Its rotation relative to the query ray frame supplies one positional block.
     </p>
     <figure class="center-figure narrow-figure">
       <img src="{{ '/media/merope/figures/disparity-anchors.webp' | relative_url }}" alt="Disparity anchors sampled on the spherical epipolar arc between a transformed key ray and the epipole" loading="lazy">
       <figcaption>
-        Geometry in the query camera frame. The points \(\mathbf{o}_i\) and \(\mathbf{o}_j\) are the query and key ray origins, \(\Delta\mathbf{o}_{j\mid i}\) is their metric baseline expressed in the query camera, and \(\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z\) are the query-camera basis axes.
-        The frames \(A_{i,q}\) and \(A_{j,k}\) are ray-local coordinate systems constructed with MinRot, which rotates each camera's canonical \(\mathbf{e}_z\) axis onto its query or key ray. The direction \(\mathbf{u}_\infty\) is the transformed key ray at infinite depth, while \(\mathbf{e}\) is the epipole direction; \(A_{i,\mathbf{u}_\infty}\) and \(A_{i,\mathbf{e}}\) are the local frames at these two endpoints.
-        The purple arc is the continuous set of possible correspondence directions as depth varies, and the purple dots are MeRoPE's sampled anchors. Each anchor supplies a reference rotation: exact alignment gives the identity rotation, but intermediate directions can be inferred from the response pattern across anchors.
+        The figure uses \(i\) for the query and \(j\) for the key. Their ray origins are \(\mathbf{o}_i\) and \(\mathbf{o}_j\), and \(\Delta\mathbf{o}_{j\mid i}\) is the metric baseline in the query camera. The vectors \(\mathbf{e}_x,\mathbf{e}_y,\mathbf{e}_z\) are the query-camera basis axes.
+        MinRot constructs the ray-local frames \(A_{i,q}\) and \(A_{j,k}\) by rotating each camera's canonical \(\mathbf{e}_z\) axis onto the query or key ray. The transformed key ray at infinite depth is \(\mathbf{u}_\infty\), and \(\mathbf{e}\) points toward the epipole. Their local frames are \(A_{i,\mathbf{u}_\infty}\) and \(A_{i,\mathbf{e}}\).
+        The purple arc contains the possible correspondence directions as depth varies. The purple dots are sampled anchors. Exact alignment with an anchor gives the identity rotation, while the responses across anchors locate intermediate directions.
       </figcaption>
     </figure>
     <p>The rotations induced by all sampled anchors form the disparity component \(\mathcal{U}^{\mathrm{disp}}\).</p>
@@ -256,14 +254,14 @@ panshot_more:
   <section class="merope-section" id="operator">
     <h2>Put the geometric cues together</h2>
     <p>
-      We now have three geometric components: anchor-frame rotations \(\mathcal{U}^{\mathrm{disp}}\), the retained relative ray-frame rotation \(\mathcal{U}^{\mathrm{rot}}\), and the new metric translation RoPE \(\mathcal{U}^{\mathrm{trans}}\).
-      MeRoPE places them beside the backbone's native time and image-coordinate RoPE, denoted by \(\mathcal{U}^{\mathrm{native}}\).
+      MeRoPE has three camera-geometry blocks: anchor-frame rotations \(\mathcal{U}^{\mathrm{disp}}\), relative ray-frame rotation \(\mathcal{U}^{\mathrm{rot}}\), and metric translation RoPE \(\mathcal{U}^{\mathrm{trans}}\).
+      A fourth block, \(\mathcal{U}^{\mathrm{native}}\), retains the backbone's time and image-coordinate RoPE.
     </p>
 
     <figure class="center-figure operator-figure">
       <img src="{{ '/media/merope/figures/operator-block-diagonal.png' | relative_url }}" alt="Block-diagonal MeRoPE operator between query and key features" loading="lazy">
       <figcaption>
-        Block-diagonal structure of \(\mathcal{U}_{ab}\) (Figure 3 in the paper). Separate feature bands encode anchor-frame rotations, relative ray-frame rotation, metric translation, and the backbone's native time/image coordinates; the off-diagonal zero blocks keep the four components independent.
+        Block-diagonal structure of \(\mathcal{U}_{ab}\) (Figure 3 in the paper). Separate feature bands encode anchor-frame rotations, relative ray-frame rotation, metric translation, and the backbone's time and image coordinates. The off-diagonal blocks are zero, so the four components do not mix.
       </figcaption>
     </figure>
 
@@ -277,17 +275,17 @@ panshot_more:
       \]
     </div>
     <p>
-      The identity matrix \(I\) in the second equation makes the key property explicit: every block is a rotation, so \(\mathcal{U}_{ab}\) changes geometric phase without changing feature length.
-      MeRoPE can therefore encode both ray geometry and metric camera motion without letting a longer baseline amplify the query-key score by construction.
+      The matrix \(I\) is the identity. Because every block is a rotation, \(\mathcal{U}_{ab}\) changes geometric phase without changing feature length.
+      It encodes ray geometry and metric camera motion without allowing a longer baseline to amplify the query-key score.
     </p>
   </section>
 
   <section class="merope-section" id="nuscenes">
     <h2>Camera-controlled video generation on nuScenes</h2>
     <p>
-      We apply MeRoPE to a Wan2.2 TI2V-5B predictive video model <a class="citation" href="https://arxiv.org/abs/2503.20314">[7]</a> on the autonomous-driving dataset nuScenes <a class="citation" href="https://arxiv.org/abs/1903.11027">[8]</a>.
-      Each video places the commanded and recovered camera paths beside the generated frames. The predictions follow the requested motion while preserving coherent roads, vehicles, and surrounding structure.
-      Quantitative comparisons and component ablations are reported in the paper.
+      We test MeRoPE with a Wan2.2 TI2V-5B predictive video model <a class="citation" href="https://arxiv.org/abs/2503.20314">[7]</a> on nuScenes <a class="citation" href="https://arxiv.org/abs/1903.11027">[8]</a>.
+      Each video shows the commanded and recovered camera paths with the generated frames. The predictions follow the requested motion while keeping the roads, vehicles, and surrounding scene coherent.
+      The paper reports quantitative comparisons and component ablations.
     </p>
 
     <div class="video-gallery video-gallery-wide">
@@ -307,8 +305,8 @@ panshot_more:
   <section class="merope-section" id="panshot">
     <h2>Generalization across camera optics</h2>
     <p>
-      The same ray-based encoding also applies to PanShot, a benchmark for diverse camera optics introduced with UCPE <a class="citation" href="https://arxiv.org/abs/2512.07237">[3]</a>, using a Wan2.1 T2V-1.3B backbone <a class="citation" href="https://arxiv.org/abs/2503.20314">[7]</a>.
-      These videos span indoor and outdoor scenes, low light, and very wide fields of view.
+      We also test the ray-based encoding on PanShot, the diverse-camera benchmark introduced with UCPE <a class="citation" href="https://arxiv.org/abs/2512.07237">[3]</a>, using a Wan2.1 T2V-1.3B backbone <a class="citation" href="https://arxiv.org/abs/2503.20314">[7]</a>.
+      The examples include indoor and outdoor scenes, low light, and very wide fields of view.
     </p>
 
     <div class="video-gallery">
@@ -328,25 +326,22 @@ panshot_more:
   </section>
 
   <section class="merope-section" id="history">
-    <h2>Grounding video prediction in the real world</h2>
+    <h2>Using retrieved images as scene anchors</h2>
     <p>
-      A video model usually sees only the current clip.
-      As prediction moves beyond its observed field of view, the model may lose the identity and layout of the real location.
+      A video model usually sees only the current clip. Once the camera moves beyond the observed field of view, its prediction may drift from the identity and layout of the recorded location.
     </p>
     <p>
-      A <strong>historical image</strong> here is a calibrated image retrieved from another traversal of the same location, possibly captured by another vehicle, at another time, or under different weather.
-      It is not a record of the current dynamic state: moving objects need not match.
-      Instead, it provides real observations of persistent scene structure, such as roads, buildings, and vegetation.
+      A <strong>historical image</strong> is a calibrated image retrieved from another traversal of the same location. It may come from another vehicle, time, or weather condition, so moving objects need not match the current scene.
+      The useful information is the persistent structure of roads, buildings, and vegetation.
     </p>
     <p>
-      History SA places the retrieved image directly in temporal self-attention, while MeRoPE tells the model how its rays relate to the rays being predicted.
-      The image can therefore act as a long-horizon visual anchor.
-      On nuScenes, only History SA, rather than History CA, preserves retrieval-supported static structure over time, including when the retrieved and target traversals have different weather.
+      History SA inserts the retrieved image into temporal self-attention. MeRoPE supplies the geometry between its rays and the rays being predicted, allowing the image to remain a visual anchor over a long rollout.
+      On nuScenes, History SA preserves static structure supported by the retrieval, while History CA fails to retain it over time. The same pattern appears when the retrieved and target traversals have different weather.
     </p>
 
     <figure class="center-figure">
       <img src="{{ '/media/merope/figures/history-ca-vs-sa.webp' | relative_url }}" alt="History self-attention preserves retrieved scene appearance over time, unlike cross-attention" loading="lazy">
-      <figcaption>History SA preserves the retrieved scene appearance, including in the cross-weather example.</figcaption>
+      <figcaption>History SA preserves the static scene layout supported by the retrieved image, including in the cross-weather example.</figcaption>
     </figure>
 
     <div class="video-gallery video-gallery-wide">
