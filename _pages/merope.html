@@ -8,8 +8,8 @@ hide_nav: true
 hide_footer: true
 wrap_class: merope-paper-shell
 body_class: merope-paper-body
-stylesheet: /static/css/merope.css
-script: /static/js/merope.js
+stylesheet: /static/css/merope.css?v=20260902-nav3
+script: /static/js/merope.js?v=20260902-nav3
 mathjax: true
 og_image: /media/merope/figures/og-nuscenes.png
 pose_more:
@@ -50,14 +50,21 @@ panshot_more:
         <i class="fab fa-github" aria-hidden="true"></i><span>Code coming soon</span>
       </span>
     </div>
-    <nav class="merope-toc" aria-label="On this page">
-      <a href="#rays">Ray tokens</a>
-      <a href="#geometry-attention">Geometry in attention</a>
-      <a href="#method">MeRoPE</a>
-      <a href="#nuscenes">Results</a>
-      <a href="#history">Scene anchors</a>
-      <a href="#bibtex">BibTeX</a>
-    </nav>
+    <aside class="merope-toc-shell is-open" aria-label="Page navigation">
+      <nav class="merope-toc" id="merope-toc" aria-label="On this page" aria-hidden="false">
+        <a href="#rays">Ray tokens</a>
+        <a href="#geometry-attention">Geometry in attention</a>
+        <a href="#method">MeRoPE</a>
+        <a href="#nuscenes">Results</a>
+        <a href="#history">Scene anchors</a>
+        <a href="#bibtex">BibTeX</a>
+      </nav>
+      <button class="merope-toc-toggle" type="button" aria-controls="merope-toc" aria-expanded="true" aria-label="Collapse contents">
+        <span class="merope-toc-toggle-icon" aria-hidden="true">‹</span>
+        <span class="merope-toc-toggle-label">Collapse</span>
+      </button>
+    </aside>
+    <button class="merope-toc-overlay" type="button" aria-label="Close contents"></button>
   </header>
 
   <section class="merope-section" id="rays">

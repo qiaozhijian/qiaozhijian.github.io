@@ -90,26 +90,124 @@
   cursor: default;
 }
 
+.merope-toc-shell {
+  --merope-toc-open-width: min(280px, calc(100vw - 32px));
+  position: fixed;
+  z-index: 31;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--merope-toc-open-width);
+  overflow: hidden;
+  border-right: 1px solid #dddddd;
+  background: #ffffff;
+  box-shadow: 8px 0 24px rgb(0 0 0 / 8%);
+  transition: width 180ms ease;
+}
+
+.merope-toc-shell:not(.is-open) {
+  top: 16px;
+  bottom: auto;
+  left: 8px;
+  width: 102px;
+  height: 40px;
+  border: 1px solid #dddddd;
+  border-radius: 999px;
+  box-shadow: 0 3px 12px rgb(0 0 0 / 8%);
+}
+
 .merope-toc {
   display: flex;
-  max-width: 760px;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 9px 20px;
-  margin: 27px auto 0;
+  height: 100%;
+  width: var(--merope-toc-open-width);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 68px 18px 24px;
+  overflow-y: auto;
   font-size: 14px;
   line-height: 1.4;
+  text-align: left;
+  box-sizing: border-box;
+  transition: opacity 120ms ease, visibility 120ms ease;
+}
+
+.merope-toc-shell:not(.is-open) .merope-toc {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .merope-toc a {
-  border-bottom: 1px solid #d5d5d5;
+  width: 100%;
+  padding: 4px 0;
+  border-bottom: 1px solid #e5e5e5;
   color: #5b5b5b;
   text-decoration: none;
-  white-space: nowrap;
 }
 
 .merope-toc a:hover {
   border-bottom-color: #276cda;
+}
+
+.merope-toc-toggle {
+  position: absolute;
+  z-index: 2;
+  top: 7px;
+  left: 7px;
+  display: inline-flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 9px;
+  border: 1px solid #d8d8d8;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: none;
+  color: #4a4a4a;
+  cursor: pointer;
+  font: 600 13px/1 BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: color 160ms ease, background 160ms ease;
+}
+
+.merope-toc-toggle-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.merope-toc-toggle-label {
+  font-size: 12px;
+}
+
+.merope-toc-toggle:hover {
+  background: #f2f6fc;
+  color: #276cda;
+}
+
+.merope-toc-toggle:focus-visible,
+.merope-toc-overlay:focus-visible,
+.merope-toc a:focus-visible {
+  outline: 2px solid #276cda;
+  outline-offset: 2px;
+}
+
+.merope-toc-overlay {
+  position: fixed;
+  z-index: 29;
+  inset: 0;
+  visibility: hidden;
+  border: 0;
+  opacity: 0;
+  background: rgb(0 0 0 / 28%);
+  cursor: pointer;
+  transition: opacity 180ms ease, visibility 180ms ease;
+}
+
+.merope-toc-overlay.is-open {
+  visibility: visible;
+  opacity: 1;
 }
 
 .merope-section {
@@ -615,24 +713,45 @@ figcaption {
 }
 
 @media (min-width: 1320px) {
+  .merope-toc-shell {
+    --merope-toc-open-width: 180px;
+    top: 92px;
+    bottom: auto;
+    left: max(8px, calc(50% - 680px));
+    height: auto;
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+    box-shadow: 0 5px 18px rgb(0 0 0 / 6%);
+  }
+
+  .merope-toc-shell:not(.is-open) {
+    top: 92px;
+    left: max(8px, calc(50% - 680px));
+    width: 102px;
+    height: 40px;
+  }
+
   .merope-toc {
-    position: fixed;
-    z-index: 10;
-    top: 110px;
-    left: max(20px, calc(50% - 640px));
-    width: 160px;
-    max-width: none;
-    flex-direction: column;
-    align-items: flex-start;
+    height: auto;
     gap: 8px;
-    margin: 0;
-    text-align: left;
+    padding: 54px 14px 16px;
+  }
+
+  .merope-toc-overlay,
+  .merope-toc-overlay.is-open {
+    display: none;
   }
 }
 
 @media (min-width: 769px) {
   .merope-section > p {
     text-align: justify;
+  }
+}
+
+@media (max-width: 1319px) {
+  .merope-paper-body.merope-toc-is-open {
+    overflow: hidden;
   }
 }
 
