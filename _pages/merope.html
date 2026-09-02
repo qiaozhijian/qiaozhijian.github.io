@@ -56,7 +56,7 @@ panshot_more:
         <a href="#geometry-attention">Geometry in attention</a>
         <a href="#method">MeRoPE</a>
         <a href="#nuscenes">Results</a>
-        <a href="#history">Scene anchors</a>
+        <a href="#history">Real-to-Sim</a>
         <a href="#bibtex">BibTeX</a>
       </nav>
       <button class="merope-toc-toggle" type="button" aria-controls="merope-toc" aria-expanded="true" aria-label="Collapse contents">
@@ -340,13 +340,10 @@ panshot_more:
   </section>
 
   <section class="merope-section" id="history">
-    <h2>Using retrieved images as scene anchors</h2>
+    <h2>Real-to-Sim with retrieved images</h2>
     <p>
-      A video model usually sees only the current clip. Once the camera moves beyond the observed field of view, its prediction may drift from the identity and layout of the recorded location.
-    </p>
-    <p>
-      A <strong>historical image</strong> is a calibrated image retrieved from another traversal of the same location. It may come from another vehicle, time, or weather condition, so moving objects need not match the current scene.
-      The useful information is the persistent structure of roads, buildings, and vegetation.
+      MeRoPE also supports a simple form of real-to-sim generation: a calibrated image retrieved from the same location anchors a simulated future rollout.
+      The image may come from another traversal, time, or weather condition, so it anchors the persistent scene layout rather than reproducing the same moving objects.
     </p>
     <p>
       History SA inserts the retrieved image into temporal self-attention. MeRoPE supplies the geometry between its rays and the rays being predicted, allowing the image to remain a visual anchor over a long rollout.
@@ -363,10 +360,10 @@ panshot_more:
       <figure><video autoplay loop muted playsinline controls preload="metadata"><source src="{{ '/media/merope/videos/nuscenes-history/02_f93df2_paper_cross_weather_latconf25.mp4' | relative_url }}" type="video/mp4"></video><figcaption>Cross-weather street corner</figcaption></figure>
     </div>
     <details class="more-results">
-      <summary>More history-anchor results</summary>
+      <summary>More Real-to-Sim results</summary>
       <div class="video-gallery">
         {% for video in page.history_more %}
-          <video controls muted loop playsinline preload="none" aria-label="Additional history-anchor result {{ forloop.index }}"><source src="{{ '/media/merope/videos/nuscenes-history/' | append: video | relative_url }}" type="video/mp4"></video>
+          <video controls muted loop playsinline preload="none" aria-label="Additional Real-to-Sim result {{ forloop.index }}"><source src="{{ '/media/merope/videos/nuscenes-history/' | append: video | relative_url }}" type="video/mp4"></video>
         {% endfor %}
       </div>
     </details>
