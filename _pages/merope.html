@@ -360,7 +360,7 @@ panshot_more:
     </div>
     <details class="more-results">
       <summary>More Real-to-Sim results</summary>
-      <div class="video-gallery">
+      <div class="video-gallery video-gallery-wide">
         {% for video in page.history_more %}
           <video controls muted loop playsinline preload="none" aria-label="Additional Real-to-Sim result {{ forloop.index }}"><source src="{{ '/media/merope/videos/nuscenes-history/' | append: video | relative_url }}" type="video/mp4"></video>
         {% endfor %}
