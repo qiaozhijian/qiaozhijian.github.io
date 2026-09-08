@@ -1,0 +1,58 @@
+[
+  {
+    "source": "../merope-paper/assets/figures/encoding_parts/slides/animations/encoding_rotation.gif",
+    "destination": "/media/merope/figures/encoding_rotation.gif",
+    "role": "Ray-local MinRot construction; first pose panel",
+    "transformation": "Copied unchanged",
+    "sha256": "e0a92a5ce27796b9869f003c7b9a1f5c146ff278d5a28372b482dc6c7c8ba040"
+  },
+  {
+    "source": "../merope-paper/assets/figures/encoding_parts/slides/animations/encoding_rotation_poster.png",
+    "destination": "/media/merope/figures/encoding_rotation_poster.png",
+    "role": "Ray-local MinRot construction; first pose panel (reference pose)",
+    "transformation": "Copied unchanged",
+    "sha256": "3bb99e2da47b99ba0fd695c17b17d775da481d5191427da0d37d10bd48b6ca43"
+  },
+  {
+    "source": "../merope-paper/assets/figures/encoding_parts/slides/animations/encoding_translation.gif",
+    "destination": "/media/merope/figures/encoding_translation.gif",
+    "role": "Metric camera displacement; second pose panel",
+    "transformation": "Copied unchanged",
+    "sha256": "c053397dd938a9d60523089a17b1e0398ca01345216b9d4841cef2a905194b71"
+  },
+  {
+    "source": "../merope-paper/assets/figures/encoding_parts/slides/animations/encoding_translation_poster.png",
+    "destination": "/media/merope/figures/encoding_translation_poster.png",
+    "role": "Metric camera displacement; second pose panel (reference pose)",
+    "transformation": "Copied unchanged",
+    "sha256": "1957dddbb830af136a8ff5085131dc1b6679d7f44600ef45d7d3d678d97d6054"
+  },
+  {
+    "source": "../merope-paper/assets/figures/encoding_parts/slides/animations/encoding_disparity_key_ray.gif",
+    "destination": "/media/merope/figures/encoding_disparity_key_ray.gif",
+    "role": "Fixed anchor fraction on a changing epipolar arc; first disparity panel",
+    "transformation": "Copied unchanged",
+    "sha256": "2fd7a70ee7724e3f1f4cc40575fd5947b7e6cee79d639eb69654e8a65c4d4632"
+  },
+  {
+    "source": "../merope-paper/assets/figures/encoding_parts/slides/animations/encoding_disparity_key_ray_poster.png",
+    "destination": "/media/merope/figures/encoding_disparity_key_ray_poster.png",
+    "role": "Fixed anchor fraction on a changing epipolar arc; first disparity panel (reference pose)",
+    "transformation": "Copied unchanged",
+    "sha256": "8b9baa2c11dae343c31e74de93bf0b46318c469b48668af43849292bf8e96acc"
+  },
+  {
+    "source": "../merope-paper/assets/figures/encoding_parts/slides/animations/encoding_disparity_anchor_point.gif",
+    "destination": "/media/merope/figures/encoding_disparity_anchor_point.gif",
+    "role": "Changing anchor on a fixed arc; second disparity panel",
+    "transformation": "Copied unchanged",
+    "sha256": "fb766f706c055b18e5b74b85c5478e15205f1c7b18fae174bc3559ef321ee954"
+  },
+  {
+    "source": "../merope-paper/assets/figures/encoding_parts/slides/animations/encoding_disparity_anchor_point_poster.png",
+    "destination": "/media/merope/figures/encoding_disparity_anchor_point_poster.png",
+    "role": "Changing anchor on a fixed arc; second disparity panel (reference pose)",
+    "transformation": "Copied unchanged",
+    "sha256": "8b9baa2c11dae343c31e74de93bf0b46318c469b48668af43849292bf8e96acc"
+  }
+]

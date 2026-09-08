@@ -648,6 +648,95 @@ figcaption {
   font-weight: 600;
 }
 
+.geometry-demo {
+  margin: 18px 0 24px;
+}
+
+.geometry-tools {
+  display: flex;
+  justify-content: flex-end;
+  min-height: 34px;
+  margin-bottom: 12px;
+}
+
+.geometry-toggle {
+  padding: 5px 11px;
+  border: 1px solid #d7d9dc;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #4a4a4a;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.geometry-toggle:hover {
+  background: #f5f7fa;
+}
+
+.geometry-toggle:focus-visible,
+.method-details summary:focus-visible {
+  outline: 2px solid #3273dc;
+  outline-offset: 3px;
+}
+
+.geometry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.geometry-figure h3 {
+  margin: 0 0 8px;
+  padding: 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.geometry-figure img {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  margin: 0 auto 14px;
+  aspect-ratio: 7 / 8;
+}
+
+.geometry-figure figcaption {
+  color: #4a4a4a;
+  font-size: 15px !important;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.rotation-cue { color: #526f8b; }
+.translation-cue { color: #536f5f; }
+
+.merope-page .geometry-note {
+  color: #6f6f6f;
+  font-size: 14px;
+  text-align: left;
+}
+
+.method-details {
+  margin-top: 20px;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.method-details summary {
+  padding: 12px 2px;
+  color: #3273dc;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.method-details[open] summary {
+  margin-bottom: 16px;
+  border-bottom: 1px solid #eeeeee;
+}
+
 .video-gallery {
   display: grid;
   margin: 22px 0;
@@ -788,6 +877,11 @@ figcaption {
 
   .video-gallery {
     grid-template-columns: 1fr;
+  }
+
+  .geometry-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
 
   .spacetime-diagram {

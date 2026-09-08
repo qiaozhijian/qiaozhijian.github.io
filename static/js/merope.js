@@ -43,6 +43,44 @@ document.addEventListener("DOMContentLoaded", () => {
     wideLayout.addEventListener("change", ({ matches }) => setTocOpen(matches));
   }
 
+  // Animate only the row being read; the control shows exact reference poses.
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  document.querySelectorAll("[data-geometry-demo]").forEach((demo) => {
+    const toggle = demo.querySelector(".geometry-toggle");
+    const images = Array.from(demo.querySelectorAll("img[data-animation]"));
+    const posters = images.map((image) => image.getAttribute("src"));
+    let enabled = !reducedMotion.matches;
+    let visible = false;
+    let userSelected = false;
+
+    const update = () => {
+      images.forEach((image, index) => {
+        const source = enabled && visible ? image.dataset.animation : posters[index];
+        if (image.getAttribute("src") !== source) image.setAttribute("src", source);
+      });
+      toggle.textContent = enabled ? "Show reference poses" : "Play animations";
+    };
+
+    toggle.hidden = false;
+    toggle.addEventListener("click", () => {
+      userSelected = true;
+      enabled = !enabled;
+      update();
+    });
+    reducedMotion.addEventListener("change", ({ matches }) => {
+      if (!userSelected) {
+        enabled = !matches;
+        update();
+      }
+    });
+    const demoObserver = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      update();
+    }, { threshold: 0.15 });
+    demoObserver.observe(demo);
+    update();
+  });
+
   const sections = document.querySelectorAll("details.more-results");
   if (!sections.length) return;
 

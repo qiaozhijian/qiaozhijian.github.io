@@ -8,8 +8,8 @@ hide_nav: true
 hide_footer: true
 wrap_class: merope-paper-shell
 body_class: merope-paper-body
-stylesheet: /static/css/merope.css?v=20260902-nav3
-script: /static/js/merope.js?v=20260902-nav3
+stylesheet: /static/css/merope.css?v=20260908-geometry
+script: /static/js/merope.js?v=20260908-geometry
 mathjax: true
 og_image: /media/merope/figures/og-nuscenes.png
 pose_more:
@@ -53,7 +53,8 @@ panshot_more:
       <nav class="merope-toc" id="merope-toc" aria-label="On this page" aria-hidden="false">
         <a href="#rays">Ray tokens</a>
         <a href="#geometry-attention">Geometry in attention</a>
-        <a href="#method">MeRoPE</a>
+        <a href="#method">Pose encoding</a>
+        <a href="#disparity">Correspondence cues</a>
         <a href="#nuscenes">Results</a>
         <a href="#history">Real-to-Sim</a>
         <a href="#bibtex">BibTeX</a>
@@ -71,6 +72,7 @@ panshot_more:
     <p class="merope-summary">
       Language models use positional encoding to tell words where they occur in a sequence.
       <b>MeRoPE gives each video token a geometric position: when it occurs, where its camera ray starts, and where the ray points.</b>
+      It encodes relative camera motion without amplifying feature magnitudes, and adds geometric cues for potential matches across views.
     </p>
 
     <div class="spacetime-diagram" role="img" aria-label="Cameras placed along a four-dimensional space-time coordinate system. Each camera has a ray origin and emits a viewing ray. A central boundary separates observed past frames from predicted future frames.">
@@ -123,7 +125,7 @@ panshot_more:
     <p class="figure-caption">The <code>x/y/z</code> axes define 3D space, <code>t</code> indexes time, and <code>H</code> is the prediction horizon. Each token carries its time together with the origin and direction of its camera ray.</p>
 
     <p>
-      The model receives only each token's time and calibrated camera ray. From these geometric tags, it learns how observed tokens relate to the tokens it predicts across cameras and time.
+      Alongside visual features, MeRoPE uses each token's time and calibrated camera ray. These geometric tags help the model relate observed tokens to the tokens it predicts across cameras and time.
       It does not need a separate 3D reconstruction model such as VGGT <a class="citation" href="https://arxiv.org/abs/2503.11651">[1]</a> or Depth Anything 3 <a class="citation" href="https://arxiv.org/abs/2511.10647">[2]</a> to produce point clouds or depth maps before generation.
       This keeps the hand-designed interface small: we provide the ray geometry, while correspondence and scene evolution are learned from data.
     </p>
@@ -211,9 +213,30 @@ panshot_more:
   </section>
 
   <section class="merope-section" id="method">
-    <h2>Replace metric translation with rotations</h2>
+    <h2>Encode where rays point and how cameras move</h2>
     <p>
-      The relative rotation \(R_{ab}\) between ray-local frames already preserves norms. MeRoPE leaves this part unchanged and replaces the translation block.
+      MeRoPE separates relative pose into <b>ray-frame rotation</b> and <b>metric translation</b>.
+      Both become norm-preserving operators in attention: changing camera geometry changes their rotation angles while keeping feature lengths fixed.
+    </p>
+    <div class="geometry-demo" data-geometry-demo>
+      <div class="geometry-tools"><button type="button" class="geometry-toggle" aria-controls="pose-diagrams" hidden>Play animations</button></div>
+      <div class="geometry-grid" id="pose-diagrams">
+        <figure class="geometry-figure">
+          <h3 class="rotation-cue">Rotation · viewing direction</h3>
+          <img src="{{ '/media/merope/figures/encoding_rotation_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_rotation.gif' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="Query ray Q turns around the fixed camera origin O; the blue minimum-rotation arc from optical axis z and the local coordinate frame follow.">
+          <figcaption>Turn query ray <b>Q</b> while camera origin <b>O</b> and optical axis <b>z</b> stay fixed. The blue MinRot arc and local axes follow. Comparing the query and key ray frames then encodes their relative viewing orientation.</figcaption>
+        </figure>
+        <figure class="geometry-figure">
+          <h3 class="translation-cue">Translation · camera displacement</h3>
+          <img src="{{ '/media/merope/figures/encoding_translation_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_translation.gif' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="Key camera K moves along the baseline while query camera Q stays fixed; the green relative displacement vector changes length.">
+          <figcaption>Move key camera <b>K</b> while query camera <b>Q</b> stays fixed. The green <b>Δo</b> changes with the baseline. MeRoPE maps each displacement coordinate to rotary phases, retaining metric motion without stretching the features.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <details class="method-details">
+      <summary>How metric displacement becomes rotary phases</summary>
+    <p>
+      The relative rotation \(R_{ab}\) between the MinRot ray-local frames already preserves norms.
       Let \(C_a\) map query-camera coordinates into the world frame, and let \(\mathbf{o}_a\) and \(\mathbf{o}_b\) be the two ray origins. Their displacement in the query camera is
     </p>
     <div class="math-display" role="math" aria-label="relative translation expressed in the query camera frame">
@@ -242,26 +265,38 @@ panshot_more:
       The index \(c\) selects a translation coordinate. The value \(K\) is the number of frequencies, \(k\) indexes them, and \(\omega_k\) is the corresponding angular frequency.
       The direct sum \(\oplus\) places the independent 2D rotations on the diagonal. Distance changes their angle \(\theta\), not the feature magnitude.
     </p>
+    </details>
   </section>
 
   <section class="merope-section" id="disparity">
-    <h2>Geometry suggests where a match may lie</h2>
+    <h2>Add cues for where a cross-view match may lie</h2>
     <p>
-      The pose PE above represents every token with a calibrated ray.
-      In static scenes, multi-view geometry restricts where a correspondence can appear. MeRoPE uses this constraint as an additional cue for camera-pose control.
+      Relative pose describes camera geometry. For a static scene point on a key ray, its possible direction in the query view depends on its unknown depth.
+      These candidate directions trace a <span class="disparity-cue">purple spherical arc</span>.
+      MeRoPE samples anchors along this arc and encodes each anchor frame relative to the query ray frame, giving attention a geometric cue for potential correspondence.
+    </p>
+    <div class="geometry-demo" data-geometry-demo>
+      <div class="geometry-tools"><button type="button" class="geometry-toggle" aria-controls="disparity-diagrams" hidden>Play animations</button></div>
+      <div class="geometry-grid" id="disparity-diagrams">
+        <figure class="geometry-figure">
+          <h3 class="disparity-cue">Turn the key ray · reshape the arc</h3>
+          <img src="{{ '/media/merope/figures/encoding_disparity_key_ray_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_disparity_key_ray.gif' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="The ray from key camera K turns while both camera origins remain fixed. Its vanishing direction u moves, changing the purple arc toward fixed epipole e and the anchor at a fixed angular fraction.">
+          <figcaption>Turn the ray from <b>K</b> with both camera origins fixed. Its vanishing direction <b>u</b> moves, reshaping the arc toward the fixed epipole <b>e</b>. The large purple dot stays at the same angular fraction along the changing arc.</figcaption>
+        </figure>
+        <figure class="geometry-figure">
+          <h3 class="disparity-cue">Move the anchor · change its frame</h3>
+          <img src="{{ '/media/merope/figures/encoding_disparity_anchor_point_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_disparity_anchor_point.gif' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="The key ray and purple arc stay fixed while the large anchor dot moves along the arc. Its local coordinate frame and the blue angle from query ray Q change together.">
+          <figcaption>Keep the key ray and arc fixed, then move the large purple dot. Its local axes and the blue angle from query ray <b>Q</b> change. MeRoPE encodes the resulting relative <em>frame rotation</em> for each anchor.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <p class="geometry-note">
+      In these diagrams, <b>u</b> denotes \(\mathbf{u}_\infty\), the key-ray direction at infinite depth; <b>e</b> points from the query camera toward K.
     </p>
     <p>
-      For the key ray below, changing the unknown scene depth moves its possible match along the <span class="disparity-cue">purple spherical arc</span>. The arc runs from \(\mathbf{u}_\infty\) at infinite depth to the epipole \(\mathbf{e}\).
-      MeRoPE samples the <span class="disparity-cue">purple dots</span> at bounded angular positions along this arc. The network reads their joint response as a coarse coordinate and can interpolate between them instead of selecting a single depth guess.
-      Each anchor becomes a ray-local frame. Its rotation relative to the query ray frame supplies one positional block.
+      The moving dot illustrates the anchor construction. <b>The model uses a fixed set of angular fractions along each arc</b>, encoding all of their relative rotations together as \(\mathcal{U}^{\mathrm{disp}}\).
+      Visual content determines whether a valid correspondence exists; the anchors supply candidate geometry without requiring a predicted depth map.
     </p>
-    <figure class="center-figure narrow-figure">
-      <img src="{{ '/media/merope/figures/disparity-anchors.webp' | relative_url }}" alt="Disparity anchors sampled on the spherical epipolar arc between a transformed key ray and the epipole" loading="lazy">
-      <figcaption>
-        MeRoPE's disparity component in the query-camera frame. Blue marks the query and key ray frames, green the metric baseline, and purple the depth-dependent epipolar arc. The purple dots are sampled anchors whose rotations form \(\mathcal{U}^{\mathrm{disp}}\).
-      </figcaption>
-    </figure>
-    <p>The rotations induced by all sampled anchors form the disparity component \(\mathcal{U}^{\mathrm{disp}}\).</p>
   </section>
 
   <section class="merope-section" id="operator">
