@@ -17,6 +17,10 @@ redirect_from:
           <name>{{ site.author.name }}</name>
           {% if site.author.name_ipa %}<span class="fei-intro-ipa" title="Pronunciation (IPA)">{{ site.author.name_ipa }}</span>{% endif %}
         </p>
+        <p class="fei-intro-motto">
+          <span>If I say I’m on it, I’m solving it.</span>
+          <strong>If I say it’s done, it’s solved.</strong>
+        </p>
         <p>
           I am a Ph.D. candidate at the <a href="https://uav.hkust.edu.hk/">Aerial Robotics Group</a> at HKUST, advised by Prof. <a href="https://scholar.google.com.hk/citations?user=u8Q0_xsAAAAJ&amp;hl=zh-CN&amp;oi=ao">Shaojie Shen</a>.
           Before that, I received my Master's degree from the <a href="http://irmv.sjtu.edu.cn/">IRMV Lab</a> at Shanghai Jiao Tong University, supervised by Prof. <a href="http://irmv.sjtu.edu.cn/wanghesheng">Hesheng Wang</a>.

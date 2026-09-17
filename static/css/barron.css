@@ -216,6 +216,24 @@ span.highlight {
   color: #666;
 }
 
+.barron-intro .fei-intro-motto {
+  padding-left: 0.85rem;
+  border-left: 2px solid #d9d9d9;
+  color: #666;
+  font-style: italic;
+}
+
+.barron-intro .fei-intro-motto span,
+.barron-intro .fei-intro-motto strong {
+  display: block;
+}
+
+.barron-intro .fei-intro-motto strong {
+  color: #333;
+  font-size: inherit;
+  font-weight: 700;
+}
+
 .barron-intro .fei-intro-text > p {
   margin: 0 0 1rem;
 }
