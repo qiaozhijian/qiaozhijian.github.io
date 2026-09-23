@@ -8,20 +8,10 @@ hide_nav: true
 hide_footer: true
 wrap_class: merope-paper-shell
 body_class: merope-paper-body
-stylesheet: /static/css/merope.css?v=20260908-geometry
-script: /static/js/merope.js?v=20260908-geometry
+stylesheet: /static/css/merope.css?v=20260923-compact-v6
+script: /static/js/merope.js?v=20260923-compact-v6
 mathjax: true
 og_image: /media/merope/figures/og-nuscenes.png
-pose_more:
-  - "01_baa033.mp4"
-  - "03_53cc78.mp4"
-  - "08_7c7ce7.mp4"
-  - "10_c19bd2.mp4"
-  - "12_ecb7bc_rain.mp4"
-history_more:
-  - "09_9e2432.mp4"
-  - "11_b8c807.mp4"
-  - "12_89c920.mp4"
 panshot_more:
   - "1jVPI3bNCBc-5-0-no_rot_aug_0-fov97-xi0.00.mp4"
   - "N99hmkAJwlQ-3-0-linear_aug_0-fov99-xi0.00.mp4"
@@ -75,54 +65,9 @@ panshot_more:
       It encodes relative camera motion without amplifying feature magnitudes, and adds geometric cues for potential matches across views.
     </p>
 
-    <div class="spacetime-diagram" role="img" aria-label="Cameras placed along a four-dimensional space-time coordinate system. Each camera has a ray origin and emits a viewing ray. A central boundary separates observed past frames from predicted future frames.">
-      <span class="time-region time-region-past">Past / observed</span>
-      <span class="time-region time-region-future">Future / predicted</span>
-
-      <div class="ray-legend" aria-hidden="true">
-        <span><i class="legend-origin"></i>ray origin</span>
-        <span><i class="legend-ray"></i>ray direction</span>
-      </div>
-
-      <div class="prediction-boundary" aria-hidden="true">
-        <span>prediction boundary</span>
-        <b>t = 0</b>
-      </div>
-
-      <div class="spatial-axes" aria-hidden="true">
-        <i class="axis-line axis-x"></i>
-        <i class="axis-line axis-y"></i>
-        <i class="axis-line axis-z"></i>
-        <i class="axis-center"></i>
-        <span class="axis-label axis-label-x">x</span>
-        <span class="axis-label axis-label-y">y</span>
-        <span class="axis-label axis-label-z">z</span>
-      </div>
-
-      <div class="time-axis" aria-hidden="true"><span>time <i>t</i></span></div>
-
-      <div class="camera-pose" style="--left:12%;--top:120px;--angle:-22deg;--ray-length:76px;">
-        <span class="camera-time">t−2</span><i class="time-guide"></i>
-        <div class="camera-vector" aria-hidden="true"><span class="camera-body"></span><span class="camera-origin"></span><span class="viewing-ray"></span></div>
-      </div>
-      <div class="camera-pose" style="--left:31%;--top:80px;--angle:8deg;--ray-length:80px;">
-        <span class="camera-time">t−1</span><i class="time-guide"></i>
-        <div class="camera-vector" aria-hidden="true"><span class="camera-body"></span><span class="camera-origin"></span><span class="viewing-ray"></span></div>
-      </div>
-      <div class="camera-pose" style="--left:56%;--top:115px;--angle:-15deg;--ray-length:78px;">
-        <span class="camera-time">t+1</span><i class="time-guide"></i>
-        <div class="camera-vector" aria-hidden="true"><span class="camera-body"></span><span class="camera-origin"></span><span class="viewing-ray"></span></div>
-      </div>
-      <div class="camera-pose" style="--left:72%;--top:70px;--angle:18deg;--ray-length:72px;">
-        <span class="camera-time">t+2</span><i class="time-guide"></i>
-        <div class="camera-vector" aria-hidden="true"><span class="camera-body"></span><span class="camera-origin"></span><span class="viewing-ray"></span></div>
-      </div>
-      <div class="camera-pose" style="--left:85%;--top:105px;--angle:-5deg;--ray-length:60px;">
-        <span class="camera-time">t+H</span><i class="time-guide"></i>
-        <div class="camera-vector" aria-hidden="true"><span class="camera-body"></span><span class="camera-origin"></span><span class="viewing-ray"></span></div>
-      </div>
-    </div>
-    <p class="figure-caption">The <code>x/y/z</code> axes define 3D space, <code>t</code> indexes time, and <code>H</code> is the prediction horizon. Each token carries its time together with the origin and direction of its camera ray.</p>
+    <div class="ray-spacetime" data-ray-spacetime></div>
+    <script defer src="{{ '/static/js/merope-rays.js?v=20260923-rays-v2' | relative_url }}"></script>
+    <p class="figure-caption">A calibrated camera places each token’s ray in 3D: its origin follows the camera position, and its direction passes through the token’s image-plane location. The highlighted token also moves within the image plane; (u, v) are normalized image coordinates. The synchronized time axis adds the fourth coordinate. Motion is illustrative.</p>
 
     <p>
       Alongside visual features, MeRoPE uses each token's time and calibrated camera ray. These geometric tags help the model relate observed tokens to the tokens it predicts across cameras and time.
@@ -223,12 +168,12 @@ panshot_more:
       <div class="geometry-grid" id="pose-diagrams">
         <figure class="geometry-figure">
           <h3 class="rotation-cue">Rotation · viewing direction</h3>
-          <img src="{{ '/media/merope/figures/encoding_rotation_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_rotation.gif' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="Query ray Q turns around the fixed camera origin O; the blue minimum-rotation arc from optical axis z and the local coordinate frame follow.">
+          <img src="{{ '/media/merope/figures/encoding_rotation.gif?v=continuous-v1' | relative_url }}" data-poster="{{ '/media/merope/figures/encoding_rotation_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_rotation.gif?v=continuous-v1' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="Query ray Q turns around the fixed camera origin O; the blue minimum-rotation arc from optical axis z and the local coordinate frame follow.">
           <figcaption>Turn query ray <b>Q</b> while camera origin <b>O</b> and optical axis <b>z</b> stay fixed. The blue MinRot arc and local axes follow. Comparing the query and key ray frames then encodes their relative viewing orientation.</figcaption>
         </figure>
         <figure class="geometry-figure">
           <h3 class="translation-cue">Translation · camera displacement</h3>
-          <img src="{{ '/media/merope/figures/encoding_translation_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_translation.gif' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="Key camera K moves along the baseline while query camera Q stays fixed; the green relative displacement vector changes length.">
+          <img src="{{ '/media/merope/figures/encoding_translation.gif?v=continuous-v1' | relative_url }}" data-poster="{{ '/media/merope/figures/encoding_translation_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_translation.gif?v=continuous-v1' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="Key camera K moves along the baseline while query camera Q stays fixed; the green relative displacement vector changes length.">
           <figcaption>Move key camera <b>K</b> while query camera <b>Q</b> stays fixed. The green <b>Δo</b> changes with the baseline. MeRoPE maps each displacement coordinate to rotary phases, retaining metric motion without stretching the features.</figcaption>
         </figure>
       </div>
@@ -252,7 +197,7 @@ panshot_more:
       \[
       \mathcal{U}^{\mathrm{trans}}_{ab}
       =\bigoplus_{c\in\{x,y,z\}}\;\bigoplus_{k=0}^{K-1}
-      \operatorname{Rot}\!\left(\omega_k[\Delta\mathbf{o}_{b\mid a}]_c\right),
+      \operatorname{Rot}\!\left(\omega_{c,k}[\Delta\mathbf{o}_{b\mid a}]_c\right),
       \qquad
       \operatorname{Rot}(\theta)=
       \begin{bmatrix}
@@ -262,7 +207,7 @@ panshot_more:
       \]
     </div>
     <p>
-      The index \(c\) selects a translation coordinate. The value \(K\) is the number of frequencies, \(k\) indexes them, and \(\omega_k\) is the corresponding angular frequency.
+      The index \(c\) selects a translation coordinate. The value \(K\) is the number of frequencies, \(k\) indexes them, and \(\omega_{c,k}\) is the corresponding angular frequency.
       The direct sum \(\oplus\) places the independent 2D rotations on the diagonal. Distance changes their angle \(\theta\), not the feature magnitude.
     </p>
     </details>
@@ -280,12 +225,12 @@ panshot_more:
       <div class="geometry-grid" id="disparity-diagrams">
         <figure class="geometry-figure">
           <h3 class="disparity-cue">Turn the key ray · reshape the arc</h3>
-          <img src="{{ '/media/merope/figures/encoding_disparity_key_ray_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_disparity_key_ray.gif' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="The ray from key camera K turns while both camera origins remain fixed. Its vanishing direction u moves, changing the purple arc toward fixed epipole e and the anchor at a fixed angular fraction.">
+          <img src="{{ '/media/merope/figures/encoding_disparity_key_ray.gif?v=continuous-v1' | relative_url }}" data-poster="{{ '/media/merope/figures/encoding_disparity_key_ray_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_disparity_key_ray.gif?v=continuous-v1' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="The ray from key camera K turns while both camera origins remain fixed. Its vanishing direction u moves, changing the purple arc toward fixed epipole e and the anchor at a fixed angular fraction.">
           <figcaption>Turn the ray from <b>K</b> with both camera origins fixed. Its vanishing direction <b>u</b> moves, reshaping the arc toward the fixed epipole <b>e</b>. The large purple dot stays at the same angular fraction along the changing arc.</figcaption>
         </figure>
         <figure class="geometry-figure">
           <h3 class="disparity-cue">Move the anchor · change its frame</h3>
-          <img src="{{ '/media/merope/figures/encoding_disparity_anchor_point_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_disparity_anchor_point.gif' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="The key ray and purple arc stay fixed while the large anchor dot moves along the arc. Its local coordinate frame and the blue angle from query ray Q change together.">
+          <img src="{{ '/media/merope/figures/encoding_disparity_anchor_point.gif?v=continuous-v1' | relative_url }}" data-poster="{{ '/media/merope/figures/encoding_disparity_anchor_point_poster.png' | relative_url }}" data-animation="{{ '/media/merope/figures/encoding_disparity_anchor_point.gif?v=continuous-v1' | relative_url }}" width="840" height="960" loading="lazy" decoding="async" alt="The key ray and purple arc stay fixed while the large anchor dot moves along the arc. Its local coordinate frame and the blue angle from query ray Q change together.">
           <figcaption>Keep the key ray and arc fixed, then move the large purple dot. Its local axes and the blue angle from query ray <b>Q</b> change. MeRoPE encodes the resulting relative <em>frame rotation</em> for each anchor.</figcaption>
         </figure>
       </div>
@@ -329,25 +274,32 @@ panshot_more:
   </section>
 
   <section class="merope-section" id="nuscenes">
-    <h2>Camera-controlled video generation on nuScenes</h2>
+    <h2>Camera control across driving datasets</h2>
     <p>
-      We test MeRoPE with a Wan2.2 TI2V-5B predictive video model <a class="citation" href="https://arxiv.org/abs/2503.20314">[7]</a> on nuScenes <a class="citation" href="https://arxiv.org/abs/1903.11027">[8]</a>.
-      Each video shows the commanded and recovered camera paths with the generated frames. The predictions follow the requested motion while keeping the roads, vehicles, and surrounding scene coherent.
-      The paper reports quantitative comparisons and component ablations.
+      One MeRoPE model, trained with Wan2.2 TI2V-5B, controls camera motion on Waymo, Argoverse 2, and nuScenes.
+      These selected held-out examples share the first nine observed frames and follow original, left-offset, or right-offset camera commands.
+      See the paper for results on the full evaluation set.
     </p>
-
-    <div class="video-gallery video-gallery-wide">
-      <figure><video autoplay loop muted playsinline controls preload="metadata"><source src="{{ '/media/merope/videos/nuscenes-pose/02_b4715f.mp4' | relative_url }}" type="video/mp4"></video><figcaption>Urban sequence</figcaption></figure>
-      <figure><video autoplay loop muted playsinline controls preload="metadata"><source src="{{ '/media/merope/videos/nuscenes-pose/11_9ae2f0_port.mp4' | relative_url }}" type="video/mp4"></video><figcaption>Port sequence</figcaption></figure>
-    </div>
-    <details class="more-results">
-      <summary>More nuScenes results</summary>
-      <div class="video-gallery video-gallery-wide">
-        {% for video in page.pose_more %}
-          <video controls muted loop playsinline preload="none" aria-label="Additional nuScenes result {{ forloop.index }}"><source src="{{ '/media/merope/videos/nuscenes-pose/' | append: video | relative_url }}" type="video/mp4"></video>
+    <p class="trajectory-legend"><span class="legend-command">Commanded path</span><span class="legend-recovered">Recovered camera path</span><span class="legend-original">Original path (BEV)</span></p>
+    <div class="driving-demo" data-driving-demo>
+      <div class="dataset-switch" aria-label="Driving dataset" hidden>
+        {% for dataset in site.data.merope_demo_gallery.driving %}
+          <button type="button" aria-pressed="{{ forloop.first }}" aria-controls="demo-{{ dataset.id }}" data-dataset="{{ dataset.id }}">{{ dataset.label }}</button>
         {% endfor %}
       </div>
-    </details>
+      {% for dataset in site.data.merope_demo_gallery.driving %}
+        <div id="demo-{{ dataset.id }}" data-result-panel="{{ dataset.id }}">
+          {% assign featured = dataset.scenes | first %}
+          {% include merope-driving-scene.html scene=featured dataset=dataset preload="metadata" %}
+          <details class="driving-more" data-showcase-more>
+            <summary>More {{ dataset.label }} demos <span class="demo-count">({{ dataset.scenes.size | minus: 1 }} scenes)</span></summary>
+            {% for scene in dataset.scenes offset:1 %}
+              {% include merope-driving-scene.html scene=scene dataset=dataset preload="none" %}
+            {% endfor %}
+          </details>
+        </div>
+      {% endfor %}
+    </div>
   </section>
 
   <section class="merope-section" id="panshot">
@@ -374,33 +326,24 @@ panshot_more:
   </section>
 
   <section class="merope-section" id="history">
-    <h2>Real-to-Sim with retrieved images</h2>
+    <h2>Real-to-Sim from historical revisits</h2>
     <p>
-      MeRoPE also supports a simple form of real-to-sim generation: a calibrated image retrieved from the same location anchors a simulated future rollout.
-      The image may come from another traversal, time, or weather condition, so it anchors the persistent scene layout rather than reproducing the same moving objects.
+      Historical images act as visual anchors for generating the same place along a new camera path.
+      Their visual tokens join the video tokens in self-attention, where MeRoPE encodes relative camera pose and ray geometry to help relate historical scene details to the new view.
     </p>
-    <p>
-      History SA inserts the retrieved image into temporal self-attention. MeRoPE supplies the geometry between its rays and the rays being predicted, allowing the image to remain a visual anchor over a long rollout.
-      On nuScenes, History SA preserves static structure supported by the retrieval, while History CA fails to retain it over time. The same pattern appears when the retrieved and target traversals have different weather.
-    </p>
-
-    <figure class="center-figure">
-      <img src="{{ '/media/merope/figures/history-ca-vs-sa.webp' | relative_url }}" alt="History self-attention preserves retrieved scene appearance over time, unlike cross-attention" loading="lazy">
-      <figcaption>History SA preserves the static scene layout supported by the retrieved image, including in the cross-weather example.</figcaption>
-    </figure>
-
-    <div class="video-gallery video-gallery-wide">
-      <figure><video autoplay loop muted playsinline controls preload="metadata"><source src="{{ '/media/merope/videos/nuscenes-history/01_81f688_paper_latconf25.mp4' | relative_url }}" type="video/mp4"></video><figcaption>Tree-lined corridor</figcaption></figure>
-      <figure><video autoplay loop muted playsinline controls preload="metadata"><source src="{{ '/media/merope/videos/nuscenes-history/02_f93df2_paper_cross_weather_latconf25.mp4' | relative_url }}" type="video/mp4"></video><figcaption>Cross-weather street corner</figcaption></figure>
+    <div class="video-gallery video-gallery-wide real2sim-gallery">
+      {% assign featured_replay = site.data.merope_demo_gallery.real2sim | first %}
+      {% include merope-real2sim-scene.html scene=featured_replay preload="metadata" %}
     </div>
-    <details class="more-results">
-      <summary>More Real-to-Sim results</summary>
-      <div class="video-gallery video-gallery-wide">
-        {% for video in page.history_more %}
-          <video controls muted loop playsinline preload="none" aria-label="Additional Real-to-Sim result {{ forloop.index }}"><source src="{{ '/media/merope/videos/nuscenes-history/' | append: video | relative_url }}" type="video/mp4"></video>
+    <details class="driving-more real2sim-more" data-showcase-more>
+      <summary>More Real-to-Sim demos <span class="demo-count">({{ site.data.merope_demo_gallery.real2sim.size | minus: 1 }} scenes)</span></summary>
+      <div class="video-gallery video-gallery-wide real2sim-gallery">
+        {% for scene in site.data.merope_demo_gallery.real2sim offset:1 %}
+          {% include merope-real2sim-scene.html scene=scene preload="none" %}
         {% endfor %}
       </div>
     </details>
+    <p class="demo-note">nuScenes · Nine conditioning frames. Top: reference cameras and two generated paths. Bottom: four representative historical inputs, labeled by capture date; L / R indicates which path uses each view.</p>
   </section>
 
   <section class="merope-section" id="bibtex">

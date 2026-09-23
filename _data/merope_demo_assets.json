@@ -1,0 +1,325 @@
+{
+  "description": "Assets selected for the MeRoPE project page. Videos are qualitative evaluation examples.",
+  "assets": [
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/left-overlay.mp4",
+      "sha256": "96cf024bed7fcf49675e5ec8aa4d8f078035f08a50839db4b2dcad2be0dbd06f"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/left-overlay.jpg",
+      "sha256": "4859b2ab3becf9652e40c656fcfd6c94efc283e447fca532c2006ba5b4fb90fe"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/orig-overlay.mp4",
+      "sha256": "de2f473703c71f11de8d64e9f373a255bea29691f726b1bb5d5327ed0e8bfebd"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/orig-overlay.jpg",
+      "sha256": "662c178f4b4b56570db3de67dcb81ee35b95d5117b1b404e376b04c9c8c82995"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/right-overlay.mp4",
+      "sha256": "bb9716db605a3a930a417e256e86d13786e401ce498b57c53af2714647b3d2f4"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/right-overlay.jpg",
+      "sha256": "9cc68881c019951ea4504f5d5b708e41ac768b1b7404e8437f74c85010b782f8"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/more/left-overlay.mp4",
+      "sha256": "b66f66e1a3ad584e95ebb1ba0a8731afce64681979e42314aea95e7e45817363"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/more/left-overlay.jpg",
+      "sha256": "15f444aec540988b292092fdc394a0982b8594a48999f5167a0fdd5f29825e32"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/more/orig-overlay.mp4",
+      "sha256": "5ff028c22aaf8841d3c62c0bb6a062a939ef8694c5299b22bc46ac4fbee3c08e"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/more/orig-overlay.jpg",
+      "sha256": "8e3663b0d682dc66cb4de6f64b093b060f9447c29c17bb20f5b26cbcaf13641f"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/more/right-overlay.mp4",
+      "sha256": "aa207908f4d67f70058147719a75b91e6e60c5165377d47a44851b38cc08843d"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/more/right-overlay.jpg",
+      "sha256": "9245813584a2435f80f08ba76fd61488973fd749de07bbf458ac9f8c1e081084"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-02/left-overlay.mp4",
+      "sha256": "4f1754cdce50aacac75a76d11dad623d42ff8254804f2ae7de9737685655ddfc"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-02/left-overlay.jpg",
+      "sha256": "30dd376c82a100d668d5984b63e6930996429835a5c8d0e1c08d7f0f678bbb1d"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-02/orig-overlay.mp4",
+      "sha256": "f3e2370011e058c5d3be6c5461a0d96c0533e10cb6df584fbb570be9c12bb4c1"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-02/orig-overlay.jpg",
+      "sha256": "d8ead175682f6652f05c483ed702513202b858611a35c9f37b5a7232b3ee5e1a"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-02/right-overlay.mp4",
+      "sha256": "3a34698353e1bd0f333a06a92960b57d857af16a4331856a541a2febe5b9ca42"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-02/right-overlay.jpg",
+      "sha256": "fbb9fea04a7f2a7121e80e3230b2e11d6da159dc2319fe0cc3c092390b79f667"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-03/left-overlay.mp4",
+      "sha256": "21bbc64a4161483dea784bd492d617e3ccddb05acf35823e274dafb0e1d686c6"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-03/left-overlay.jpg",
+      "sha256": "b5c66caba05e8ca67e1d2acb65d8be39738edd0e72a245a2b9558acc87abb2a8"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-03/orig-overlay.mp4",
+      "sha256": "f746a5de6cf2466690953b6ae5db30e729bd838937d7fe79498962876c35e649"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-03/orig-overlay.jpg",
+      "sha256": "3bb0784f5253dda5b4d5819a47887ca8aaa573515f2115596364f7652165a5a1"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-03/right-overlay.mp4",
+      "sha256": "b20889ba7b7487176c9679ae27ea86cb242db800c50fe1733f18e176051029f1"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/waymo/scene-03/right-overlay.jpg",
+      "sha256": "a16583a466a49e7fcfadb3d9c974e597dedb8b1d6f4b799634d54341b1a6a21f"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/left-overlay.mp4",
+      "sha256": "a7e7e18c501ad504e9ca64cacbc0dc940ff198bfbef07abd90c80c6b255274f1"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/left-overlay.jpg",
+      "sha256": "4c12b64016315d1b2069bd50e72cea3fe71d0312abe425f183395de7ddf664ae"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/orig-overlay.mp4",
+      "sha256": "8a684f91bbc0d2f32fd30ae2977308f2d003dd8f57eaf165168f189084b9171b"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/orig-overlay.jpg",
+      "sha256": "625b6e547077320fba637e67b7321fe2a37494bcbc4b208c0ec4432069f8e511"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/right-overlay.mp4",
+      "sha256": "0c411969575d492ec090d2936e21ab2d66a8aaa4da49bd33099645c68ee6d4ec"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/right-overlay.jpg",
+      "sha256": "b629eb7df7ba0b7a01a58ffa0db08e37d2078fcb5682d8968b4a715f25c59400"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/more/left-overlay.mp4",
+      "sha256": "2801626e290c30e63728da8a9d7c5b0b391987850a2323ef8a54a784eb9e1e81"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/more/left-overlay.jpg",
+      "sha256": "26019f196668d2c5da5c71aca6dc67188608a626b4a2f6fcb2f8ee3acb5e8f83"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/more/orig-overlay.mp4",
+      "sha256": "99d00145051aaba4b113b82f30d6b96d28eba791585b9f53dd8b7d83be6f38fd"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/more/orig-overlay.jpg",
+      "sha256": "2e753548201693570453bca924cfc7948ea51c1140b6c1009c4df023410496f4"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/more/right-overlay.mp4",
+      "sha256": "f47af8ed7fbba35a9b2c1ba863743eb623cf3c67adaed726563b8a4c9490fa3d"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/more/right-overlay.jpg",
+      "sha256": "9e4e128cd2b0654922203737ae8d9b5b0aafd57e614cfb884ea5e98b4f7f9460"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-03/left-overlay.mp4",
+      "sha256": "39725522352ea76ce44487657772695c85a7753cb7e41994dcc660088b2846c8"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-03/left-overlay.jpg",
+      "sha256": "7950fa342c0f99fe07939148b43eb1615a8e9a69a016870e4efec253da566e03"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-03/orig-overlay.mp4",
+      "sha256": "f26bc7ed12c8887b38d12d6b052122afac398223a34e3a4edbd43602a7685d82"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-03/orig-overlay.jpg",
+      "sha256": "2f76ae40d2724d66deb96593540ef9623a21c709652883f48b3ba264205765b0"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-03/right-overlay.mp4",
+      "sha256": "123f59299b55c2a2dbe15d92b429f0500af82c968498b15baaadb85d2348aee0"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-03/right-overlay.jpg",
+      "sha256": "ac1ad67ca553ae463d6758f47ff04266ce0568883935d8f867b918fd9396c303"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-08/left-overlay.mp4",
+      "sha256": "bc98b1611cb7b18ebb228d69e07255637b7a14b5026cdf5d6bc18032c48f2b7f"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-08/left-overlay.jpg",
+      "sha256": "f2ec7ac3505f872f3a5bf4b72813dab50468cf96e104932a58a5904b548d7577"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-08/orig-overlay.mp4",
+      "sha256": "169380d16b3b9fff551ed4aa18071632c50d61b40281a145ad59076e9c1c006d"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-08/orig-overlay.jpg",
+      "sha256": "183028e7384884b6ed671f21e2a7cae83d827d4bc600c09d1a4aa4b42ef5d7f3"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-08/right-overlay.mp4",
+      "sha256": "02bfc58dc2c5020c660973c10a980bc8df74232b9c857ed7abf241fe03a61cb0"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/av2/scene-08/right-overlay.jpg",
+      "sha256": "995043e1a39120e146001de1076c9a4eefe9e951b96c74a32b48f661eaec2f86"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/left-overlay.mp4",
+      "sha256": "27b16d8efc355b3be9b17827e9d1bffc17876367c7b90ecdf3e136f01ff3ab4f"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/left-overlay.jpg",
+      "sha256": "e77ae95f83adbf37e3acaf11371f2ecffb5778d29b7007c20afb77165b289e76"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/orig-overlay.mp4",
+      "sha256": "ae2ca3682bd6a0e4e1baadfbc1fcba5f1bb49ac7462d7bbf06b6a4bb9c2b274b"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/orig-overlay.jpg",
+      "sha256": "f860467c4da4eac53bbda4d98ca6bcd9e275a77892ea19b3329fc8942ad35a49"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/right-overlay.mp4",
+      "sha256": "825210b1955a81ab27bd516aaf2e60513d2df3952bb22e86b57467c04ad8f013"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/right-overlay.jpg",
+      "sha256": "4ec1f9f9be9a78fa0ee1e714a98e6a30b866924867706f210277c8c6d6234d57"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/more/left-overlay.mp4",
+      "sha256": "437ba55b0e593bd041a6344153dd9c35f1768da147080ca2e10bfcf03300b702"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/more/left-overlay.jpg",
+      "sha256": "ddf324ffcff575f6a01b56a732cb2bbbfda3c1393b5df2379e3f69b3d17e2af9"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/more/orig-overlay.mp4",
+      "sha256": "ddbfdb46c8b23fa071981ca768cf1ecb0ad4a0f7c306199631ec3edfebce4bc9"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/more/orig-overlay.jpg",
+      "sha256": "ac5bcdaf9645cff821fb4e4f2d16699cc374d8dd56b1fb5a8f055be9f67175e5"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/more/right-overlay.mp4",
+      "sha256": "bbb2d43c576b12a9554a662a2d53431142107de4f8e3e1426cc42aa8cc5f2bc9"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/more/right-overlay.jpg",
+      "sha256": "70dfe9afe49c2de8baac7e5ec0268344b096bc184737ce71d4cc203574a912c5"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-03/left-overlay.mp4",
+      "sha256": "e44cbc5cc4a8a11a9ea03ffd2660df42fa6e3566681b5c0a93960baf235a8c92"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-03/left-overlay.jpg",
+      "sha256": "c194d755a16220fdbebe6a0fa9f132315686ba1b53a55fc2c475c4e35d111357"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-03/orig-overlay.mp4",
+      "sha256": "ea58a5cf784e6658a0da72e18faccde637113a56fb31861780db92bf5de1ddd5"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-03/orig-overlay.jpg",
+      "sha256": "84e266b9b6966e9a52bf731a81dd95aca523a4cb9e8554a5591c7e914549e567"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-03/right-overlay.mp4",
+      "sha256": "802a1c941497381d55d5431ac3ac6fda3521fd0eec6a1070b78e2efab280d811"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-03/right-overlay.jpg",
+      "sha256": "e887708b04dc32f59a6677fd0d7238ef58f2fef0bfd89ae7dbbd81b66eb41b86"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-04/left-overlay.mp4",
+      "sha256": "66b08703bdfcfdb0b6de2fb4c40e494b2a03c1ee7e6e4745661478fb0cac1039"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-04/left-overlay.jpg",
+      "sha256": "6ae4acfd3415b58b8875b0ee41c09cfcbef38916c7b9c7db69c0e3ca805f1b1e"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-04/orig-overlay.mp4",
+      "sha256": "551671d88eef1ca7622ebff8bc8d6fd9369f75382e531e30aa38680e481493a4"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-04/orig-overlay.jpg",
+      "sha256": "6672acebbbdc6d66bd2427e5d1d53bb2503339a06e1dc0ab04f894dfa8a7f774"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-04/right-overlay.mp4",
+      "sha256": "33e1f9f6fe808297bd7952716cdedfd9bf6d22320ec58bc97e2f20158b9a3d25"
+    },
+    {
+      "path": "/media/merope/videos/driving-v2/nuscenes/scene-04/right-overlay.jpg",
+      "sha256": "a6db139d418eb947cd5c02bacfe44c7fc275cadbcf2391c5a51cb3217fbdba16"
+    },
+    {
+      "path": "/media/merope/videos/real2sim/hist-59-compact.mp4",
+      "sha256": "1ded4746b3d46c0429474c793092046a162667bedd5f3d74d35619a255423755"
+    },
+    {
+      "path": "/media/merope/videos/real2sim/hist-59-compact.jpg",
+      "sha256": "c4cba21abebd14af50af8ece6edd127ebef9f326d5c755d085c066346f824d42"
+    },
+    {
+      "path": "/media/merope/videos/real2sim/hist-48-compact.mp4",
+      "sha256": "d03768e9612b5891ecf7186a21dd3a9ca70c73e1b075dd204dc478597c352970"
+    },
+    {
+      "path": "/media/merope/videos/real2sim/hist-48-compact.jpg",
+      "sha256": "3dfeb5375f312c5c1ec0cf475909f60c60474428ef781251f566cde003526822"
+    },
+    {
+      "path": "/media/merope/videos/real2sim/hist-09-compact.mp4",
+      "sha256": "1e86dcb8aed4776d6032e25a573154ffd6b9aed3d78c2a070c3d70b6bac22304"
+    },
+    {
+      "path": "/media/merope/videos/real2sim/hist-09-compact.jpg",
+      "sha256": "c9d0b8cf166433beed079fbb3914d0b5bd5b947b92a22088ecf40ab6bd557e1d"
+    },
+    {
+      "path": "/media/merope/videos/real2sim/hist-11-compact.mp4",
+      "sha256": "1ed12f36d1029dd8c336332b987ae0cf3537437810c88f6dfd0cc748d36dc397"
+    },
+    {
+      "path": "/media/merope/videos/real2sim/hist-11-compact.jpg",
+      "sha256": "586c5db37adce76eaebea421df89358dde1a0873ad457c5f70134beaf132bc7c"
+    }
+  ]
+}

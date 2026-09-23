@@ -43,14 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
     wideLayout.addEventListener("change", ({ matches }) => setTocOpen(matches));
   }
 
-  // Animate only the row being read; the control shows exact reference poses.
+  // Continuous loops play by default; a static view remains available.
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   document.querySelectorAll("[data-geometry-demo]").forEach((demo) => {
     const toggle = demo.querySelector(".geometry-toggle");
     const images = Array.from(demo.querySelectorAll("img[data-animation]"));
-    const posters = images.map((image) => image.getAttribute("src"));
+    const posters = images.map((image) => image.dataset.poster || image.getAttribute("src"));
     let enabled = !reducedMotion.matches;
-    let visible = false;
+    let visible = true;
     let userSelected = false;
 
     const update = () => {
@@ -80,6 +80,66 @@ document.addEventListener("DOMContentLoaded", () => {
     demoObserver.observe(demo);
     update();
   });
+
+  // Show only one dataset at a time; keep native controls and reduced motion.
+  const showcaseVideos = document.querySelectorAll("video[data-showcase-video]");
+  const updateShowcase = (video) => {
+    const rect = video.getBoundingClientRect();
+    const visible = !video.closest("[hidden], details:not([open])") && rect.bottom > 0 && rect.top < window.innerHeight;
+    if (visible && !reducedMotion.matches) {
+      const group = video.closest("[data-sync-group]");
+      if (group && Array.from(group.querySelectorAll("video")).some((item) => item.readyState < 3)) return;
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  };
+  document.querySelectorAll("[data-driving-demo]").forEach((demo) => {
+    const buttons = demo.querySelectorAll("[data-dataset]");
+    const panels = demo.querySelectorAll("[data-result-panel]");
+    const selectDataset = (dataset) => {
+      buttons.forEach((button) => button.setAttribute("aria-pressed", String(button.dataset.dataset === dataset)));
+      panels.forEach((panel) => {
+        panel.hidden = panel.dataset.resultPanel !== dataset;
+        panel.querySelectorAll("video").forEach((video) => {
+          video.pause();
+          video.currentTime = 0;
+          updateShowcase(video);
+        });
+      });
+    };
+    demo.querySelector(".dataset-switch").hidden = false;
+    buttons.forEach((button) => button.addEventListener("click", () => selectDataset(button.dataset.dataset)));
+    selectDataset(buttons[0].dataset.dataset);
+    demo.querySelectorAll("[data-sync-group]").forEach((group) => {
+      const videos = Array.from(group.querySelectorAll("video"));
+      const leader = videos[0];
+      videos.forEach((video) => video.addEventListener("canplay", () => videos.forEach(updateShowcase)));
+      leader.addEventListener("timeupdate", () => {
+        if (group.closest("[hidden], details:not([open])") || leader.paused) return;
+        videos.slice(1).forEach((video) => {
+          if (Math.abs(video.currentTime - leader.currentTime) > 0.15) video.currentTime = leader.currentTime;
+        });
+      });
+    });
+  });
+  document.querySelectorAll("[data-showcase-more]").forEach((details) => {
+    details.addEventListener("toggle", () => {
+      details.querySelectorAll("video").forEach((video) => {
+        if (details.open && video.preload === "none") {
+          video.preload = "auto";
+          video.load();
+        }
+        updateShowcase(video);
+      });
+    });
+  });
+  const showcaseObserver = new IntersectionObserver(
+    (entries) => entries.forEach(({ target }) => updateShowcase(target)),
+    { threshold: 0.15 }
+  );
+  showcaseVideos.forEach((video) => showcaseObserver.observe(video));
+  reducedMotion.addEventListener("change", () => showcaseVideos.forEach(updateShowcase));
 
   const sections = document.querySelectorAll("details.more-results");
   if (!sections.length) return;

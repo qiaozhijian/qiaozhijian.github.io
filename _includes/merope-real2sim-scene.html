@@ -1,0 +1,6 @@
+<figure>
+  <video data-showcase-video controls muted loop playsinline preload="{{ include.preload }}" aria-label="Real-to-Sim — {{ include.scene.title }}" poster="{{ include.scene.path | append: '.jpg' | relative_url }}">
+    <source src="{{ include.scene.path | append: '.mp4' | relative_url }}" type="video/mp4">
+  </video>
+  <figcaption>{{ include.scene.title }} · Historical revisit views, two camera paths.</figcaption>
+</figure>

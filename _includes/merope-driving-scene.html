@@ -1,0 +1,12 @@
+<h3 class="demo-scene-title">{{ include.scene.title }}</h3>
+<div class="video-gallery driving-gallery" data-sync-group>
+  {% for variant in site.data.merope_demo_gallery.variants %}
+    {% assign asset = include.scene.path | append: '/' | append: variant.id | append: '-overlay' %}
+    <figure>
+      <video data-showcase-video loop muted playsinline controls preload="{{ include.preload }}" aria-label="{{ include.dataset.label }} · {{ include.scene.title }} — {{ variant.label }}" poster="{{ asset | append: '.jpg' | relative_url }}">
+        <source src="{{ asset | append: '.mp4' | relative_url }}" type="video/mp4">
+      </video>
+      <figcaption>{{ variant.label }}</figcaption>
+    </figure>
+  {% endfor %}
+</div>

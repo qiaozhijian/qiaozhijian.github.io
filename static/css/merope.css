@@ -761,6 +761,111 @@ figcaption {
   text-align: center;
 }
 
+.dataset-switch {
+  display: flex;
+  gap: 24px;
+  margin: 26px 0 18px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.dataset-switch[hidden],
+[data-result-panel][hidden] {
+  display: none;
+}
+
+.dataset-switch button {
+  padding: 8px 0 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: #666;
+  font: inherit;
+  cursor: pointer;
+}
+
+.dataset-switch button[aria-pressed="true"] {
+  border-bottom-color: #3273dc;
+  color: #3273dc;
+}
+
+.dataset-switch button:focus-visible {
+  outline: 2px solid #3273dc;
+  outline-offset: 4px;
+}
+
+.merope-page .demo-scene-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #555;
+  margin: 16px 0 12px;
+}
+
+.driving-gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.driving-gallery figure,
+.real2sim-gallery figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.merope-page .demo-note {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Small trajectory keys leave the generated views unobstructed. */
+.trajectory-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  color: #6e6e73;
+  font-size: 13px;
+}
+
+.trajectory-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  margin: 0 7px 3px 0;
+  border-top: 3px solid #e5b900;
+}
+
+.trajectory-legend .legend-recovered::before { border-top: 3px dashed #26a9c8; }
+.trajectory-legend .legend-original::before { border-top-color: #2e75d3; }
+
+.driving-more {
+  margin: 20px 0 24px;
+  border-top: 1px solid #e8e8ed;
+  padding-top: 14px;
+}
+
+.driving-more summary {
+  width: fit-content;
+  color: #0071e3;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.demo-count { color: #86868b; font-size: 13px; }
+.driving-more .demo-scene-title { margin-top: 28px; }
+
+.driving-more summary:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 5px;
+}
+
+.real2sim-gallery { gap: 32px; }
+.real2sim-gallery video {
+  background: #fff;
+  border: 1px solid #ededf0;
+  border-radius: 18px;
+}
+.real2sim-gallery figcaption { color: #6e6e73; font-size: 14px; }
+
 .more-results {
   margin-top: 20px;
   border-top: 1px solid #dbdbdb;
@@ -845,6 +950,7 @@ figcaption {
 }
 
 @media (max-width: 768px) {
+  .merope-section { scroll-margin-top: 72px; }
   .merope-paper-shell {
     padding-right: 18px;
     padding-left: 18px;
@@ -941,3 +1047,9 @@ figcaption {
     width: auto;
   }
 }
+
+/* Spatial geometry with an independent, synchronized time coordinate. */
+.ray-spacetime { position: relative; margin: 24px 0 12px; background: #fff; border: 1px solid #e9ebef; border-radius: 20px; overflow: hidden; }
+.ray-motion-toggle { position: absolute; top: 18px; right: 20px; padding: 5px 13px; border: 1px solid #e5e7eb; border-radius: 18px; background: #fff; color: #6e6e73; font: inherit; font-size: 12px; cursor: pointer; }
+.ray-motion-toggle:hover { color: #0071e3; border-color: #0071e3; }
+@media (max-width: 600px) { .ray-motion-toggle { top: 5px; right: 7px; font-size: 10px; padding: 2px 8px; } }

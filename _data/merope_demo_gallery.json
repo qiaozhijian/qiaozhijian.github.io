@@ -1,0 +1,118 @@
+{
+  "variants": [
+    {
+      "id": "left",
+      "label": "Left offset"
+    },
+    {
+      "id": "orig",
+      "label": "Original path"
+    },
+    {
+      "id": "right",
+      "label": "Right offset"
+    }
+  ],
+  "driving": [
+    {
+      "id": "waymo",
+      "label": "Waymo",
+      "scenes": [
+        {
+          "rank": 1,
+          "title": "Residential neighborhood",
+          "path": "/media/merope/videos/driving-v2/waymo"
+        },
+        {
+          "rank": 5,
+          "title": "Palm-lined street",
+          "path": "/media/merope/videos/driving-v2/waymo/more"
+        },
+        {
+          "rank": 2,
+          "title": "Urban transit corridor",
+          "path": "/media/merope/videos/driving-v2/waymo/scene-02"
+        },
+        {
+          "rank": 3,
+          "title": "Sweeping bend at dusk",
+          "path": "/media/merope/videos/driving-v2/waymo/scene-03"
+        }
+      ]
+    },
+    {
+      "id": "av2",
+      "label": "Argoverse 2",
+      "scenes": [
+        {
+          "rank": 1,
+          "title": "Urban intersection",
+          "path": "/media/merope/videos/driving-v2/av2"
+        },
+        {
+          "rank": 2,
+          "title": "Downtown crossing",
+          "path": "/media/merope/videos/driving-v2/av2/more"
+        },
+        {
+          "rank": 3,
+          "title": "Under the elevated roadway",
+          "path": "/media/merope/videos/driving-v2/av2/scene-03"
+        },
+        {
+          "rank": 8,
+          "title": "Mural-lined street",
+          "path": "/media/merope/videos/driving-v2/av2/scene-08"
+        }
+      ]
+    },
+    {
+      "id": "nuscenes",
+      "label": "nuScenes",
+      "scenes": [
+        {
+          "rank": 12,
+          "title": "Industrial district",
+          "path": "/media/merope/videos/driving-v2/nuscenes"
+        },
+        {
+          "rank": 2,
+          "title": "City avenue",
+          "path": "/media/merope/videos/driving-v2/nuscenes/more"
+        },
+        {
+          "rank": 3,
+          "title": "Tree-lined bend",
+          "path": "/media/merope/videos/driving-v2/nuscenes/scene-03"
+        },
+        {
+          "rank": 4,
+          "title": "Cross traffic by a brick arcade",
+          "path": "/media/merope/videos/driving-v2/nuscenes/scene-04"
+        }
+      ]
+    }
+  ],
+  "real2sim": [
+    {
+      "rank": 59,
+      "title": "Tree-lined corridor",
+      "path": "/media/merope/videos/real2sim/hist-59-compact"
+    },
+    {
+      "rank": 48,
+      "title": "Cross-weather street corner",
+      "path": "/media/merope/videos/real2sim/hist-48-compact"
+    },
+    {
+      "rank": 9,
+      "title": "Urban intersection",
+      "path": "/media/merope/videos/real2sim/hist-09-compact"
+    },
+    {
+      "rank": 11,
+      "title": "Rainy industrial district",
+      "path": "/media/merope/videos/real2sim/hist-11-compact"
+    }
+  ]
+}
