@@ -12,7 +12,6 @@
 {% endif %}
 
 {% if _cms != "" %}
-  <script type="text/javascript" id="clustrmaps" src="{{ _cms }}"></script>
   {% assign _dash = "" %}
   {% assign _img = "" %}
   {% if _cm and _cm.dashboard_url %}
@@ -32,11 +31,17 @@
     <a href="{{ _dash }}" title="ClustrMaps"><img src="{{ _img }}" alt="ClustrMaps visitor map" loading="lazy" style="max-width:100%;height:auto;"></a>
   </noscript>
   {% endif %}
+  <p id="visitor-map-status" class="barron-visitor-map-hint" role="status" hidden>
+    The visitor map is temporarily unavailable.
+  </p>
+  <script type="text/javascript" id="clustrmaps" src="{{ _cms }}" onerror="document.getElementById('visitor-map-status').hidden = false;"></script>
+  {% if _dash != "" %}
+  <p class="barron-visitor-map-hint">
+    <a href="{{ _dash }}">View visitor map and statistics ↗</a>
+  </p>
+  {% endif %}
 {% else %}
   <p class="barron-visitor-map-hint">
-    访客地图一般用
-    <a href="https://clustrmaps.com">ClustrMaps</a>
-    这类服务（在世界地图上标大致访问来源），不是 Google 地图。
-    请在 <code>_data/clustrmaps.yml</code> 中填写 <code>script_src</code>，或在 <code>_config.yml</code> 中填写 <code>clustrmaps_script_src</code>；修改后务必<strong>重启</strong> <code>jekyll serve</code>。
+    Visitor statistics are currently unavailable.
   </p>
 {% endif %}

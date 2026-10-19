@@ -6,6 +6,8 @@
  */
 
 html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
   background-color: #ffffff;
   color: #333333;
 }
@@ -113,15 +115,22 @@ span.highlight {
 }
 
 .barron-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  background: #fff;
   font-family: "Lato", Verdana, Helvetica, sans-serif;
   font-size: 14px;
   margin: 0 0 32px;
-  padding-bottom: 14px;
+  padding: 14px 0;
   border-bottom: 1px solid #eaeaea;
 }
 
 .barron-nav a {
-  margin-right: 18px;
   white-space: nowrap;
   color: #555555;
 }
@@ -336,6 +345,33 @@ main li {
   margin: 0.2rem 0;
 }
 
+main .barron-teaching {
+  list-style: none;
+  padding: 0;
+}
+
+.barron-teaching li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 0 18px;
+}
+
+.barron-teaching i {
+  color: #777;
+  flex-shrink: 0;
+}
+
+.barron-course-title {
+  font-weight: 700;
+}
+
+.barron-course-meta {
+  margin-top: 2px;
+  font-size: 13px;
+  color: #777;
+}
+
 /* --- Publication tables (match Fei / original inline 25% / 75%, padding 20px) --- */
 
 .barron-pubs table {
@@ -367,7 +403,8 @@ main li {
   width: 75% !important;
 }
 
-.barron-pubs img {
+.barron-pubs img,
+.barron-pubs video {
   width: 100%;
   max-width: 100%;
   height: auto;
@@ -378,7 +415,8 @@ main li {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.barron-pubs table:hover img {
+.barron-pubs table:hover img,
+.barron-pubs table:hover video {
   transform: scale(1.03);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
@@ -388,6 +426,11 @@ iframe {
 }
 
 /* Projects list */
+.barron-project-content img {
+  max-width: 100%;
+  height: auto;
+}
+
 .barron-project-title {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
   font-size: 18px;
@@ -398,6 +441,15 @@ iframe {
 }
 
 @media (max-width: 640px) {
+  html {
+    scroll-padding-top: 150px;
+  }
+
+  .barron-nav .barron-nav-name {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+
   name {
     font-size: 28px;
   }
@@ -443,7 +495,14 @@ iframe {
     padding: 10px 0 !important;
   }
 
-  .barron-pubs img {
+  .barron-pubs img,
+  .barron-pubs video {
     max-width: 200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

@@ -1,7 +1,12 @@
     <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:20px;width:25%;vertical-align:middle;border-left-style:none;border-bottom-style:none;border-top-style:none;border-right-style:none">
-              <img src="/media/merope/figures/merope-publication.gif" alt="MeRoPE follows a commanded camera trajectory in a generated nuScenes video" style="border-style:none">
+              <a href="{{ '/merope/' | relative_url }}" aria-label="MeRoPE project: camera-controlled video generation on Waymo">
+                <video class="barron-publication-video" autoplay muted loop playsinline preload="metadata" poster="{{ '/media/merope/videos/driving-v2/waymo/left-overlay.jpg' | relative_url }}" aria-label="MeRoPE follows a commanded camera trajectory in a generated Waymo video">
+                  <source src="{{ '/media/merope/videos/driving-v2/waymo/left-overlay.mp4' | relative_url }}" type="video/mp4">
+                  <img src="{{ '/media/merope/videos/driving-v2/waymo/left-overlay.jpg' | relative_url }}" alt="MeRoPE camera-controlled generation on Waymo">
+                </video>
+              </a>
             </td>
             <td style="padding:20px;width:75%;vertical-align:middle;border-left-style:none;border-bottom-style:none;border-top-style:none;border-right-style:none">
                 <papertitle>MeRoPE: Metric Rotary Position Embedding for Camera-Controlled Video Generation</papertitle>

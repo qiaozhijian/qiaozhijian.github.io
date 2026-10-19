@@ -48,14 +48,18 @@
     })();
   </script>
 </head>
-<body{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
+<body id="top"{% if page.body_class %} class="{{ page.body_class }}"{% endif %}>
   <div class="barron-wrap{% if page.wrap_class %} {{ page.wrap_class }}{% endif %}">
     {% unless page.hide_nav %}
       <nav class="barron-nav" aria-label="Primary">
-        <a class="barron-nav-name" href="{{ '/' | relative_url }}">{{ site.author.name | default: site.name }}</a>
-        <a href="{{ '/' | relative_url }}">Home</a>
-        <a href="{{ '/publications/' | relative_url }}">Publications</a>
-        <a href="{{ '/projects/' | relative_url }}">Projects</a>
+        {% assign home_url = '/' | relative_url %}
+        {% if page.url == '/' %}{% assign home_url = '' %}{% endif %}
+        <a class="barron-nav-name" href="{{ home_url }}#top">{{ site.author.name | default: site.name }}</a>
+        <a href="{{ home_url }}#top">Home</a>
+        <a href="{{ home_url }}#publications">Publications</a>
+        <a href="{{ home_url }}#projects">Projects</a>
+        <a href="{{ home_url }}#awards">Awards</a>
+        <a href="{{ home_url }}#teaching">Teaching</a>
         <a href="{{ '/highlight/' | relative_url }}">Highlight</a>
       </nav>
     {% endunless %}
@@ -69,7 +73,7 @@
     <main>
       {{ content }}
       {% if page.show_visitor_map %}
-        <h2>Visitors</h2>
+        <h2 id="visitors">Visitors</h2>
         <div class="barron-visitor-map">
           {% include visitor_map.html %}
         </div>

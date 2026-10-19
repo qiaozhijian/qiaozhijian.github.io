@@ -5,15 +5,4 @@ permalink: /projects/
 author_profile: false
 ---
 
-{% for post in site.portfolio reversed %}
-  <article style="margin-bottom:2rem;">
-    <h2 class="barron-project-title">
-      {% if post.link %}
-        <a href="{{ post.link }}">{{ post.title }}</a>
-      {% else %}
-        {{ post.title }}
-      {% endif %}
-    </h2>
-    <div>{{ post.excerpt | markdownify }}</div>
-  </article>
-{% endfor %}
+{% include barron_projects.html %}

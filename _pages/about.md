@@ -50,6 +50,10 @@ redirect_from:
 {% include barron_publications.html %}
 </div>
 
+## Projects
+
+{% include barron_projects.html heading="h3" %}
+
 ## Education
 
 - Ph.D., Hong Kong University of Science and Technology, 2022 – Present  
@@ -60,6 +64,7 @@ redirect_from:
   Department of Automation, College of Information Science and Engineering
 
 ## Selected honors
+{: #awards }
 
 - **Outstanding Graduates**, 2022, SJTU
 - **Most Influential Graduates**, 2019, NEU
@@ -72,6 +77,22 @@ redirect_from:
 
 - Conference reviewer: ICRA, IROS, CVPR, ICCV, ECCV
 - Journal reviewer: IJRR, T-RO, T-ASE, RAL
-- Teaching assistant:
-  - ELEC 1100: Introduction to Electro-Robot Design, HKUST, 2023 Spring
-  - ELEC 3210: Machine Learning and Information Processing for Robotics, HKUST, 2023 Fall
+
+## Teaching
+
+<ul class="barron-teaching">
+  <li>
+    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+    <div>
+      <div class="barron-course-title">ELEC 1100: Introduction to Electro-Robot Design</div>
+      <div class="barron-course-meta">Spring 2023 @ HKUST · Teaching Assistant</div>
+    </div>
+  </li>
+  <li>
+    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+    <div>
+      <div class="barron-course-title">ELEC 3210: Machine Learning and Information Processing for Robotics</div>
+      <div class="barron-course-meta">Fall 2023 @ HKUST · Teaching Assistant</div>
+    </div>
+  </li>
+</ul>

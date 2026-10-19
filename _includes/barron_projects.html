@@ -1,0 +1,13 @@
+{% assign heading = include.heading | default: 'h2' %}
+{% for post in site.portfolio reversed %}
+  <article style="margin-bottom:2rem;">
+    <{{ heading }} class="barron-project-title">
+      {% if post.link %}
+        <a href="{{ post.link }}">{{ post.title }}</a>
+      {% else %}
+        {{ post.title }}
+      {% endif %}
+    </{{ heading }}>
+    <div class="barron-project-content">{{ post.excerpt | markdownify }}</div>
+  </article>
+{% endfor %}
