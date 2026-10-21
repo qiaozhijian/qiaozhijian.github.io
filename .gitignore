@@ -6,3 +6,7 @@ tools/vendor/bundle/
 .idea/*
 resume
 build
+
+# Python review-tool runtime cache
+__pycache__/
+*.py[cod]
