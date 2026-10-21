@@ -1,6 +1,6 @@
 # Homepage preview revision
 
-Local preview: http://localhost:4010/merope/. No commit, push, or deployment.
+Local preview: http://localhost:4010/merope/. Review scripts are tracked in Git; running them does not deploy the site.
 
 审阅媒体、候选集和验证输出位于已被 `.gitignore` 排除的
 `build/merope-review-20260923/site_review/`；这里仅保留可维护脚本和说明。
@@ -21,3 +21,5 @@ MPLCONFIGDIR=/tmp/merope-mpl python ../merope-paper/scripts/supplementary/demo_r
 The overlay renderer uses the previously copied local raw videos. Calibrated intrinsics and camera heights come from the evaluation geometry sidecar. The site manifest `_data/merope_demo_assets.json` records sources and hashes.
 
 Verification: Jekyll build, JavaScript syntax, local asset references, complete video decoding and frame counts. `check_browser.py` checks the isolated local Chrome preview: dataset switching, default overlay sources, expanded-demo playback and synchronization, pause on collapse, four white Real2Sim videos, reduced motion and mobile page width. Screenshots are saved alongside the script.
+
+Local raw media and candidate renders are ignored. [local-media.json](local-media.json) records their paths, sizes, SHA-256 hashes, and provenance references. These local files must be supplied separately to reproduce the review. The existing selected-site-media manifest and already tracked publication assets remain versioned.

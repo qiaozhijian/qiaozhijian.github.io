@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "storage_policy": "local_only_not_in_git",
+  "recorded_on": "2026-10-22",
+  "materials": [
+    {
+      "path": "media/merope/videos/driving-v2/av2/left.jpg",
+      "bytes": 36386,
+      "sha256": "86c268ecbfaf4ed2a0d8753fe6f3a12f6b89ac0c12487f2ecfccc4fe7ab793be",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/av2/left.mp4",
+      "bytes": 303804,
+      "sha256": "677122b10ef55f987222181e3268f114990cc1d7d0152f41e3e2c9561c13d0a2",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/av2/orig.jpg",
+      "bytes": 36445,
+      "sha256": "a36ecd3e1644f1c0b3dc36759db2a02bd145d773e8142aaac23a1835ed4a3ac8",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/av2/orig.mp4",
+      "bytes": 283954,
+      "sha256": "b96822cd7a0f9a3c160eab1b50c8eca88311826a592c1b34d180ee489687d1af",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/av2/right.jpg",
+      "bytes": 36447,
+      "sha256": "5916d1e2b6c026b691012244f977e68d8ce3f55b89b0910e5cbf7b496dae419b",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/av2/right.mp4",
+      "bytes": 289156,
+      "sha256": "46f2ac144bae87f17a8eba2d85b206e5f62f64ce72feb31fc5288808730d6ba9",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/av2/trajectories.mp4",
+      "bytes": 898147,
+      "sha256": "9679d733dd1143f74dd9f7347aa8292642e7b4f45f0eca6c180c56ec968e6b39",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/nuscenes/left.jpg",
+      "bytes": 30802,
+      "sha256": "a14b881219265c168d6871f154d859c394f77204307bc18d32a6a03bee06bcd2",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/nuscenes/left.mp4",
+      "bytes": 334676,
+      "sha256": "9df64a85c22820a4e1e0c018ef5b2ea7b964c06c389c546164cd2e0d2d435167",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/nuscenes/orig.jpg",
+      "bytes": 30999,
+      "sha256": "55581eeea24b14177bbfcc56b3361908578d6da8fbb28469712e1268f1a5c1fd",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/nuscenes/orig.mp4",
+      "bytes": 328643,
+      "sha256": "eefb01ca3fdf06998c9affa9059bc74c51a94863b30c3601bd2d71324e4480be",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/nuscenes/right.jpg",
+      "bytes": 30567,
+      "sha256": "79744876459ba8d7be2239ba5288c4c21790f4cc51665150a005929f198ffa09",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/nuscenes/right.mp4",
+      "bytes": 372066,
+      "sha256": "f93bb34573abf3594e125ee3c836973bb227d6eedbdb34cb74424625ee1d551c",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/nuscenes/trajectories.mp4",
+      "bytes": 1474744,
+      "sha256": "e84cf506b155b09594efbdc0b5986ed207357596120c22d871b657ff12183f32",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/waymo/left.jpg",
+      "bytes": 30188,
+      "sha256": "5fe89231fe684fe3fb37b67d28d1ede4c8e4571145a3a67123e3964fd00e6f3b",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/waymo/left.mp4",
+      "bytes": 270094,
+      "sha256": "913da06c028e9c0fe8ff29a2cdb22f4259fc79e5fad4dca5c50f82a18f21d497",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/waymo/orig.jpg",
+      "bytes": 31516,
+      "sha256": "7832b3618e1500800ada49cd0fdca84d22ed45f0d8552bf9bffbf61edd6d5812",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/waymo/orig.mp4",
+      "bytes": 225386,
+      "sha256": "cb560b0589bf84b02f6f3852046164d23886c69bdfff65ec4060c9dae56fb861",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/waymo/right.jpg",
+      "bytes": 31825,
+      "sha256": "a38cabc62da7507a8cd1d1d3e8ab97a9a3e7809151d00077f4b579a535052fd9",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/waymo/right.mp4",
+      "bytes": 255386,
+      "sha256": "5c4a7afb989e26d547d1e072cc18860e1f857487836ec9c852198389c56b306c",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/driving-v2/waymo/trajectories.mp4",
+      "bytes": 777541,
+      "sha256": "f17a2415d6de255482f11dea99e292687123f75f451b94bb9414dab0f4bde4ab",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null,
+      "processing_script": "tools/merope-review/render_overlays.py"
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-02-compact.jpg",
+      "bytes": 254901,
+      "sha256": "4e0f1d6f6128231e19083718cbae69726e50b25e396661ff7c50fd2a1d5075c5",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-02-compact.mp4",
+      "bytes": 1219896,
+      "sha256": "b57905b424bffda8ed7b88e779b34baffa62863989292305c7e74d9c013d1d4f",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-02-white.jpg",
+      "bytes": 232238,
+      "sha256": "9b5a80e015cf9f0e18c6d55769a803a3bdde5f7cf924de4cb46823c696f8b172",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-02-white.mp4",
+      "bytes": 1106466,
+      "sha256": "e31eb31985b9fa5616b31394e3e158e86dfb35d806291a97cc12b95227df0062",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-03-compact.jpg",
+      "bytes": 244383,
+      "sha256": "2a8a44efec17d88910988e09911727b61d774521508ab8da631c106a8f7f8f49",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-03-compact.mp4",
+      "bytes": 823484,
+      "sha256": "cada0c90c12fac22c90cfec75338491c1bc7ecf534bbb76fe0a96dff11720a17",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-03-white.jpg",
+      "bytes": 222444,
+      "sha256": "79fce8cf07f9f0d1b6983e87eb7b77ff79de63280b005ef1b91dd3e355546b7f",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-03-white.mp4",
+      "bytes": 754534,
+      "sha256": "fe0bdcf0d1b35b08204aa70fa54c24606196fb8606270f6448315452bd68a374",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-09-white.jpg",
+      "bytes": 219688,
+      "sha256": "f5642b0983156286964807039afa407e9ae0493fb0d10ae7b3437029d0efe779",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-09-white.mp4",
+      "bytes": 798416,
+      "sha256": "c1aa7bc071d6955359b48f0509bb2aad5b021bd647c453ceb27feadc3d23d5a4",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-11-white.jpg",
+      "bytes": 192889,
+      "sha256": "310dddc91b27a4f6d80874f9155290e197eb8220a6a567de4178f6764c402c85",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/hist-11-white.mp4",
+      "bytes": 698817,
+      "sha256": "0f63823054caf1d53602e1051f119657499df99712441b61670107884db7aa84",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-02-white.jpg",
+      "bytes": 251642,
+      "sha256": "9f3f1dae3c30aec5473e077550e918b27992f58882db3eef4069b91b45bec1c5",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-02-white.mp4",
+      "bytes": 1297610,
+      "sha256": "97abca7b9183f2fe58cf7a36aae99514efd339fe674bcbc5d1647624f5afdd32",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-02.jpg",
+      "bytes": 274628,
+      "sha256": "828035c48848cf2411ab5a2712d592a90fa31441e5d188d4e12ddbb3bb519d5d",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-02.mp4",
+      "bytes": 1561212,
+      "sha256": "3a93cfe3c8f696c711559547a85e3fabd62aa7b23661c6626f699ecc37bdf63d",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-04-white.jpg",
+      "bytes": 236114,
+      "sha256": "c8b7f08c2f81babfce6ea6c8e350ed1f2696a58427af042ad67c87e4a3dca74b",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-04-white.mp4",
+      "bytes": 1098005,
+      "sha256": "885f08545a51a460ccf8f2912e97eb12b0a701753d1641e69be07e01c1905a4d",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-04.jpg",
+      "bytes": 257031,
+      "sha256": "95e3200983ad376bed0ce9d7a3871e661b9f8c1f4e5dd71563462bbc96c5d287",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-04.mp4",
+      "bytes": 1314868,
+      "sha256": "fdc2983222ec994876714dc7fdb8410d94dae93712c6e79d6d8acebcaccbf70c",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-05-white.jpg",
+      "bytes": 216095,
+      "sha256": "bf0b257c03a68322c83391d967e95a5bedb5dbfdbbcb5946344c7129144ebfca",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-05-white.mp4",
+      "bytes": 836310,
+      "sha256": "57f83d11867f9b6a98d73a8fc3deeeeff9679235ac01fcf9c9ba284f39c377ca",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-06-white.jpg",
+      "bytes": 211118,
+      "sha256": "59ddc9e16549d4ed56e8a5cccc6742fbf361a52cf274ea4b172948be557f0e97",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    },
+    {
+      "path": "media/merope/videos/real2sim/scene-06-white.mp4",
+      "bytes": 875783,
+      "sha256": "3295efbe9b1a63d224f2a56e2abefdf1431c98eaf659b9a91ea2aa90fd453269",
+      "provenance": "tools/merope-review/README.md",
+      "source_note": "Local review input or candidate render. See review README and _data/merope_demo_assets.json for selected published assets; this file is not certified as a selected asset.",
+      "rebuild": null
+    }
+  ]
+}
