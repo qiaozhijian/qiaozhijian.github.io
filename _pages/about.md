@@ -22,11 +22,11 @@ redirect_from:
           <strong>If I say it’s done, it’s solved.</strong>
         </p>
         <p>
-          I am a Ph.D. candidate at the <a href="https://uav.hkust.edu.hk/">Aerial Robotics Group</a> at HKUST, advised by Prof. <a href="https://scholar.google.com.hk/citations?user=u8Q0_xsAAAAJ&amp;hl=zh-CN&amp;oi=ao">Shaojie Shen</a>.
+          I am a Ph.D. candidate in Electronic and Computer Engineering at the <a href="https://uav.hkust.edu.hk/">Aerial Robotics Group</a> at HKUST, advised by Prof. <a href="https://scholar.google.com.hk/citations?user=u8Q0_xsAAAAJ&amp;hl=zh-CN&amp;oi=ao">Shaojie Shen</a>.
           Before that, I received my Master's degree from the <a href="http://irmv.sjtu.edu.cn/">IRMV Lab</a> at Shanghai Jiao Tong University, supervised by Prof. <a href="http://irmv.sjtu.edu.cn/wanghesheng">Hesheng Wang</a>.
         </p>
         <p>
-          My research interests lie in robotics and autonomous driving, with a focus on world models for autonomous driving, robust estimation, global localization, and long-term mapping.
+          My research focuses on action-conditioned physical world models, generative crowdsourced semantic mapping, and LiDAR/vision registration and localization. I study how geometry and generative models can help robots understand the physical world. My broader goal is to build environments in which robots can learn intelligent behavior through interaction.
         </p>
         <p class="fei-intro-links">
           <a href="mailto:{{ site.author.email }}">Email</a>
