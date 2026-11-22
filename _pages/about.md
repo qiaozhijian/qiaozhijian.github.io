@@ -15,11 +15,10 @@ redirect_from:
       <td class="fei-intro-text">
         <p class="fei-intro-name">
           <name>{{ site.author.name }}</name>
-          {% if site.author.name_ipa %}<span class="fei-intro-ipa" title="Pronunciation (IPA)">{{ site.author.name_ipa }}</span>{% endif %}
-        </p>
-        <p class="fei-intro-motto">
-          <span>If I say I’m on it, I’m solving it.</span>
-          <strong>If I say it’s done, it’s solved.</strong>
+          <span class="fei-intro-name-note">
+            {% if site.author.name_ipa %}<span class="fei-intro-ipa" title="Pronunciation (IPA)">{{ site.author.name_ipa }}</span>{% endif %}
+            <span class="fei-intro-callme">My name can be tricky to pronounce. You can call me George.</span>
+          </span>
         </p>
         <p>
           I am a Ph.D. candidate in Electronic and Computer Engineering at the <a href="https://uav.hkust.edu.hk/">Aerial Robotics Group</a> at HKUST, advised by Prof. <a href="https://scholar.google.com.hk/citations?user=u8Q0_xsAAAAJ&amp;hl=zh-CN&amp;oi=ao">Shaojie Shen</a>.
@@ -30,11 +29,9 @@ redirect_from:
         </p>
         <p class="fei-intro-links">
           <a href="mailto:{{ site.author.email }}">Email</a>
-          <span class="barron-link-sep">|</span>
           <a href="{{ site.author.googlescholar }}"><i class="fa-brands fa-google-scholar fei-intro-link-icon" aria-hidden="true"></i>Google Scholar</a>
-          <span class="barron-link-sep">|</span>
           <a href="https://github.com/{{ site.author.github }}"><i class="fa-brands fa-github fei-intro-link-icon" aria-hidden="true"></i>GitHub</a>
-          {% if site.author.zhihu %}<span class="barron-link-sep">|</span><a href="{{ site.author.zhihu }}"><i class="fa-brands fa-zhihu fei-intro-link-icon" aria-hidden="true"></i>知乎</a>{% endif %}
+          {% if site.author.zhihu %}<a href="{{ site.author.zhihu }}"><i class="fa-brands fa-zhihu fei-intro-link-icon" aria-hidden="true"></i>知乎</a>{% endif %}
         </p>
       </td>
       <td class="fei-intro-photo">
@@ -44,15 +41,27 @@ redirect_from:
   </tbody>
 </table>
 
+## Blog
+
+<p class="barron-section-intro">Notes on robotics, computer vision, and world models.</p>
+
+{% include blog_cards.html limit=3 %}
+
+<p class="blog-all"><a href="{{ '/blog/' | relative_url }}">View all posts</a></p>
+
 ## Publications
 
-<div class="barron-pubs" markdown="0">
+<div id="publication-list" class="barron-pubs" markdown="0">
 {% include barron_publications.html %}
 </div>
 
-## Projects
+## Industry Experience
+{: #experience }
 
-{% include barron_projects.html heading="h3" %}
+<ul class="barron-timeline">
+  <li><span class="timeline-date">2024 – Present</span><span>Research Intern, <strong>Zhuoyu Technology</strong> · Shenzhen</span></li>
+  <li><span class="timeline-date">2021</span><span>Semi-supervised 3D Detection Intern, <strong>SenseTime</strong> · Shanghai</span></li>
+</ul>
 
 ## Education
 
@@ -80,19 +89,7 @@ redirect_from:
 
 ## Teaching
 
-<ul class="barron-teaching">
-  <li>
-    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
-    <div>
-      <div class="barron-course-title">ELEC 1100: Introduction to Electro-Robot Design</div>
-      <div class="barron-course-meta">Spring 2023 @ HKUST · Teaching Assistant</div>
-    </div>
-  </li>
-  <li>
-    <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
-    <div>
-      <div class="barron-course-title">ELEC 3210: Machine Learning and Information Processing for Robotics</div>
-      <div class="barron-course-meta">Fall 2023 @ HKUST · Teaching Assistant</div>
-    </div>
-  </li>
+<ul class="barron-timeline">
+  <li><span class="timeline-date">Fall 2023</span><span>ELEC 3210: Machine Learning and Information Processing for Robotics · HKUST · Teaching Assistant</span></li>
+  <li><span class="timeline-date">Spring 2023</span><span>ELEC 1100: Introduction to Electro-Robot Design · HKUST · Teaching Assistant</span></li>
 </ul>

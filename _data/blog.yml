@@ -1,0 +1,59 @@
+- title: How World Models Can Help Robots Plan
+  description: Seven ways to bring world models into robot planning, from representation learning to closed-loop
+    simulation.
+  path: /blog/world-models-for-robot-planning/
+  zhihu_url: https://zhuanlan.zhihu.com/p/2010015565465551630
+- title: Some Thoughts on Point Cloud Registration
+  description: 'A practical look at point cloud registration: correspondences, pose estimation, and outlier rejection.'
+  path: /blog/point-cloud-registration/
+  zhihu_url: https://zhuanlan.zhihu.com/p/694366189
+- title: Left and Right Multiplication of Rotations
+  description: How rotation conventions and left and right multiplication relate to coordinate frames and Euler
+    angles.
+  path: /blog/rotation-left-right/
+  zhihu_url: https://zhuanlan.zhihu.com/p/128155013
+- title: Understanding and Implementing KLT Optical Flow
+  description: Derivation, implementation details, and ablations for KLT optical flow.
+  path: /blog/klt-optical-flow/
+  zhihu_url: https://zhuanlan.zhihu.com/p/620190584
+- title: 'PnP from Scratch: DLT, RANSAC, and Gauss–Newton'
+  description: A hands-on derivation of PnP with DLT, RANSAC, and Gauss–Newton, with code and experiments.
+  path: /blog/pnp-from-scratch/
+  zhihu_url: https://zhuanlan.zhihu.com/p/620102718
+- title: Notes on Edge-Based Visual Odometry
+  description: How edge representation, nearest-neighbor association, and point-to-tangent residuals fit into visual
+    odometry.
+  path: /blog/edge-based-visual-odometry/
+  zhihu_url: https://zhuanlan.zhihu.com/p/619674700
+- title: A Guide to Open-Source VIO Code
+  description: A 2022 guide to open-source visual-inertial odometry projects, organized by their main contributions.
+  path: /blog/vio-open-source-code/
+  zhihu_url: https://zhuanlan.zhihu.com/p/497942945
+- title: Point Cloud Clustering for Obstacle Segmentation
+  description: Six traditional clustering methods for segmenting objects in LiDAR point clouds.
+  path: /blog/point-cloud-clustering/
+  zhihu_url: https://zhuanlan.zhihu.com/p/497930938
+- title: Ground Segmentation from Point Clouds
+  description: A survey of point-cloud ground segmentation and four open-source approaches.
+  path: /blog/point-cloud-ground-segmentation/
+  zhihu_url: https://zhuanlan.zhihu.com/p/497893572
+- title: Ground-Constrained SLAM for Mobile Robots
+  description: Ground-plane constraints and Jacobians for visual-inertial-wheel SLAM.
+  path: /blog/ground-constrained-slam/
+  zhihu_url: https://zhuanlan.zhihu.com/p/497881916
+- title: IMU and Wheel Odometry Dead Reckoning on SE(3)
+  description: A derivation of midpoint and closed-form IMU–wheel odometry integration on SE(3).
+  path: /blog/se3-imu-wheel-dead-reckoning/
+  zhihu_url: https://zhuanlan.zhihu.com/p/497849222
+- title: Recent Papers on Deep Learning for Point Cloud Registration
+  description: A paper list and code collections for deep-learning-based 3D registration.
+  path: /blog/deep-learning-point-cloud-registration-papers/
+  zhihu_url: https://zhuanlan.zhihu.com/p/323322977
+- title: 'Stereo Camera Calibration: From MATLAB to OpenCV'
+  description: Calibrate a stereo camera in MATLAB and load the parameters in OpenCV.
+  path: /blog/stereo-camera-calibration-matlab-opencv/
+  zhihu_url: https://zhuanlan.zhihu.com/p/153329285
+- title: KITTI Odometry Ground Truth in the LiDAR Frame
+  description: Convert KITTI camera-frame odometry poses into the LiDAR frame.
+  path: /blog/kitti-lidar-odometry-ground-truth/
+  zhihu_url: https://zhuanlan.zhihu.com/p/128006350

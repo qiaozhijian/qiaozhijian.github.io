@@ -1,47 +1,6 @@
-{% comment %}
-  ClustrMaps: prefer _data/clustrmaps.yml (site.data.clustrmaps), then _config.yml (site.clustrmaps_*).
-  After changing config or data, restart `jekyll serve`. View source and search for "clustrmaps" to verify the script tag.
-{% endcomment %}
-{% assign _cm = site.data.clustrmaps %}
-{% assign _cms = "" %}
-{% if _cm and _cm.script_src %}
-  {% assign _cms = _cm.script_src | strip %}
-{% endif %}
-{% if _cms == "" %}
-  {% assign _cms = site.clustrmaps_script_src | default: "" | strip %}
-{% endif %}
-
-{% if _cms != "" %}
-  {% assign _dash = "" %}
-  {% assign _img = "" %}
-  {% if _cm and _cm.dashboard_url %}
-    {% assign _dash = _cm.dashboard_url | strip %}
-  {% endif %}
-  {% if _dash == "" %}
-    {% assign _dash = site.clustrmaps_dashboard_url | default: "" | strip %}
-  {% endif %}
-  {% if _cm and _cm.noscript_img_src %}
-    {% assign _img = _cm.noscript_img_src | strip %}
-  {% endif %}
-  {% if _img == "" %}
-    {% assign _img = site.clustrmaps_noscript_img_src | default: "" | strip %}
-  {% endif %}
-  {% if _dash != "" and _img != "" %}
-  <noscript>
-    <a href="{{ _dash }}" title="ClustrMaps"><img src="{{ _img }}" alt="ClustrMaps visitor map" loading="lazy" style="max-width:100%;height:auto;"></a>
-  </noscript>
-  {% endif %}
-  <p id="visitor-map-status" class="barron-visitor-map-hint" role="status" hidden>
-    The visitor map is temporarily unavailable.
-  </p>
-  <script type="text/javascript" id="clustrmaps" src="{{ _cms }}" onerror="document.getElementById('visitor-map-status').hidden = false;"></script>
-  {% if _dash != "" %}
-  <p class="barron-visitor-map-hint">
-    <a href="{{ _dash }}">View visitor map and statistics ↗</a>
-  </p>
-  {% endif %}
-{% else %}
-  <p class="barron-visitor-map-hint">
-    Visitor statistics are currently unavailable.
-  </p>
-{% endif %}
+<a href="https://www.stats4u.net/live/5857424905" title="Visitor statistics">
+  <img src="https://www.stats4u.net/c/5857424905-map_w.png?pal=ocean&amp;bg=none&amp;orte=1&amp;dark=auto" width="300" height="181" alt="World map of visitor locations" referrerpolicy="no-referrer" onerror="this.hidden = true; document.getElementById('visitor-map-status').hidden = false;">
+</a>
+<p id="visitor-map-status" class="barron-visitor-map-hint" role="status" hidden>
+  Visitor map is temporarily unavailable.
+</p>

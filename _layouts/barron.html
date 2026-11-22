@@ -3,6 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% unless page.hide_nav %}
+  <script>
+    try {
+      if (localStorage.getItem('site-theme') === 'dark') document.documentElement.dataset.theme = 'dark';
+    } catch (error) { /* Use the default light theme if storage is unavailable. */ }
+  </script>
+  {% endunless %}
   <link rel="icon" href="{{ '/media/images/favicon-16x16.png' | relative_url }}">
   <title>
     {% if page.title and page.title != "" %}{{ page.title }} | {% endif %}{{ site.author.name | default: site.title }}
@@ -21,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-  <link rel="stylesheet" href="{{ '/static/css/barron.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/static/css/barron.css' | relative_url }}?v=20261122-7">
   {% if page.stylesheet %}
     <link rel="stylesheet" href="{{ page.stylesheet | relative_url }}">
   {% endif %}
@@ -29,7 +36,7 @@
     <script>
       window.MathJax = {
         tex: {
-          inlineMath: [['\\(', '\\)']],
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
           displayMath: [['\\[', '\\]']],
           processEscapes: true
         },
@@ -55,12 +62,19 @@
         {% assign home_url = '/' | relative_url %}
         {% if page.url == '/' %}{% assign home_url = '' %}{% endif %}
         <a class="barron-nav-name" href="{{ home_url }}#top">{{ site.author.name | default: site.name }}</a>
-        <a href="{{ home_url }}#top">Home</a>
-        <a href="{{ home_url }}#publications">Publications</a>
-        <a href="{{ home_url }}#projects">Projects</a>
-        <a href="{{ home_url }}#awards">Awards</a>
-        <a href="{{ home_url }}#teaching">Teaching</a>
-        <a href="{{ '/highlight/' | relative_url }}">Highlight</a>
+        <div class="barron-nav-links">
+          <a href="{{ home_url }}#blog">Blog</a>
+          <a href="{{ home_url }}#publications">Publications</a>
+          <a href="{{ '/projects/' | relative_url }}">Projects</a>
+          <a href="{{ home_url }}#experience">Experience</a>
+          <a href="{{ home_url }}#teaching">Teaching</a>
+          <a href="{{ home_url }}#awards">Awards</a>
+          <a href="{{ '/highlight/' | relative_url }}">Highlight</a>
+        </div>
+        <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+          <span class="theme-toggle-sun" aria-hidden="true">☼</span>
+        </button>
       </nav>
     {% endunless %}
 
@@ -94,6 +108,9 @@
       </footer>
     {% endunless %}
   </div>
+  {% unless page.hide_nav %}
+    <script src="{{ '/static/js/theme.js' | relative_url }}" defer></script>
+  {% endunless %}
   {% if page.script %}
     <script src="{{ page.script | relative_url }}" defer></script>
   {% endif %}

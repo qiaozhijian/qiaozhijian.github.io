@@ -1,0 +1,13 @@
+{% assign blog_limit = include.limit | default: site.data.blog.size %}
+<div class="blog-cards">
+  {% for post in site.data.blog limit: blog_limit %}
+    <article class="blog-card">
+      <h3><a href="{{ post.path | relative_url }}">{{ post.title }}</a></h3>
+      <p>{{ post.description }}</p>
+      <div class="blog-card-actions">
+        <a class="blog-card-link" href="{{ post.path | relative_url }}">Read article</a>
+        <a class="blog-card-link" href="{{ post.zhihu_url }}" lang="zh-CN">中文版（知乎）</a>
+      </div>
+    </article>
+  {% endfor %}
+</div>

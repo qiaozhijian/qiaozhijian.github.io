@@ -5,22 +5,47 @@
  * Latin uses Lato; CJK (e.g. name) falls through to Noto Serif SC.
  */
 
+:root {
+  --page-bg: #ffffff;
+  --text: #333333;
+  --heading: #111111;
+  --muted: #666666;
+  --link: #0056b3;
+  --link-hover: #d9230f;
+  --border: #e4eaf1;
+  --soft-bg: #f7faff;
+  --hover-bg: #f4f8fd;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #161c24;
+  --text: #d9e1eb;
+  --heading: #f2f6fb;
+  --muted: #acb9c8;
+  --link: #8dbdff;
+  --link-hover: #bed9ff;
+  --border: #344253;
+  --soft-bg: #1e2937;
+  --hover-bg: #253446;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: var(--page-bg);
+  color: var(--text);
 }
 
 a {
-  color: #0056b3;
+  color: var(--link);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:focus,
 a:hover {
-  color: #d9230f;
+  color: var(--link-hover);
   text-decoration: none;
 }
 
@@ -56,7 +81,7 @@ h1 {
   font-size: 26px;
   font-weight: 700;
   margin: 0 0 0.65rem;
-  color: #111111;
+  color: var(--heading);
 }
 
 h2 {
@@ -65,8 +90,8 @@ h2 {
   font-weight: 700;
   margin: 1.5em 0 0.5em;
   padding: 0 0 0.2em 0;
-  border-bottom: 1px solid #f0f0f0;
-  color: #111111;
+  border-bottom: 1px solid var(--border);
+  color: var(--heading);
 }
 
 h2:first-of-type {
@@ -78,14 +103,14 @@ h3 {
   font-size: 17px;
   font-weight: 700;
   margin: 1.2em 0 0.35em;
-  color: #111111;
+  color: var(--heading);
 }
 
 papertitle {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
   font-size: 17px;
   font-weight: 700;
-  color: #111111;
+  color: var(--heading);
   display: block;
   margin-bottom: 0.25rem;
   line-height: 1.4;
@@ -97,7 +122,7 @@ name {
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.02em;
-  color: #111111;
+  color: var(--heading);
 }
 
 span.highlight {
@@ -110,7 +135,7 @@ span.highlight {
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  padding: 36px 4% 48px;
+  padding: 0 4% 48px;
   box-sizing: border-box;
 }
 
@@ -121,31 +146,81 @@ span.highlight {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 18px;
-  background: #fff;
+  gap: 10px 18px;
+  background: var(--page-bg);
   font-family: "Lato", Verdana, Helvetica, sans-serif;
   font-size: 14px;
-  margin: 0 0 32px;
-  padding: 14px 0;
-  border-bottom: 1px solid #eaeaea;
+  margin: 0 0 38px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .barron-nav a {
   white-space: nowrap;
-  color: #555555;
+  color: var(--muted);
 }
 
 .barron-nav a:hover {
-  color: #111111;
+  color: var(--link);
 }
 
 .barron-nav .barron-nav-name {
-  color: #111111;
+  color: var(--heading);
   font-family: "Lato", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
   font-size: 16px;
   font-weight: 700;
-  margin-right: 24px;
+  margin-right: auto;
   letter-spacing: 0.02em;
+}
+
+.barron-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--page-bg);
+  color: var(--link);
+  cursor: pointer;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  background: var(--soft-bg);
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+.theme-toggle-sun,
+html[data-theme="dark"] .theme-toggle-moon { display: none; }
+html[data-theme="dark"] .theme-toggle-sun { display: inline; }
+
+.barron-wrap:not(.merope-paper-shell) main h2 {
+  position: relative;
+  padding-bottom: 0.4em;
+}
+
+.barron-wrap:not(.merope-paper-shell) main h2::after {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 52px;
+  border-bottom: 2px solid var(--link);
+  content: "";
 }
 
 .barron-page-header {
@@ -159,10 +234,10 @@ span.highlight {
 .barron-footer {
   margin-top: 3rem;
   padding-top: 20px;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid var(--border);
   font-family: "Lato", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
   font-size: 13px;
-  color: #777;
+  color: var(--muted);
 }
 
 .barron-footer-line {
@@ -172,16 +247,16 @@ span.highlight {
 .barron-footer-updated {
   margin-top: 8px;
   font-size: 12px;
-  color: #999;
+  color: var(--muted);
 }
 
 .barron-footer a {
-  color: #555;
+  color: var(--muted);
   transition: color 0.2s ease;
 }
 
 .barron-footer a:hover {
-  color: #111;
+  color: var(--link);
 }
 
 /* --- Intro row: text left (~63%), photo right (~40%), Fei spacing --- */
@@ -215,32 +290,25 @@ span.highlight {
   margin: 0 0 0.6rem;
 }
 
-.barron-intro .fei-intro-ipa {
-  display: block;
+.barron-intro .fei-intro-name-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 10px;
   margin: 0.25rem 0 0;
   font-family: "Lato", "Noto Sans", "DejaVu Sans", sans-serif;
   font-size: 15px;
   font-weight: 400;
+  color: var(--muted);
+}
+
+.barron-intro .fei-intro-ipa {
   letter-spacing: 0.03em;
-  color: #666;
+  white-space: nowrap;
 }
 
-.barron-intro .fei-intro-motto {
-  padding-left: 0.85rem;
-  border-left: 2px solid #d9d9d9;
-  color: #666;
-  font-style: italic;
-}
-
-.barron-intro .fei-intro-motto span,
-.barron-intro .fei-intro-motto strong {
-  display: block;
-}
-
-.barron-intro .fei-intro-motto strong {
-  color: #333;
-  font-size: inherit;
-  font-weight: 700;
+.barron-intro .fei-intro-callme {
+  font-size: 13px;
 }
 
 .barron-intro .fei-intro-text > p {
@@ -248,10 +316,73 @@ span.highlight {
 }
 
 .barron-intro .fei-intro-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   text-align: left;
   margin-bottom: 0;
   font-size: 14px;
 }
+
+.fei-intro-links a,
+.blog-card-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--soft-bg);
+  color: var(--link);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.fei-intro-links a:hover,
+.blog-card-link:hover {
+  background: var(--hover-bg);
+  color: var(--link);
+}
+
+.barron-section-intro {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.blog-cards {
+  display: grid;
+  gap: 12px;
+}
+
+.blog-card {
+  padding: 17px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--soft-bg);
+}
+
+.blog-card h3 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.blog-card h3 a { color: var(--heading); }
+.blog-card h3 a:hover { color: var(--link); }
+.blog-card p { margin: 0 0 10px; color: var(--muted); }
+.blog-card-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.blog-card-link { padding: 3px 10px; background: var(--page-bg); }
+.blog-all { margin-top: 14px; }
+
+.barron-article {
+  max-width: 740px;
+  margin: 0 auto;
+  font-size: 16px;
+}
+.barron-article p, .barron-article li { font-size: 16px; line-height: 1.75; }
+.barron-article figure { margin: 1.5rem 0; }
+.barron-article img { max-width: 100%; height: auto; border-radius: 6px; }
+.barron-article figcaption { color: var(--muted); font-size: 14px; }
+.barron-article-actions { display: flex; gap: 8px; margin: 1rem 0 1.7rem; }
 
 .barron-intro .fei-intro-links .fei-intro-link-icon {
   margin-right: 0.35em;
@@ -270,24 +401,27 @@ span.highlight {
 .barron-visitor-map {
   margin-top: 0.25rem;
   margin-bottom: 0.75rem;
-  /* 比默认 widget 略窄，不用 scale（易把 iframe 压成一条线） */
   width: 100%;
-  max-width: 252px;
+  max-width: 320px;
 }
 
-.barron-visitor-map iframe {
+.barron-visitor-map img {
   display: block;
-  width: 100% !important;
+  width: 100%;
   max-width: 100%;
-  /* 约 3:2，与常见 ClustrMaps 比例接近 */
-  height: 168px !important;
+  height: auto;
   border: 0;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] .barron-visitor-map img {
+  color-scheme: dark;
 }
 
 .barron-visitor-map-hint {
   font-size: 12px;
   line-height: 1.5;
-  color: #666;
+  color: var(--muted);
   margin: 0;
   max-width: 42em;
 }
@@ -307,7 +441,7 @@ span.highlight {
 .barron-intro .fei-intro-photo a {
   display: block;
   width: 75%;
-  max-width: 200px;
+  max-width: 160px;
   margin: 0 auto;
   line-height: 0;
   border: 0;
@@ -345,6 +479,42 @@ main li {
   margin: 0.2rem 0;
 }
 
+main .barron-timeline {
+  list-style: none;
+  padding: 0 0 0 24px;
+  margin: 0.9rem 0 1.2rem 6px;
+  border-left: 1px solid var(--border);
+}
+
+.barron-timeline li {
+  position: relative;
+  display: flex;
+  gap: 14px;
+  margin: 0;
+  padding: 0 0 16px;
+}
+
+.barron-timeline li::before {
+  position: absolute;
+  top: 0.43em;
+  left: -30px;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--link);
+  border-radius: 50%;
+  background: var(--page-bg);
+  content: "";
+}
+
+.timeline-date {
+  min-width: 112px;
+  flex-shrink: 0;
+  color: var(--link);
+  font-weight: 700;
+}
+
+.barron-timeline strong { font-size: inherit; }
+
 main .barron-teaching {
   list-style: none;
   padding: 0;
@@ -374,6 +544,26 @@ main .barron-teaching {
 
 /* --- Publication tables (match Fei / original inline 25% / 75%, padding 20px) --- */
 
+.publication-controls {
+  margin: 0.8rem 0 0.4rem;
+}
+
+.publication-toggle {
+  padding: 6px 13px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--soft-bg);
+  color: var(--link);
+  font: 700 14px "Lato", Verdana, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.publication-toggle:hover { background: var(--hover-bg); }
+.publication-toggle:focus-visible, .barron-project summary:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
 .barron-pubs table {
   width: 100%;
   border: 0;
@@ -385,7 +575,7 @@ main .barron-teaching {
 }
 
 .barron-pubs table:hover {
-  background-color: #fcfcfc;
+  background-color: var(--hover-bg);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
 }
 
@@ -426,6 +616,30 @@ iframe {
 }
 
 /* Projects list */
+.barron-projects { margin: 0.7rem 0 1.4rem; }
+.barron-project { border-bottom: 1px solid var(--border); }
+.barron-project:first-child { border-top: 1px solid var(--border); }
+.barron-project summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 4px;
+  cursor: pointer;
+  list-style: none;
+}
+.barron-project summary::-webkit-details-marker { display: none; }
+.barron-project summary::after {
+  content: "+";
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--link);
+  font-size: 20px;
+  line-height: 1;
+}
+.barron-project[open] summary::after { content: "−"; }
+.barron-project summary:hover .barron-project-title { color: var(--link); }
+.barron-project[open] .barron-project-title { white-space: normal; }
+.barron-project-content { padding: 0 4px 16px; }
 .barron-project-content img {
   max-width: 100%;
   height: auto;
@@ -435,7 +649,11 @@ iframe {
   font-family: "Lato", Verdana, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 700;
-  margin: 0 0 0.5rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
   border: 0;
   padding: 0;
 }
@@ -445,10 +663,8 @@ iframe {
     scroll-padding-top: 150px;
   }
 
-  .barron-nav .barron-nav-name {
-    flex-basis: 100%;
-    margin-right: 0;
-  }
+  .barron-nav .barron-nav-name { margin-right: auto; }
+  .barron-nav-links { order: 3; flex: 1 0 100%; flex-wrap: wrap; gap: 6px 14px; overflow: visible; }
 
   name {
     font-size: 28px;
@@ -458,9 +674,17 @@ iframe {
     text-align: center;
   }
 
+  .barron-intro .fei-intro-name-note {
+    justify-content: center;
+  }
+
   .barron-intro .fei-intro-links {
+    justify-content: center;
     text-align: center;
   }
+
+  .barron-timeline li { display: block; }
+  .timeline-date { display: block; }
 
   .barron-intro > tbody > tr,
   .barron-intro > tbody > tr > td {
@@ -475,7 +699,7 @@ iframe {
 
   .barron-intro .fei-intro-photo a {
     width: 65%;
-    max-width: min(200px, 58vw);
+    max-width: min(160px, 58vw);
   }
 
   .barron-pubs tr,
@@ -486,7 +710,7 @@ iframe {
   .barron-pubs tr {
     margin-bottom: 12px;
     padding-bottom: 12px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border);
   }
 
   .barron-pubs td {
