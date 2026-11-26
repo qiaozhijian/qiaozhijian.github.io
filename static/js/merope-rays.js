@@ -8,22 +8,34 @@
   const mul = (a,s) => a.map(v=>v*s);
   const origin = t => [-3.2+6.4*t, .3+.18*Math.sin(t*Math.PI), .5*Math.sin(t*Math.PI*2)];
   const basis = t => {const a=-.3+.6*t;return {r:[Math.cos(a),0,-Math.sin(a)],f:[Math.sin(a),0,Math.cos(a)]};};
-  const planePoint = (t,u,v) => {const {r,f}=basis(t);return add(add(add(origin(t),mul(f,1.65)),mul(r,u)),[0,v,0]);};
+  // Blend an equidistant fisheye ray surface into a pinhole image plane.
+  const planePoint = (t,u,v) => {
+    const {r,f}=basis(t), o=origin(t);
+    const flat=add(add(mul(f,1.65),mul(r,u)),[0,v,0]);
+    // A shared scale for u and v preserves the wide image aspect ratio.
+    const x=u/1.05, y=v/1.05, radius=Math.hypot(x,y);
+    const theta=radius*1.05, scale=radius ? Math.sin(theta)/radius : 1.05;
+    const spherical=mul(add(add(mul(f,Math.cos(theta)),mul(r,x*scale)),[0,y*scale,0]),1.05);
+    const blend=t*t*(3-2*t);
+    return add(o,add(mul(spherical,1-blend),mul(flat,blend)));
+  };
   const path = points => points.map((p,i)=>(i?'L':'M')+project(p).map(v=>v.toFixed(2)).join(',')).join(' ');
   const line = (points,color,width=1,extra='') => `<path d="${path(points)}" fill="none" stroke="${color}" stroke-width="${width}" ${extra}/>`;
   const label = (x,y,s,size=20,color='#86868b',extra='') => `<text x="${x}" y="${y}" font-size="${size}" fill="${color}" ${extra}>${s}</text>`;
   const dot = (p,r,color) => {const [x,y]=project(p);return `<circle cx="${x}" cy="${y}" r="${r}" fill="${color}"/>`;};
   function camera(t,active=false,uv=[0,0]) {
-    const o=origin(t),c=[planePoint(t,-1.05,-.66),planePoint(t,1.05,-.66),planePoint(t,1.05,.66),planePoint(t,-1.05,.66)];
+    const o=origin(t), point=(u,v)=>planePoint(t,u,v), c=[point(-1.05,-.66),point(1.05,-.66),point(1.05,.66),point(-1.05,.66)];
     const color=active?blue:'#ccd5e0';
-    let s=`<path d="${path([...c,c[0]])}" fill="${active?'#edf5ff':'#fafbfd'}" fill-opacity=".8" stroke="${color}" stroke-width="${active?1.5:1}"/>`;
+    const curve=(a,b)=>Array.from({length:17},(_,i)=>point(a[0]+(b[0]-a[0])*i/16,a[1]+(b[1]-a[1])*i/16));
+    const border=[...curve([-1.05,-.66],[1.05,-.66]),...curve([1.05,-.66],[1.05,.66]),...curve([1.05,.66],[-1.05,.66]),...curve([-1.05,.66],[-1.05,-.66])];
+    let s=`<path d="${path(border)}" fill="${active?'#edf5ff':'#fafbfd'}" fill-opacity=".8" stroke="${color}" stroke-width="${active?1.5:1}"/>`;
     c.forEach(p=>s+=line([o,p],color,active?1.1:.8));
-    for(let i=1;i<4;i++){const u=-1.05+i*.525,v=-.66+i*.33;s+=line([planePoint(t,u,-.66),planePoint(t,u,.66)],color,.6);s+=line([planePoint(t,-1.05,v),planePoint(t,1.05,v)],color,.6);}
+    for(let i=1;i<4;i++){const u=-1.05+i*.525,v=-.66+i*.33;s+=line(curve([u,-.66],[u,.66]),color,.6);s+=line(curve([-1.05,v],[1.05,v]),color,.6);}
     if(active){
       const [u,w]=uv,du=.22,dv=.15;
-      const token=[planePoint(t,u-du,w-dv),planePoint(t,u+du,w-dv),planePoint(t,u+du,w+dv),planePoint(t,u-du,w+dv)];
+      const token=[point(u-du,w-dv),point(u+du,w-dv),point(u+du,w+dv),point(u-du,w+dv)];
       s+=`<path d="${path([...token,token[0]])}" fill="${blue}" fill-opacity=".65"/>`;
-      const p=planePoint(t,...uv),v=p.map((x,i)=>x-o[i]),end=add(o,mul(v,2.1));
+      const p=point(...uv),v=p.map((x,i)=>x-o[i]),end=add(o,mul(v,2.1));
       s+=line([o,end],blue,2.4,'marker-end="url(#ray-tip)"')+dot(o,4,blue)+dot(p,3,blue);
       const [x,y]=project(p);s+=label(x+12,y+4,'token',20,blue);
       const [ox,oy]=project(o);s+=label(ox-8,oy-13,'o(t)',20,blue);
@@ -31,7 +43,7 @@
     } else s+=dot(o,2.5,color);
     return s;
   }
-  host.innerHTML=`<svg viewBox="0 0 1000 440" role="img" aria-labelledby="ray-title ray-desc" style="display:block;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"><title id="ray-title">A video token in space and time</title><desc id="ray-desc">A moving calibrated camera and gridded image plane in three-dimensional space. A token moves within the image plane and defines a ray from the camera origin through its image-plane position. A separate synchronized time axis provides the fourth coordinate.</desc><defs><marker id="ray-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="${blue}" stroke-width="1.5"/></marker></defs><rect width="1000" height="440" fill="white"/><g id="ray-static"></g><g id="ray-live"></g></svg><button type="button" class="ray-motion-toggle" aria-label="Pause ray illustration">Pause</button>`;
+  host.innerHTML=`<svg viewBox="0 0 1000 440" role="img" aria-labelledby="ray-title ray-desc" style="display:block;width:100%;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif"><title id="ray-title">A video token in space and time</title><desc id="ray-desc">An illustrative moving camera gradually transitions from an equidistant fisheye to a pinhole projection. A token position defines a ray from the camera origin. A spherical surface shows fisheye ray directions, and a separate time axis shows the fourth coordinate.</desc><defs><marker id="ray-tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="${blue}" stroke-width="1.5"/></marker></defs><rect width="1000" height="440" fill="white"/><g id="ray-static"></g><g id="ray-live"></g></svg><button type="button" class="ray-motion-toggle" aria-label="Pause ray illustration">Pause</button>`;
   const staticGroup=host.querySelector('#ray-static'),live=host.querySelector('#ray-live');
   let base=label(24,38,'A token in space and time',30,'#1d1d1f');
   for(let x=-5;x<=5;x++)base+=line([[x,-.55,-1.5],[x,-.55,5]],'#eef0f3',1.05);
@@ -39,7 +51,7 @@
   const axis=[-4.6,-.55,3.5];
   [[[1,0,0],'x'],[[0,1,0],'y'],[[0,0,1],'z']].forEach(([v,n])=>{const end=add(axis,mul(v,.65));base+=line([axis,end],'#aab0b8',1.2);const [x,y]=project(end);base+=label(x-4,y-7,n,18);});
   base+=line(Array.from({length:65},(_,i)=>origin(i/64)),'#b9c3ce',1.3,'stroke-dasharray="3 5"');
-  [0,.5,1].forEach((t,i)=>{base+=camera(t);const [x,y]=project(origin(t));base+=label(x-13,y-28,['t − 2','t','t + 2'][i],18);});
+  [0,.5,1].forEach((t,i)=>{base+=camera(t);const [x,y]=project(origin(t));base+=label(x-13,y-28,['t − 2 · fisheye','t · transition','t + 2 · pinhole'][i],15);});
   base+=`<path d="M726 72V332" stroke="#eceef1"/>`;
   base+=label(754,100,'Image position (u, v)',22,'#1d1d1f');
   base+=label(754,180,'Ray origin · o',22,'#1d1d1f');
@@ -54,7 +66,7 @@
     const t=.5-.5*Math.cos(phase),uv=[.72*Math.sin(phase*1.7),.44*Math.cos(phase*2.3)],o=origin(t),p=planePoint(t,...uv),v=p.map((x,i)=>x-o[i]),norm=Math.hypot(...v),d=v.map(x=>x/norm);
     const imageUv=[(uv[0]+1.05)/2.1,(.66-uv[1])/1.32];
     host.dataset.tokenUv=imageUv.join(',');
-    live.innerHTML=camera(t,true,uv)+label(754,132,imageUv.map(x=>x.toFixed(2)).join(' , '),23,blue)+label(754,212,o.map(x=>x.toFixed(2)).join(' · '),20,blue)+label(754,292,d.map(x=>x.toFixed(2)).join(' · '),20,blue)+`<circle cx="${110+830*t}" cy="372" r="7" fill="${purple}"/><circle cx="${110+830*t}" cy="372" r="13" fill="${purple}" opacity=".1"/>`;
+    live.innerHTML=camera(t,true,uv)+label(754,62,t<.03?'Fisheye':t>.97?'Pinhole':'Fisheye → pinhole',18,blue)+label(754,132,imageUv.map(x=>x.toFixed(2)).join(' , '),23,blue)+label(754,212,o.map(x=>x.toFixed(2)).join(' · '),20,blue)+label(754,292,d.map(x=>x.toFixed(2)).join(' · '),20,blue)+`<circle cx="${110+830*t}" cy="372" r="7" fill="${purple}"/><circle cx="${110+830*t}" cy="372" r="13" fill="${purple}" opacity=".1"/>`;
 
   }
   function tick(now){if(last!==null && playing && visible && !document.hidden){phase+=(now-last)*2*Math.PI/14000;draw();}last=now;requestAnimationFrame(tick);}

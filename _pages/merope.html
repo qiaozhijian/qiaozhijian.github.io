@@ -66,8 +66,8 @@ panshot_more:
     </p>
 
     <div class="ray-spacetime" data-ray-spacetime></div>
-    <script defer src="{{ '/static/js/merope-rays.js?v=20260923-rays-v2' | relative_url }}"></script>
-    <p class="figure-caption">A calibrated camera places each token’s ray in 3D: its origin follows the camera position, and its direction passes through the token’s image-plane location. The highlighted token also moves within the image plane; (u, v) are normalized image coordinates. The synchronized time axis adds the fourth coordinate. Motion is illustrative.</p>
+    <script defer src="{{ '/static/js/merope-rays.js?v=20261126-fisheye-v2' | relative_url }}"></script>
+    <p class="figure-caption">Pinhole and equidistant fisheye cameras map image positions to rays differently. The curved surface illustrates fisheye ray directions; it is not a physical image plane. The active camera gradually transitions between the two along the illustrative path. The highlighted token also moves within the image plane; (u, v) are normalized image coordinates. The synchronized time axis adds the fourth coordinate. Motion is illustrative.</p>
 
     <p>
       Alongside visual features, MeRoPE uses each token's time and calibrated camera ray. These geometric tags help the model relate observed tokens to the tokens it predicts across cameras and time.
